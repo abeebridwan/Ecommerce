@@ -13,8 +13,8 @@ class App extends React.Component {
 
   async componentDidMount() {
     try {
-      const category = await getCategoryApiMethod();
-      this.setState({ category: category })
+      const { category } = await getCategoryApiMethod();
+      this.setState({ category })
     } catch (err) {
       this.setState({ error: err.message || err.toString() });
       console.log(err)
@@ -28,7 +28,7 @@ class App extends React.Component {
       return
     }
 
-    let displayName = category['category']['name']
+    let displayName = category['name']
 
     return (
       <>

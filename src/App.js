@@ -23,10 +23,13 @@ class App extends React.Component {
 
   render() {
     const { category } = this.state;
-    let displayName = null;
-    if (category) {
-      displayName = category['category']['name']
+
+    if (!category) {
+      return
     }
+
+    let displayName = category['category']['name']
+
     return (
       <>
         <div>Able to fetch category data {displayName}</div>

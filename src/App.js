@@ -13,7 +13,7 @@ class App extends React.Component {
 
   async componentDidMount() {
     try {
-      const { category } = await getCategoryApiMethod();
+      const { category } = await getCategoryApiMethod('clothes');
       this.setState({ category })
     } catch (err) {
       this.setState({ error: err.message || err.toString() });

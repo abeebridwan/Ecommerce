@@ -1,36 +1,20 @@
-const clothesCategoryData = {
-  query:
-    `{
-    category(input: { title: "clothes" }) {
-      name,
-        products{
-        id,
-          name,
-          inStock,
-          gallery,
-          description,
-          category,
-          attributes{
-          id,
-            name,
-            type,
-            items{
-            id,
-              value,
-              displayValue
-          }
-        },
-      prices{
-        currency{
-            label,
-              symbol
-          },
-          amount
-        },
-        brand
-      }
+function categoryData(value) {
+  return {
+    query: `query($input: CategoryInput){
+  category(input:$input){
+    name,
+    products{
+      name
     }
-  }`
+  }
+}`,
+    variables: {
+      "input": { "title": value }
+    }
+  }
 }
 
-export default clothesCategoryData
+export default categoryData
+
+
+

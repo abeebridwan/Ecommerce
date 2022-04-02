@@ -1,7 +1,8 @@
 import getData from "./get-data";
-import clothesCategoryData from './data'
+import categoryData from './data'
 
 /* get a single category data with right argument */
-export function getCategoryApiMethod() {
-  return getData(clothesCategoryData)
+export function getCategoryApiMethod(input) {
+  let result = categoryData(input)
+  return getData(result)
 }

@@ -1,15 +1,24 @@
 import React from "react";
-import { ColumnOne, ColumnTwo, Container } from "./style/layout";
+import { Category, CategoryText, ColumnOne, ColumnTwo, Container } from "./style/layout";
 
 
-export default class Layout extends React.Component { 
+export default class Layout extends React.Component {
 
-  static LayoutColumnOne({ children, ...restProps }) {
-    return <ColumnOne {...restProps}>{children}</ColumnOne>
+
+  static LayoutCategoryText({ children, ...restProps }) {
+    return <CategoryText {...restProps}>{children}</CategoryText>
+  }
+
+  static LayoutCategory({ children, ...restProps }) {
+    return <Category {...restProps}>{children}</Category>
   }
 
   static LayoutColumnTwo({ children, ...restProps }) {
     return <ColumnTwo {...restProps}>{children}</ColumnTwo>
+  }
+
+  static LayoutColumnOne({ children, ...restProps }) {
+    return <ColumnOne {...restProps}>{children}</ColumnOne>
   }
 
   render() {

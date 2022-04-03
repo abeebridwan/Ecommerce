@@ -1,7 +1,9 @@
 import { createGlobalStyle } from "styled-components";
 
 export const GlobalStyle = createGlobalStyle`
-* {
+*,
+*::before,
+*::after{
   box-sizing: border-box; 
   margin: 0;
   padding: 0;
@@ -18,9 +20,11 @@ html, body {
   -moz-osx-font-smoothing: grayscale;
   background: #FFFFFF;
   color: #1D1F22;
-  font-size: 16px;
+  font-size: 62.5%;
   & body {  
   max-width: 1440px;
+  min-width: 300px;
+  margin: auto;  
   }
 }
 `

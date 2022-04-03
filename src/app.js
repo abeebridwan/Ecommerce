@@ -1,5 +1,6 @@
 import React from 'react'
-import { getCategoryApiMethod } from './graphql-data/sendRequest'
+import { getCategoryApiMethod } from './graphql-data/sendRequest';
+import { Plp } from './pages'
 
 
 class App extends React.Component {
@@ -32,6 +33,7 @@ class App extends React.Component {
 
     return (
       <>
+        <Plp />
         <div>Able to fetch category data {displayName}</div>
       </>
     )

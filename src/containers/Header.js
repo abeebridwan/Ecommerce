@@ -28,7 +28,9 @@ export default class HeaderContainer extends React.Component {
         </Layout.LayoutColumnOne>
 
 
-        <Layout.LayoutColumnTwo />
+        <Layout.LayoutColumnTwo>
+            
+        </Layout.LayoutColumnTwo>
         {this.props.children}
       </Layout>
     )

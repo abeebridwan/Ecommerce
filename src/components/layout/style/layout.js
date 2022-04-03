@@ -3,39 +3,39 @@ import styled from 'styled-components/macro';
 export const Container = styled.div` 
  display: flex;
  justify-content: space-between;
- align-items: center;
- height: 2.5rem;
- padding:0 1.1rem;
+ padding:0 2rem;
 `;
 
-export const ColumnOne = styled.span`   
-  display: inline-block;    
+export const ColumnOne = styled.span`     
   display: flex;
-  justify-content: flex-start;
-  align-content: center;    
-   
 `;
 
-export const ColumnTwo = styled.span`
-  border: 2px solid cyan;
-  background-color: cyan;
-  display: inline-block; 
-  border: 1px solid yellow; 
-  height: 100%; 
+export const ColumnTwo = styled.span`  
+  background-color: cyan;   
+  border: 1px solid yellow;   
 `;
 
-export const Category = styled.span` 
-  display: inline-block;
-  padding: 1.2rem 0.6rem 0.9rem;  
-  border-bottom: 1px solid;
+export const ColumnThree = styled.span`  
+  background-color: cyan;   
+  border: 1px solid yellow;   
+`;
+
+export const Category = styled.span`   
+  padding: .7rem .6rem .9rem;  
+  border-bottom: 1px solid #5ECE7B;
   color: #5ECE7B;
-margin: 3px;
-  height: 100%; 
+  margin: 3px;  
 `
 
 export const CategoryText = styled.span`
   font-size: .8rem;
   font-weight: 550;
   line-height: 10px;
-  text-align: center;
+  text-transform: uppercase;
 `
+export const Logo = styled.span``
+export const CartFrame = styled.span``
+export const PriceFrame = styled.span``
+export const Arrow = styled.span``
+export const Price = styled.span``
+export const Cart = styled.span``

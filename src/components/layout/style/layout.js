@@ -9,31 +9,33 @@ export const Container = styled.div`
 `;
 
 export const ColumnOne = styled.span`   
-  display: inline-block;  
-  height: 100%;
+  display: inline-block;    
   display: flex;
   justify-content: flex-start;
-  align-content: center;  
+  align-content: center;    
+   
 `;
 
 export const ColumnTwo = styled.span`
   border: 2px solid cyan;
   background-color: cyan;
   display: inline-block; 
-  height: 100%
+  border: 1px solid yellow; 
+  height: 100%; 
 `;
 
-export const Category = styled.span`
-  color: #5ECE7B; 
+export const Category = styled.span` 
   display: inline-block;
-  padding: 0 0.5rem;  
-  border-bottom: 3px solid,
-  color: #5ECE7B
+  padding: 1.2rem 0.6rem 0.9rem;  
+  border-bottom: 1px solid;
+  color: #5ECE7B;
+margin: 3px;
+  height: 100%; 
 `
 
 export const CategoryText = styled.span`
-  font-size: 1rem;
-  font-weight: 600;
-  line-height: 19.2px;
+  font-size: .8rem;
+  font-weight: 550;
+  line-height: 10px;
   text-align: center;
 `

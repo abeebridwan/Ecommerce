@@ -34,7 +34,7 @@ class App extends React.Component {
     return (
       <>
         <Plp />
-        <div>Able to fetch category data {displayName}</div>
+       {/*  <div>Able to fetch category data {displayName}</div> */}
       </>
     )
   }

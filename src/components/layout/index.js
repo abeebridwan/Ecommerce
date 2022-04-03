@@ -1,31 +1,23 @@
 import React from "react";
-import { Arrow, Cart, CartFrame, Category, CategoryText, ColumnOne, ColumnThree, ColumnTwo, Container, Logo, Price, PriceFrame } from "./style/layout";
+import { CartFrame, CartNumber, Category, CategoryText, ColumnOne, ColumnThree, ColumnTwo, Container, Price, PriceFrame } from "./style/layout";
 
 
 export default class Layout extends React.Component {
 
-  static LayoutCart({ children, ...restProps }) {
-    return <Cart {...restProps}>{children}</Cart>
-  }
-
-  static LayoutPriceFrame({ children, ...restProps }) {
-    return <PriceFrame {...restProps}>{children}</PriceFrame>
-  }
-
-  static LayoutArrow({ children, ...restProps }) {
-    return <Arrow {...restProps}>{children}</Arrow>
-  }
-
-  static LayoutPrice({ children, ...restProps }) {
-    return <Price {...restProps}>{children}</Price>
+  static LayoutCartNumber({ children, ...restProps }) {
+    return <CartNumber {...restProps}>{children}</CartNumber>
   }
 
   static LayoutCartFrame({ children, ...restProps }) {
     return <CartFrame {...restProps}>{children}</CartFrame>
   }
 
-  static LayoutLogo({ children, ...restProps }) {
-    return <Logo {...restProps}>{children}</Logo>
+  static LayoutPrice({ children, ...restProps }) {
+    return <Price {...restProps}>{children}</Price>
+  }
+
+  static LayoutPriceFrame({ children, ...restProps }) {
+    return <PriceFrame {...restProps}>{children}</PriceFrame>
   }
 
   static LayoutCategoryText({ children, ...restProps }) {

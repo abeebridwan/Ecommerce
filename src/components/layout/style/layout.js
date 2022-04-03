@@ -33,9 +33,9 @@ export const CategoryText = styled.span`
   line-height: 10px;
   text-transform: uppercase;
 `
-export const Logo = styled.span``
-export const CartFrame = styled.span``
 export const PriceFrame = styled.span``
-export const Arrow = styled.span``
 export const Price = styled.span``
-export const Cart = styled.span``
+
+export const CartFrame = styled.span``
+
+export const CartNumber = styled.span``

@@ -4,7 +4,6 @@ import { Category, CategoryText, ColumnOne, ColumnTwo, Container } from "./style
 
 export default class Layout extends React.Component {
 
-
   static LayoutCategoryText({ children, ...restProps }) {
     return <CategoryText {...restProps}>{children}</CategoryText>
   }

@@ -1,4 +1,4 @@
-function categoryData(value) {
+export default function categoryData(value) {
   return {
     query: `query($input: CategoryInput){
   category(input:$input){
@@ -14,7 +14,7 @@ function categoryData(value) {
   }
 }
 
-export default categoryData
+
 
 
 

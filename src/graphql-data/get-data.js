@@ -10,7 +10,7 @@ export default async function getData(input = {}) {
   if (data.error) {
     throw new Error(data.error)
   };
- 
+
   return data.data
 }
 

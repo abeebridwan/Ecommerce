@@ -3,8 +3,6 @@ import { DataContext } from './context/contextData';
 import { getCategoryApiMethod } from './graphql-data/sendRequest';
 import { Plp } from './pages';
 
-
-
 class App extends React.Component {
   constructor(props) {
     super(props)
@@ -35,8 +33,8 @@ class App extends React.Component {
 
     return (
       <DataContext.Provider value={{ app: 'honey' }}>
-        <Plp />        
-      </DataContext.Provider>     
+        <Plp />
+      </DataContext.Provider>
     )
   }
 }

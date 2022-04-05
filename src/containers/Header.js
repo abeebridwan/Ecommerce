@@ -4,34 +4,41 @@ import { ReactComponent as Logo } from '../assets/Logo.svg'
 import { ReactComponent as Price } from '../assets/Price.svg'
 import { ReactComponent as Arrow } from '../assets/Arrow.svg'
 import { ReactComponent as Cart } from '../assets/Cart.svg'
+import { DropdownMenu } from "../components/layout/style/layout";
 
 export default class HeaderContainer extends React.Component {
   render() {
     return (
       <Layout>
         <Layout.LayoutColumnOne>
-
           <Layout.LayoutCategory>
             <Layout.LayoutCategoryText>
-              All
+              Categories
             </Layout.LayoutCategoryText>
+            <Arrow id="arrow" />
+
+            <DropdownMenu className="dropDownMenu">
+              {[{ "name": "all" }, { "name": "clothes" }, { "name": "tech" }].map((item) => (
+                <Layout.LayoutCategory key={item.name} className = 'dropItem' >
+                  <Layout.LayoutCategoryText>
+                    {item.name}
+                  </Layout.LayoutCategoryText>
+                </Layout.LayoutCategory>
+              ))}
+            </DropdownMenu>
           </Layout.LayoutCategory>
 
-          <Layout.LayoutCategory>
-            <Layout.LayoutCategoryText>
-              Tech
-            </Layout.LayoutCategoryText>
-          </Layout.LayoutCategory>
 
-          <Layout.LayoutCategory>
-            <Layout.LayoutCategoryText>
-              Clothes
-            </Layout.LayoutCategoryText>
-          </Layout.LayoutCategory>
 
+           {[{ "name": "all" }, { "name": "clothes" }, { "name": "tech" }].map((item) => (
+            <Layout.LayoutDesktopCategory key={item.name} colorChange={item.name === 'all' ? {} : null} desktop>
+              <Layout.LayoutCategoryText>
+                {item.name}
+              </Layout.LayoutCategoryText>
+            </Layout.LayoutDesktopCategory>
+          ))}
         </Layout.LayoutColumnOne>
-
-
+        
         <Layout.LayoutColumnTwo>
           <Logo />
         </Layout.LayoutColumnTwo>
@@ -42,15 +49,11 @@ export default class HeaderContainer extends React.Component {
               <Price />
               <Arrow />
             </Layout.LayoutPrice>
-
-            <Layout.LayoutCartFrame>
-              <Cart />
-              <Layout.LayoutCartNumber></Layout.LayoutCartNumber>
-            </Layout.LayoutCartFrame>
-
           </Layout.LayoutPriceFrame>
-
-
+          <Layout.LayoutCartFrame>
+            <Cart />
+            <Layout.LayoutCartNumber></Layout.LayoutCartNumber>
+          </Layout.LayoutCartFrame>
         </Layout.LayoutColumnThree>
         {this.props.children}
       </Layout>

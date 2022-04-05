@@ -1,5 +1,5 @@
 import React from "react";
-import { CartFrame, CartNumber, Category, CategoryText, ColumnOne, ColumnThree, ColumnTwo, Container, Price, PriceFrame } from "./style/layout";
+import { CartFrame, CartNumber, Category, CategoryText, ColumnOne, ColumnThree, ColumnTwo, Container, DesktopCategory, DropdownMenu, Price, PriceFrame } from "./style/layout";
 
 
 export default class Layout extends React.Component {
@@ -24,6 +24,10 @@ export default class Layout extends React.Component {
     return <CategoryText {...restProps}>{children}</CategoryText>
   }
 
+  static LayoutDesktopCategory({ children, ...restProps }) {
+    return <DesktopCategory {...restProps}>{children}</DesktopCategory>
+  }
+
   static LayoutCategory({ children, ...restProps }) {
     return <Category {...restProps}>{children}</Category>
   }
@@ -34,6 +38,10 @@ export default class Layout extends React.Component {
 
   static LayoutColumnTwo({ children, ...restProps }) {
     return <ColumnTwo {...restProps}>{children}</ColumnTwo>
+  }
+
+  static LayoutDropdownMenu({ children, ...restProps }) {
+    return <DropdownMenu {...restProps}>{children}</DropdownMenu>
   }
 
   static LayoutColumnOne({ children, ...restProps }) {

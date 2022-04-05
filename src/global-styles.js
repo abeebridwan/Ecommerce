@@ -14,7 +14,7 @@ export const GlobalStyle = createGlobalStyle`
 };
 html, body {
   height: 100%;
-  font-family: 'Raleway', Helvetica, Arial, sans-serif;;
+  font-family: 'Raleway', sans-serif;
   font-style: normal;
   -webkit-font-smoothing: antialiased;
   -moz-osx-font-smoothing: grayscale;
@@ -23,7 +23,7 @@ html, body {
   font-size: 62.5%;
   & body {  
   max-width: 1440px;
-  min-width: 300px;
+  min-width: 400px;
   margin: auto;  
   }
 }

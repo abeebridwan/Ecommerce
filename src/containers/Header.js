@@ -36,7 +36,7 @@ export default class HeaderContainer extends React.Component {
               </Layout.LayoutCategoryText>
             </Layout.LayoutDesktopCategory>
           ))}
-          
+
         </Layout.LayoutColumnOne>
 
         <Layout.LayoutColumnTwo>

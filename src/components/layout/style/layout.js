@@ -11,28 +11,19 @@ export const Container = styled.div`
  padding:0 1.5rem;
  color: #1D1F22;
  height: 8rem;
- border: 1px solid;
  ${Media('min-width', "650px", ['padding:0 10.1rem'])};  
 `;
 
 export const ColumnOne = styled.span`    
-  display: flex;  
-  
+  display: flex;    
 `;
 
-
-export const ColumnTwo = styled.span`   
-  border: 1px solid blue;  
-`;
-
-export const ColumnThree = styled.span`   
-  border: 1px solid red;
-`;
+export const ColumnTwo = styled.span``;
+export const ColumnThree = styled.span``;
 
 export const MobileCategory = styled.span`  
   color:  #5ECE7B; 
-  position: relative; 
-  
+  position: relative;   
   & #categoryArrow{   
     width: 2.5rem;
     height: .8rem;
@@ -56,13 +47,12 @@ export const DropdownMenu = styled.span`
   position: absolute;
   top: 30px;  
   min-width: 120px;
-  z-index: 999999;
+  z-index: 1;
   border-radius: 2px;
   background: #eee;
   box-shadow: 0 8px 8px -4px; 
   padding: 12px 16px;
-  transition: all 0.5s;
-
+  
   & span.dropItem{
     padding: 5px 0px;
     &:hover{
@@ -73,11 +63,15 @@ export const DropdownMenu = styled.span`
 
 export const DesktopCategory = styled.span`
   display: none;
-  margin: 0 1.6rem;
-/* padding: 2.3rem 1.5rem .93rem;  
-  border-bottom: ${({ colorChange }) => (colorChange && '2px solid #5ECE7B')};
-  color: ${({ colorChange }) => (colorChange && '#5ECE7B')};   */
-  ${Media('min-width', "650px", ['display: block'])};  
+  height: 8rem;
+  align-items: center;
+  padding: 0 1.6rem;  
+  border-bottom: ${({ active }) => (active && '2px solid #5ECE7B')};
+  color: ${({ active }) => (active && '#5ECE7B')};  
+  & span{
+    font-weight: ${({ active }) => (active && '600 !important;')};  
+  }
+  ${Media('min-width', "650px", ['display: flex'])};    
 `
 
 export const CategoryText = styled.span` 
@@ -87,7 +81,6 @@ export const CategoryText = styled.span`
 `
 export const PriceFrame = styled.span`  
   display: inline-flex;
-  border: 1px solid yellow;
 `
 
 export const Price = styled.span`
@@ -102,7 +95,6 @@ export const Price = styled.span`
     height: 3px;     
   } 
 `
-
 
 export const CartFrame = styled.span`
   margin-left: 2.2rem;

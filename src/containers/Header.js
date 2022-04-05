@@ -11,6 +11,7 @@ export default class HeaderContainer extends React.Component {
     return (
       <Layout>
         <Layout.LayoutColumnOne>
+
           <Layout.LayoutMobileCategory>
             <Layout.LayoutCategoryText>
               Categories
@@ -28,14 +29,14 @@ export default class HeaderContainer extends React.Component {
             </DropdownMenu>
           </Layout.LayoutMobileCategory>
 
-
-          {[{ "name": "all" }, { "name": "clothes" }, { "name": "kids" }].map((item) => (
-            <Layout.LayoutDesktopCategory key={item.name} colorChange={item.name === 'all' ? {} : null} desktop>
+          {[{ "name": "all" }, { "name": "clothes" }, { "name": "tech" }].map((item) => (
+            <Layout.LayoutDesktopCategory key={item.name} active={item.name === 'all' ? {} : null} desktop>
               <Layout.LayoutCategoryText>
                 {item.name}
               </Layout.LayoutCategoryText>
             </Layout.LayoutDesktopCategory>
           ))}
+          
         </Layout.LayoutColumnOne>
 
         <Layout.LayoutColumnTwo>

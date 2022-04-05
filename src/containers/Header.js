@@ -15,11 +15,11 @@ export default class HeaderContainer extends React.Component {
             <Layout.LayoutCategoryText>
               Categories
             </Layout.LayoutCategoryText>
-            <Arrow id="arrow" />
+            <Arrow id="categoryArrow" />
 
             <DropdownMenu className="dropDownMenu">
               {[{ "name": "all" }, { "name": "clothes" }, { "name": "tech" }].map((item) => (
-                <Layout.LayoutCategory key={item.name} className = 'dropItem' >
+                <Layout.LayoutCategory key={item.name} className='dropItem' >
                   <Layout.LayoutCategoryText>
                     {item.name}
                   </Layout.LayoutCategoryText>
@@ -30,7 +30,7 @@ export default class HeaderContainer extends React.Component {
 
 
 
-           {[{ "name": "all" }, { "name": "clothes" }, { "name": "tech" }].map((item) => (
+          {[{ "name": "all" }, { "name": "clothes" }, { "name": "tech" }].map((item) => (
             <Layout.LayoutDesktopCategory key={item.name} colorChange={item.name === 'all' ? {} : null} desktop>
               <Layout.LayoutCategoryText>
                 {item.name}
@@ -38,7 +38,7 @@ export default class HeaderContainer extends React.Component {
             </Layout.LayoutDesktopCategory>
           ))}
         </Layout.LayoutColumnOne>
-        
+
         <Layout.LayoutColumnTwo>
           <Logo />
         </Layout.LayoutColumnTwo>
@@ -47,7 +47,7 @@ export default class HeaderContainer extends React.Component {
           <Layout.LayoutPriceFrame>
             <Layout.LayoutPrice>
               <Price />
-              <Arrow />
+              <Arrow id="priceArrow" />
             </Layout.LayoutPrice>
           </Layout.LayoutPriceFrame>
           <Layout.LayoutCartFrame>

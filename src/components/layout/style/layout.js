@@ -15,25 +15,16 @@ export const Container = styled.div`
  border: 1px solid;
 `;
 
-export const ColumnOne = styled.span`     
-    
+export const ColumnOne = styled.span`    
   border: 1px solid green;  
 `;
 
 
-export const ColumnTwo = styled.span` 
-  /* padding: 2rem 0rem 1.5rem;  
-  
-  & svg {
-    width: 2.5rem;
-    height: 2.5rem;
-  } */
+export const ColumnTwo = styled.span`   
   border: 1px solid blue;
 `;
 
-export const ColumnThree = styled.span`  
-  /* display: flex;
-   */
+export const ColumnThree = styled.span`   
   border: 1px solid red;
 `;
 
@@ -43,10 +34,9 @@ export const Category = styled.span`
   color: ${({ colorChange }) => (colorChange && '#5ECE7B')};   */
   
   color:  #5ECE7B; 
-  position: relative;   
-  
+  position: relative;    
 
-  & #arrow{   
+  & #categoryArrow{   
     width: 2.5rem;
     height: .8rem;
     & path{
@@ -58,10 +48,7 @@ export const Category = styled.span`
       display: flex;
   }
   
-}
-    
-  
-  /* ${Media('min-width', "550px", ['padding: .7rem .6rem .9rem'])};  */
+}  
 `
 
 export const DropdownMenu = styled.span`
@@ -95,29 +82,27 @@ export const CategoryText = styled.span`
   line-height: 19.2px;
   text-transform: uppercase;
 `
-export const PriceFrame = styled.span`
-  /* display: flex;
-  justify-content: center; 
-  align-items: center;
-  padding-right: 2.5rem;
-  padding-left: 1.5rem; */
+export const PriceFrame = styled.span`  
+  display: inline-flex;
+  border: 1px solid yellow;
 `
 
 export const Price = styled.span`
-  /* display: flex;
-  align-items: flex-end; 
-  & svg:last-child{
+  display: flex;
+  align-items: center;
+ 
+  & svg#priceArrow{
+    align-self: flex-end;
+    margin-bottom: .5rem;
     margin-left: 1rem;   
-    margin-bottom: 0.5rem
-  } */
+    width: 6px;
+    height: 3px;     
+  } 
 `
 
 
 export const CartFrame = styled.span`
-  /* display: flex;
-  justify-content: center; 
-  align-items: center;
-  padding-right: 2.5rem; */
+  margin-left: 2.2rem;
 `
 
 export const CartNumber = styled.span``

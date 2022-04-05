@@ -20,12 +20,15 @@ export const ColumnOne = styled.span`
   display: flex;    
 `;
 
-export const ColumnTwo = styled.span``;
+export const ColumnTwo = styled.span`
+  cursor: pointer;
+`;
 export const ColumnThree = styled.span``;
 
 export const MobileCategory = styled.span`  
   color:  #5ECE7B; 
-  position: relative;   
+  position: relative;
+  cursor: pointer;   
   & #categoryArrow{   
     width: 2.5rem;
     height: .8rem;
@@ -69,6 +72,7 @@ export const DesktopCategory = styled.span`
   height: 8rem;
   align-items: center;
   padding: 0 1.6rem;  
+  cursor: pointer;
   border-bottom: ${({ active }) => (active && '2px solid #5ECE7B')};
   color: ${({ active }) => (active && '#5ECE7B')};  
   & span{
@@ -84,6 +88,7 @@ export const CategoryText = styled.span`
 `
 export const PriceFrame = styled.span`  
   display: inline-flex;
+  cursor: pointer; 
 `
 
 export const Price = styled.span`
@@ -101,6 +106,7 @@ export const Price = styled.span`
 
 export const CartFrame = styled.span`
   margin-left: 2.2rem;
+  cursor: pointer;
 `
 
 export const CartNumber = styled.span``

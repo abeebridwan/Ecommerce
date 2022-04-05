@@ -79,7 +79,7 @@ export const DesktopCategory = styled.span`
 
 export const CategoryText = styled.span` 
   font-weight: 400;
-  line-height: 19.2px;
+  line-height: 19.2px !important; 
   text-transform: uppercase;
 `
 export const PriceFrame = styled.span`  

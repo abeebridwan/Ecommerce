@@ -8,46 +8,45 @@ export const Container = styled.div`
  justify-content: space-between;
  align-items: center;
  font-size: 1.6rem;
- padding:0 1rem;
- ${Media('min-width', "650px", ['padding:0 10.1rem 0 10.1rem'])};  
+ padding:0 1.5rem;
  color: #1D1F22;
  height: 8rem;
  border: 1px solid;
+ ${Media('min-width', "650px", ['padding:0 10.1rem'])};  
 `;
 
 export const ColumnOne = styled.span`    
-  border: 1px solid green;  
+  display: flex;  
+  
 `;
 
 
 export const ColumnTwo = styled.span`   
-  border: 1px solid blue;
+  border: 1px solid blue;  
 `;
 
 export const ColumnThree = styled.span`   
   border: 1px solid red;
 `;
 
-export const Category = styled.span`   
-  /* padding: 2.3rem 1.5rem .93rem;  
-  border-bottom: ${({ colorChange }) => (colorChange && '2px solid #5ECE7B')};
-  color: ${({ colorChange }) => (colorChange && '#5ECE7B')};   */
-  
+export const MobileCategory = styled.span`  
   color:  #5ECE7B; 
-  position: relative;    
-
+  position: relative; 
+  
   & #categoryArrow{   
     width: 2.5rem;
     height: .8rem;
     & path{
       stroke: #5ECE7B
     }
-  }
-
+  }  
   &:hover .dropDownMenu {  
-      display: flex;
+    display: flex;
   }
-  
+  & span{
+    font-weight: 600 !important;
+  }
+  ${Media('min-width', "650px", ['display: none'])};  
 }  
 `
 
@@ -66,19 +65,23 @@ export const DropdownMenu = styled.span`
 
   & span.dropItem{
     padding: 5px 0px;
-
     &:hover{
       background: #5ECE7B;
     }
   }
 `
 
-export const DesktopCategory = styled(Category)`
+export const DesktopCategory = styled.span`
   display: none;
+  margin: 0 1.6rem;
+/* padding: 2.3rem 1.5rem .93rem;  
+  border-bottom: ${({ colorChange }) => (colorChange && '2px solid #5ECE7B')};
+  color: ${({ colorChange }) => (colorChange && '#5ECE7B')};   */
+  ${Media('min-width', "650px", ['display: block'])};  
 `
 
 export const CategoryText = styled.span` 
-  font-weight: 600;
+  font-weight: 400;
   line-height: 19.2px;
   text-transform: uppercase;
 `

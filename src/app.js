@@ -1,4 +1,5 @@
 import React from 'react'
+import { DataContext } from './context/contextData';
 import { getCategoryApiMethod } from './graphql-data/sendRequest';
 import { Plp } from './pages';
 
@@ -33,10 +34,9 @@ class App extends React.Component {
     let displayName = category['name']
 
     return (
-      <>
-        <Plp />
-        {/*  <div>Able to fetch category data {displayName}</div> */}
-      </>
+      <DataContext.Provider value={{ app: 'honey' }}>
+        <Plp />        
+      </DataContext.Provider>     
     )
   }
 }

@@ -11,7 +11,7 @@ export const Container = styled.div`
  padding:0 1.5rem;
  color: #1D1F22;
  height: 8rem;
- ${Media('min-width', "650px", ['padding:0 10.1rem'])};  
+ ${Media('min-width', "650px", ['padding:0 8.8rem'])};  
 `;
 
 export const ColumnOne = styled.span`    

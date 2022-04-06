@@ -35,7 +35,7 @@ export default class HeaderContainer extends React.Component {
           </Layout.LayoutMobileCategory>
 
           {categories.map((item) => (
-            <Layout.LayoutDesktopCategory key={item.name} active={item.name === 'all' ? {} : null} desktop>
+            <Layout.LayoutDesktopCategory key={item.name} active={item.name === 'all' ? {} : null} >
               <Layout.LayoutCategoryText>
                 {item.name}
               </Layout.LayoutCategoryText>

@@ -49,7 +49,7 @@ export default class ProductsContainer extends React.PureComponent {
         <Product.ProductFrame>
           {products.map((item) => (
             <Product.ProductItem key={item.name}>
-              <Product.ProductImage src={item.gallery[0]} alt='item.name' />
+              <Product.ProductImage src={item.gallery[0]} alt={item.name} />
               <Product.ProductName>
                 {item.name}
               </Product.ProductName>

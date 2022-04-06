@@ -10,9 +10,9 @@ import { DataContext } from "../context/contextData";
 export default class HeaderContainer extends React.Component {
 
   static contextType = DataContext;
+
   render() {
     const { categories } = this.context;
-    console.log(categories);
     return (
       <Layout>
         <Layout.LayoutColumnOne>

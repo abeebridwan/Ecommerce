@@ -1,13 +1,12 @@
 import React from 'react'
 import { DataContext } from './context/contextData';
-import { getCategoryApiMethod, getAllCategoriesNames } from './graphql-data/sendRequest';
+import { getAllCategoriesNames } from './graphql-data/sendRequest';
 import { Plp } from './pages';
 
 class App extends React.Component {
   constructor(props) {
     super(props)
     this.state = {
-      category: "",
       categories: "",
       error: null
     }
@@ -15,11 +14,9 @@ class App extends React.Component {
 
   async componentDidMount() {
     try {
-      const { category } = await getCategoryApiMethod('clothes');
       const { categories } = await getAllCategoriesNames();
-      console.log({ category });
-      console.log({ categories });
-      this.setState({ category, categories })
+
+      this.setState({ categories })
     } catch (err) {
       this.setState({ error: err.message || err.toString() });
       console.log(err)
@@ -27,14 +24,11 @@ class App extends React.Component {
   }
 
   render() {
-    const { category, categories } = this.state;
+    const { categories } = this.state;
 
-
-    if (!category) {
+    if (!categories) {
       return
     }
-
-    let displayName = category['name']
 
     return (
       <DataContext.Provider value={{ categories }}>

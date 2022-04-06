@@ -8,6 +8,5 @@ export function getCategoryApiMethod(input) {
 }
 
 export function getAllCategoriesNames() {
-
   return getData(CategoriesNames)
 }

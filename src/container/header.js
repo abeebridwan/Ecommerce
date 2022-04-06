@@ -6,13 +6,37 @@ import { ReactComponent as Arrow } from '../assets/Arrow.svg'
 import { ReactComponent as Cart } from '../assets/Cart.svg'
 import { DropdownMenu } from "../components/layout/style/layout";
 import { DataContext } from "../context/contextData";
+import { getAllCategoriesNames } from '../graphql-data/sendRequest';
 
-export default class Header extends React.Component {
 
+export default class HeaderContainer extends React.PureComponent {
+
+  constructor(props) {
+    super(props)
+    this.state = {
+      active: "all",
+      categories: null
+    }
+  }
+
+  async componentDidMount() {
+    try {
+      const { categories } = await getAllCategoriesNames();
+      this.setState({ categories })
+    } catch (err) {
+      this.setState({ error: err.message || err.toString() });
+      console.log(err)
+    }
+  }
   static contextType = DataContext;
-
   render() {
-    const { categories } = this.context;
+    const { changeCategory } = this.props;
+    const { active, categories } = this.state;
+    console.log("I rerender too")
+
+    if (!categories) {
+      return
+    }
     return (
       <Layout>
         <Layout.LayoutColumnOne>
@@ -25,7 +49,10 @@ export default class Header extends React.Component {
 
             <DropdownMenu className="dropDownMenu">
               {categories.map((item) => (
-                <Layout.LayoutMobileCategory key={item.name} className='dropItem' >
+                <Layout.LayoutMobileCategory key={item.name} className='dropItem' onClick={() => {
+                  changeCategory(item.name)
+                  this.setState({ active: item.name })
+                }}>
                   <Layout.LayoutCategoryText>
                     {item.name}
                   </Layout.LayoutCategoryText>
@@ -35,7 +62,10 @@ export default class Header extends React.Component {
           </Layout.LayoutMobileCategory>
 
           {categories.map((item) => (
-            <Layout.LayoutDesktopCategory key={item.name} active={item.name === 'all' ? {} : null} >
+            <Layout.LayoutDesktopCategory key={item.name} active={item.name === active ? {} : null} onClick={() => {
+              changeCategory(item.name)
+              this.setState({ active: item.name })
+            }}>
               <Layout.LayoutCategoryText>
                 {item.name}
               </Layout.LayoutCategoryText>

@@ -25,7 +25,6 @@ export default class ProductsContainer extends React.PureComponent {
     if (prevProps.changeCategoryTo !== this.props.changeCategoryTo) {
       try {
         const { changeCategoryTo } = this.props;
-        console.log({ changeCategoryTo })
         const { category } = await getCategoryApiMethod(changeCategoryTo)
         this.setState({ category })
       } catch (err) {
@@ -37,12 +36,11 @@ export default class ProductsContainer extends React.PureComponent {
 
   render() {
     const { category } = this.state;
+
     if (!category) {
-      return
+      return;
     }
-    console.log({ category })
     const { name, products } = category;
-    console.log({ products })
     return (
       <Product>
         <Product.ProductHeader>

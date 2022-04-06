@@ -1,7 +1,7 @@
 import React from 'react'
 import Plp from './pages/plp';
 
-class App extends React.Component {
+class App extends React.PureComponent {
   render() {
     return (
       <>

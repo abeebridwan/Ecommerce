@@ -5,12 +5,9 @@ import { ReactComponent as Price } from '../assets/Price.svg'
 import { ReactComponent as Arrow } from '../assets/Arrow.svg'
 import { ReactComponent as Cart } from '../assets/Cart.svg'
 import { DropdownMenu } from "../components/layout/style/layout";
-import { DataContext } from "../context/contextData";
 import { getAllCategoriesNames } from '../graphql-data/sendRequest';
 
-
 export default class HeaderContainer extends React.PureComponent {
-
   constructor(props) {
     super(props)
     this.state = {
@@ -28,14 +25,13 @@ export default class HeaderContainer extends React.PureComponent {
       console.log(err)
     }
   }
-  static contextType = DataContext;
+
   render() {
     const { changeCategory } = this.props;
     const { active, categories } = this.state;
-    console.log("I rerender too")
 
     if (!categories) {
-      return
+      return;
     }
     return (
       <Layout>

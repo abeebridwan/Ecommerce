@@ -1,7 +1,7 @@
 import React from 'react'
 import { DataContext } from './context/contextData';
 import { getAllCategoriesNames } from './graphql-data/sendRequest';
-import { Plp } from './pages';
+import Header from './pages/Header';
 
 class App extends React.Component {
   constructor(props) {
@@ -32,7 +32,7 @@ class App extends React.Component {
 
     return (
       <DataContext.Provider value={{ categories }}>
-        <Plp />
+        <Header />
       </DataContext.Provider>
     )
   }

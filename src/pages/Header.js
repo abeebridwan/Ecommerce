@@ -7,7 +7,7 @@ import { ReactComponent as Cart } from '../assets/Cart.svg'
 import { DropdownMenu } from "../components/layout/style/layout";
 import { DataContext } from "../context/contextData";
 
-export default class HeaderContainer extends React.Component {
+export default class Header extends React.Component {
 
   static contextType = DataContext;
 

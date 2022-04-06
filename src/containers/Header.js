@@ -5,9 +5,14 @@ import { ReactComponent as Price } from '../assets/Price.svg'
 import { ReactComponent as Arrow } from '../assets/Arrow.svg'
 import { ReactComponent as Cart } from '../assets/Cart.svg'
 import { DropdownMenu } from "../components/layout/style/layout";
+import { DataContext } from "../context/contextData";
 
 export default class HeaderContainer extends React.Component {
+
+  static contextType = DataContext;
   render() {
+    const { categories } = this.context;
+    console.log(categories);
     return (
       <Layout>
         <Layout.LayoutColumnOne>
@@ -19,7 +24,7 @@ export default class HeaderContainer extends React.Component {
             <Arrow id="categoryArrow" />
 
             <DropdownMenu className="dropDownMenu">
-              {[{ "name": "all" }, { "name": "clothes" }, { "name": "tech" }].map((item) => (
+              {categories.map((item) => (
                 <Layout.LayoutMobileCategory key={item.name} className='dropItem' >
                   <Layout.LayoutCategoryText>
                     {item.name}
@@ -29,7 +34,7 @@ export default class HeaderContainer extends React.Component {
             </DropdownMenu>
           </Layout.LayoutMobileCategory>
 
-          {[{ "name": "all" }, { "name": "clothes" }, { "name": "tech" }].map((item) => (
+          {categories.map((item) => (
             <Layout.LayoutDesktopCategory key={item.name} active={item.name === 'all' ? {} : null} desktop>
               <Layout.LayoutCategoryText>
                 {item.name}

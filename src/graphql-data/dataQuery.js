@@ -1,4 +1,4 @@
-export default function categoryData(value) {
+export function categoryData(value) {
   return {
     query: `query($input: CategoryInput){
   category(input:$input){
@@ -13,6 +13,19 @@ export default function categoryData(value) {
     }
   }
 }
+
+export const CategoriesNames = 
+    {
+    query: `{
+        categories {      
+            name      
+        }
+      }`
+  }
+
+
+
+
 
 
 

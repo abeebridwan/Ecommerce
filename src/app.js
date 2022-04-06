@@ -1,13 +1,14 @@
 import React from 'react'
 import { DataContext } from './context/contextData';
-import { getCategoryApiMethod } from './graphql-data/sendRequest';
+import { getCategoryApiMethod, getAllCategoriesNames } from './graphql-data/sendRequest';
 import { Plp } from './pages';
 
 class App extends React.Component {
   constructor(props) {
     super(props)
     this.state = {
-      category: null,
+      category: "",
+      categories: "",
       error: null
     }
   }
@@ -15,7 +16,10 @@ class App extends React.Component {
   async componentDidMount() {
     try {
       const { category } = await getCategoryApiMethod('clothes');
-      this.setState({ category })
+      const { categories } = await getAllCategoriesNames();
+      console.log({ category });
+      console.log({ categories });
+      this.setState({ category, categories })
     } catch (err) {
       this.setState({ error: err.message || err.toString() });
       console.log(err)
@@ -23,7 +27,8 @@ class App extends React.Component {
   }
 
   render() {
-    const { category } = this.state;
+    const { category, categories } = this.state;
+
 
     if (!category) {
       return
@@ -32,7 +37,7 @@ class App extends React.Component {
     let displayName = category['name']
 
     return (
-      <DataContext.Provider value={{ app: 'honey' }}>
+      <DataContext.Provider value={{ categories }}>
         <Plp />
       </DataContext.Provider>
     )

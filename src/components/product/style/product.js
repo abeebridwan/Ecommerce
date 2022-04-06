@@ -12,6 +12,8 @@ export const Frame = styled.div``;
 
 export const Item = styled.div``;
 
+export const Image = styled.img``;
+
 export const Name = styled.p``;
 
 export const Price = styled.p``;

@@ -1,5 +1,5 @@
 import React from 'react';
-import { Container, Frame, Header, Item, Name, Price } from './style/product';
+import { Container, Frame, Header, Item, Name, Price, Image } from './style/product';
 
 
 export default class Product extends React.Component {
@@ -10,6 +10,10 @@ export default class Product extends React.Component {
 
   static ProductName({ children, ...restProps }) {
     return <Name {...restProps}>{children}</Name>
+  }
+
+  static ProductImage({ children, ...restProps }) {
+    return <Image {...restProps}>{children}</Image>
   }
 
   static ProductItem({ children, ...restProps }) {

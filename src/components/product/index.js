@@ -2,7 +2,7 @@ import React from 'react';
 import { Container, Frame, Header, Item, Name, Price, Image } from './style/product';
 
 
-export default class Product extends React.Component {
+export default class Product extends React.PureComponent {
 
   static ProductPrice({ children, ...restProps }) {
     return <Price {...restProps}>{children}</Price>

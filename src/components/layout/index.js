@@ -2,7 +2,7 @@ import React from "react";
 import { CartFrame, CartNumber, MobileCategory, CategoryText, ColumnOne, ColumnThree, ColumnTwo, Container, DesktopCategory, DropdownMenu, Price, PriceFrame } from "./style/layout";
 
 
-export default class Layout extends React.Component {
+export default class Layout extends React.PureComponent {
 
   static LayoutCartNumber({ children, ...restProps }) {
     return <CartNumber {...restProps}>{children}</CartNumber>

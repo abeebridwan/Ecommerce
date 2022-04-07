@@ -83,12 +83,13 @@ export default class HeaderContainer extends React.PureComponent {
 
         <Layout.LayoutColumnThree>
           <Layout.LayoutPriceFrame>
+
             <Layout.LayoutPrice onClick={() => { this.priceShowMethod(priceshow) }}>
               <Price />
               <Arrow id="priceArrow" />
             </Layout.LayoutPrice>
-
             <PriceDropdown priceShowMethod={this.priceShowMethod} priceshow={priceshow} />
+            
           </Layout.LayoutPriceFrame>
           <Layout.LayoutCartFrame>
             <Cart />

@@ -80,13 +80,14 @@ export default class HeaderContainer extends React.PureComponent {
               <Price />
               <Arrow id="priceArrow" />
             </Layout.LayoutPrice>
+
+            <PriceDropdown />
           </Layout.LayoutPriceFrame>
           <Layout.LayoutCartFrame>
             <Cart />
             <Layout.LayoutCartNumber></Layout.LayoutCartNumber>
           </Layout.LayoutCartFrame>
         </Layout.LayoutColumnThree>
-        <PriceDropdown />
         {this.props.children}
       </Layout>
     )

@@ -23,12 +23,12 @@ export default class Price extends React.PureComponent {
 
   render() {
     const { currencies } = this.state;
-
+    const { priceshow } = this.props;
     if (!currencies) {
       return
     }
     return (
-      <PriceDropdown>
+      <PriceDropdown priceshow={priceshow}>
         {currencies.map((item) => (
           <PriceDropdown.PriceDropdownItem key={item.label}>
             {item.symbol}&#160;&#160;{item.label}

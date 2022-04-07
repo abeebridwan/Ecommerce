@@ -9,6 +9,6 @@ export default class PriceDropdown extends React.PureComponent {
 
   render() {
     const { children, ...restProps } = this.props;
-    return <Container {...restProps}> {children}</Container>
+    return <Container {...restProps}>{children}</Container>
   }
 }

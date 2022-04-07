@@ -12,7 +12,9 @@ export default class HeaderContainer extends React.PureComponent {
     super(props)
     this.state = {
       active: "all",
-      categories: null
+      categories: null,
+      priceshow: false,
+      error: null
     }
   }
 
@@ -28,7 +30,7 @@ export default class HeaderContainer extends React.PureComponent {
 
   render() {
     const { changeCategory } = this.props;
-    const { active, categories } = this.state;
+    const { active, categories, priceshow } = this.state;
 
     if (!categories) {
       return;
@@ -76,12 +78,12 @@ export default class HeaderContainer extends React.PureComponent {
 
         <Layout.LayoutColumnThree>
           <Layout.LayoutPriceFrame>
-            <Layout.LayoutPrice>
+            <Layout.LayoutPrice onClick={() => { this.setState({ priceshow: !priceshow }) }}>
               <Price />
               <Arrow id="priceArrow" />
             </Layout.LayoutPrice>
 
-            <PriceDropdown />
+            <PriceDropdown priceshow={priceshow} />
           </Layout.LayoutPriceFrame>
           <Layout.LayoutCartFrame>
             <Cart />
@@ -89,7 +91,7 @@ export default class HeaderContainer extends React.PureComponent {
           </Layout.LayoutCartFrame>
         </Layout.LayoutColumnThree>
         {this.props.children}
-      </Layout>
+      </Layout >
     )
   }
 }

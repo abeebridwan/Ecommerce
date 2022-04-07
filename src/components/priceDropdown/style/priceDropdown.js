@@ -2,10 +2,12 @@ import styled from 'styled-components/macro'
 
 
 export const Container = styled.ul`
+  display: ${({ priceshow }) => (priceshow ? "block" : "none")};
   list-style-type: none;
   margin: 0;
   padding: 2rem 4rem 2rem 2rem;
   position: absolute;
+  z-index: 2;
   top: 3rem;
   left: -2rem;
   font-weight: 500;

@@ -35,6 +35,7 @@ export default class ProductsContainer extends React.PureComponent {
   }
 
   render() {
+    const { currencyIndex } = this.props;
     const { category } = this.state;
 
     if (!category) {
@@ -54,7 +55,7 @@ export default class ProductsContainer extends React.PureComponent {
                 {item.name}
               </Product.ProductName>
               <Product.ProductPrice>
-                {item.prices[0].currency.symbol}{item.prices[0].amount}
+                {item.prices[currencyIndex].currency.symbol}{item.prices[currencyIndex].amount}
               </Product.ProductPrice>
             </Product.ProductItem>
           ))}

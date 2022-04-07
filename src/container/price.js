@@ -1,6 +1,7 @@
 import React from "react";
 import { PriceDropdown } from "../components";
 import { getPriceData } from "../graphql-data/sendRequest";
+import { DataContext } from "../context/contextData";
 
 export default class Price extends React.PureComponent {
   constructor(props) {
@@ -20,17 +21,22 @@ export default class Price extends React.PureComponent {
       console.log(err)
     }
   }
-
+  static contextType = DataContext;
   render() {
+    const changeCurrency = this.context;
     const { currencies } = this.state;
     const { priceshow } = this.props;
+
     if (!currencies) {
       return
     }
+
     return (
       <PriceDropdown priceshow={priceshow}>
-        {currencies.map((item) => (
-          <PriceDropdown.PriceDropdownItem key={item.label}>
+        {currencies.map((item, index) => (
+          <PriceDropdown.PriceDropdownItem key={item.label} onClick={() => {
+            changeCurrency(index)
+          }}>
             {item.symbol}&#160;&#160;{item.label}
           </PriceDropdown.PriceDropdownItem>
         ))}

@@ -56,6 +56,7 @@ export const DropdownMenu = styled.span`
   background: #eee;
   box-shadow: 0 8px 8px -4px; 
   padding: 12px 16px;
+  border-radius: 3px;
   
   & span.dropItem{
     padding: 5px 0px;

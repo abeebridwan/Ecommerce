@@ -25,7 +25,7 @@ export default class Price extends React.PureComponent {
   render() {
     const changeCurrency = this.context;
     const { currencies } = this.state;
-    const { priceshow } = this.props;
+    const { priceshow, priceShowMethod } = this.props;
 
     if (!currencies) {
       return
@@ -35,7 +35,8 @@ export default class Price extends React.PureComponent {
       <PriceDropdown priceshow={priceshow}>
         {currencies.map((item, index) => (
           <PriceDropdown.PriceDropdownItem key={item.label} onClick={() => {
-            changeCurrency(index)
+            changeCurrency(index);
+            priceShowMethod(priceshow)
           }}>
             {item.symbol}&#160;&#160;{item.label}
           </PriceDropdown.PriceDropdownItem>

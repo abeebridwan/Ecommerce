@@ -15,7 +15,12 @@ export default class HeaderContainer extends React.PureComponent {
       categories: null,
       priceshow: false,
       error: null
-    }
+    };
+    this.priceShowMethod = this.priceShowMethod.bind(this);
+  }
+
+  priceShowMethod(priceshow) {
+    this.setState({ priceshow: !priceshow })
   }
 
   async componentDidMount() {
@@ -78,12 +83,12 @@ export default class HeaderContainer extends React.PureComponent {
 
         <Layout.LayoutColumnThree>
           <Layout.LayoutPriceFrame>
-            <Layout.LayoutPrice onClick={() => { this.setState({ priceshow: !priceshow }) }}>
+            <Layout.LayoutPrice onClick={() => { this.priceShowMethod(priceshow) }}>
               <Price />
               <Arrow id="priceArrow" />
             </Layout.LayoutPrice>
 
-            <PriceDropdown priceshow={priceshow} />
+            <PriceDropdown priceShowMethod={this.priceShowMethod} priceshow={priceshow} />
           </Layout.LayoutPriceFrame>
           <Layout.LayoutCartFrame>
             <Cart />

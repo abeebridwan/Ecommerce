@@ -4,7 +4,6 @@ import { ReactComponent as Logo } from '../assets/Logo.svg'
 import { ReactComponent as Price } from '../assets/Price.svg'
 import { ReactComponent as Arrow } from '../assets/Arrow.svg'
 import { ReactComponent as Cart } from '../assets/Cart.svg'
-import { DropdownMenu } from "../components/layout/style/layout";
 import { getAllCategoriesNames } from '../graphql-data/sendRequest';
 
 export default class HeaderContainer extends React.PureComponent {
@@ -43,7 +42,7 @@ export default class HeaderContainer extends React.PureComponent {
             </Layout.LayoutCategoryText>
             <Arrow id="categoryArrow" />
 
-            <DropdownMenu className="dropDownMenu">
+            <Layout.LayoutDropdownMenu className="dropDownMenu">
               {categories.map((item) => (
                 <Layout.LayoutMobileCategory key={item.name} className='dropItem' onClick={() => {
                   changeCategory(item.name)
@@ -54,7 +53,7 @@ export default class HeaderContainer extends React.PureComponent {
                   </Layout.LayoutCategoryText>
                 </Layout.LayoutMobileCategory>
               ))}
-            </DropdownMenu>
+            </Layout.LayoutDropdownMenu>
           </Layout.LayoutMobileCategory>
 
           {categories.map((item) => (

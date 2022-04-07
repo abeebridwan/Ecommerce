@@ -5,6 +5,7 @@ import { ReactComponent as Price } from '../assets/Price.svg'
 import { ReactComponent as Arrow } from '../assets/Arrow.svg'
 import { ReactComponent as Cart } from '../assets/Cart.svg'
 import { getAllCategoriesNames } from '../graphql-data/sendRequest';
+import PriceDropdown from "./price";
 
 export default class HeaderContainer extends React.PureComponent {
   constructor(props) {
@@ -85,6 +86,7 @@ export default class HeaderContainer extends React.PureComponent {
             <Layout.LayoutCartNumber></Layout.LayoutCartNumber>
           </Layout.LayoutCartFrame>
         </Layout.LayoutColumnThree>
+        <PriceDropdown />
         {this.props.children}
       </Layout>
     )

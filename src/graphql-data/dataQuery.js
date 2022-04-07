@@ -32,7 +32,15 @@ export const CategoriesNames =
       }`
 }
 
-
+export const PricesData =
+{
+  query: `{
+    currencies{
+      label,
+      symbol
+    }
+  }`
+}
 
 
 

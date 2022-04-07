@@ -1,4 +1,5 @@
 import React from "react";
+import { PriceDropdown } from "../components";
 import { getPriceData } from "../graphql-data/sendRequest";
 
 export default class Price extends React.PureComponent {
@@ -13,7 +14,6 @@ export default class Price extends React.PureComponent {
   async componentDidMount() {
     try {
       const { currencies } = await getPriceData();
-      console.log({ currencies });
       this.setState({ currencies })
     } catch (err) {
       this.setState({ error: err.message || err.toString() });
@@ -23,6 +23,18 @@ export default class Price extends React.PureComponent {
 
   render() {
     const { currencies } = this.state;
-    return
+
+    if (!currencies) {
+      return
+    }
+    return (
+      <PriceDropdown>
+        {currencies.map((item) => (
+          <PriceDropdown.PriceDropdownItem key={item.label}>
+            {item.symbol}&#160;&#160;{item.label}
+          </PriceDropdown.PriceDropdownItem>
+        ))}
+      </PriceDropdown>
+    )
   }
 }

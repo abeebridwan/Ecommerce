@@ -2,7 +2,7 @@ import React from "react";
 import { Layout } from '../components';
 import { ReactComponent as Logo } from '../assets/Logo.svg'
 import { ReactComponent as Price } from '../assets/Price.svg'
-import { ReactComponent as Arrow } from '../assets/Arrow.svg'
+import { ReactComponent as ArrowDown } from '../assets/ArrowDown.svg'
 import { ReactComponent as Cart } from '../assets/Cart.svg'
 import { getAllCategoriesNames } from '../graphql-data/sendRequest';
 import PriceDropdown from "./price";
@@ -48,7 +48,7 @@ export default class HeaderContainer extends React.PureComponent {
             <Layout.LayoutCategoryText>
               Categories
             </Layout.LayoutCategoryText>
-            <Arrow id="categoryArrow" />
+            <ArrowDown id="categoryArrow" />
 
             <Layout.LayoutDropdownMenu className="dropDownMenu">
               {categories.map((item) => (
@@ -86,10 +86,10 @@ export default class HeaderContainer extends React.PureComponent {
 
             <Layout.LayoutPrice onClick={() => { this.priceShowMethod(priceshow) }}>
               <Price />
-              <Arrow id="priceArrow" />
+              <ArrowDown id="priceArrow" />
             </Layout.LayoutPrice>
             <PriceDropdown priceShowMethod={this.priceShowMethod} priceshow={priceshow} />
-            
+
           </Layout.LayoutPriceFrame>
           <Layout.LayoutCartFrame>
             <Cart />

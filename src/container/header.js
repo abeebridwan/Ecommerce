@@ -3,6 +3,7 @@ import { Layout } from '../components';
 import { ReactComponent as Logo } from '../assets/Logo.svg'
 import { ReactComponent as Price } from '../assets/Price.svg'
 import { ReactComponent as ArrowDown } from '../assets/ArrowDown.svg'
+import { ReactComponent as ArrowTop } from '../assets/ArrowTop.svg'
 import { ReactComponent as Cart } from '../assets/Cart.svg'
 import { getAllCategoriesNames } from '../graphql-data/sendRequest';
 import PriceDropdown from "./price";
@@ -86,7 +87,7 @@ export default class HeaderContainer extends React.PureComponent {
 
             <Layout.LayoutPrice onClick={() => { this.priceShowMethod(priceshow) }}>
               <Price />
-              <ArrowDown id="priceArrow" />
+              {priceshow ? <ArrowTop id="priceArrow" /> : <ArrowDown id="priceArrow" />}
             </Layout.LayoutPrice>
             <PriceDropdown priceShowMethod={this.priceShowMethod} priceshow={priceshow} />
 

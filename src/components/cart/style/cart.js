@@ -3,8 +3,26 @@ import styled from 'styled-components/macro'
 export const Container = styled.div`
 
 `
-export const Overlay = styled.div``
-export const Frame = styled.div``
+export const Overlay = styled.div`
+  max-width: 1440px;
+  margin: auto;
+  position: fixed;
+  top: 7.8rem;
+  left: 0;
+  right: 0; 
+  bottom: 0;
+  background-color: #39374838;
+  width: 100%;
+  display: block;
+`
+export const Frame = styled.div`
+    position: absolute;
+    top: 4.7rem;
+    z-index: 4;
+    background-color: #fff;
+    width: 10rem;
+    height: 20rem;  
+`
 export const Heading = styled.div``
 export const FrameBody = styled.div``
 export const Item = styled.div``

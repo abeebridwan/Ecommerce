@@ -108,6 +108,7 @@ export const Price = styled.span`
 export const CartFrame = styled.span`
   margin-left: 2.2rem;
   cursor: pointer;
+  position: relative;
 `
 
 export const CartNumber = styled.span``

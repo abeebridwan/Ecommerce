@@ -47,8 +47,7 @@ export default class Price extends React.PureComponent {
 
         <PriceDropdown.PriceDropdownFrame priceshow={priceshow} onClick={() => {
           priceShowMethod(priceshow);
-        }}>
-        </PriceDropdown.PriceDropdownFrame>
+        }} />
       </>
     )
   }

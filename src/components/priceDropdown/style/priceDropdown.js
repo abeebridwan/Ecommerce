@@ -4,14 +4,16 @@ import { Media } from '../../mixins'
 
 export const Frame = styled.div`
   display: ${({ priceshow }) => (priceshow ? "block" : "none")};
-  width: 100vw;
-  height: 100vh;
+  width: 100%;
+  height: 100%;
+  max-width: 1440px;
   background-color: transparent;
   position: fixed;
   top:0;
   left: 0;
   right: 0;
   bottom: 0;
+  margin: auto;
 `
 
 export const Container = styled.ul`

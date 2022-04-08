@@ -6,8 +6,10 @@ export default class CartOverlayContainer extends React.PureComponent {
   render() {
     return (
       <Cart>
+        <Cart.CartFrame>
 
-        Hello there
+        </Cart.CartFrame>
+        <Cart.CartOverlay />
       </Cart>
 
     )

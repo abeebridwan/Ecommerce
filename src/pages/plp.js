@@ -8,7 +8,7 @@ export default class Plp extends React.PureComponent {
     super(props)
     this.state = {
       changeCategoryTo: "all",
-      currencyIndex: 0,
+      currencyIndex: localStorage.getItem("index") || 0,
       error: null
     };
     this.changeCategory = this.changeCategory.bind(this);

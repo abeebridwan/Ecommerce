@@ -38,6 +38,7 @@ export default class Price extends React.PureComponent {
             <PriceDropdown.PriceDropdownItem key={item.label} onClick={() => {
               changeCurrency(index);
               priceShowMethod(priceshow);
+              localStorage.setItem("index", index);
             }}>
               {item.symbol}&#160;&#160;{item.label}
             </PriceDropdown.PriceDropdownItem>

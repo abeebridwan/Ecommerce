@@ -12,7 +12,7 @@ export default class HeaderContainer extends React.PureComponent {
   constructor(props) {
     super(props)
     this.state = {
-      active: "all",
+      active: sessionStorage.getItem("name") || "all",
       categories: null,
       priceshow: false,
       error: null
@@ -54,8 +54,8 @@ export default class HeaderContainer extends React.PureComponent {
             <Layout.LayoutDropdownMenu className="dropDownMenu">
               {categories.map((item) => (
                 <Layout.LayoutMobileCategory key={item.name} className='dropItem' onClick={() => {
-                  changeCategory(item.name)
-                  this.setState({ active: item.name })
+                  changeCategory(item.name);
+                  sessionStorage.setItem("name", item['name']);
                 }}>
                   <Layout.LayoutCategoryText>
                     {item.name}
@@ -68,7 +68,8 @@ export default class HeaderContainer extends React.PureComponent {
           {categories.map((item) => (
             <Layout.LayoutDesktopCategory key={item.name} active={item.name === active ? {} : null} onClick={() => {
               changeCategory(item.name)
-              this.setState({ active: item.name })
+              this.setState({ active: item.name });
+              sessionStorage.setItem("name", item['name']);
             }}>
               <Layout.LayoutCategoryText>
                 {item.name}

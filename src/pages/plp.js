@@ -7,7 +7,7 @@ export default class Plp extends React.PureComponent {
   constructor(props) {
     super(props)
     this.state = {
-      changeCategoryTo: "all",
+      changeCategoryTo: sessionStorage.getItem("name") || "all",
       currencyIndex: localStorage.getItem("index") || 0,
       error: null
     };

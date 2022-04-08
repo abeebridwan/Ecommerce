@@ -16,6 +16,7 @@ export default class HeaderContainer extends React.PureComponent {
       active: sessionStorage.getItem("name") || "all",
       categories: null,
       priceshow: false,
+      cartshow: false,
       error: null
     };
     this.priceShowMethod = this.priceShowMethod.bind(this);
@@ -23,6 +24,10 @@ export default class HeaderContainer extends React.PureComponent {
 
   priceShowMethod(priceshow) {
     this.setState({ priceshow: !priceshow })
+  }
+
+  cartShowMethod(cartshow) {
+    this.setState({ cartshow: !cartshow })
   }
 
   async componentDidMount() {
@@ -37,7 +42,7 @@ export default class HeaderContainer extends React.PureComponent {
 
   render() {
     const { changeCategory } = this.props;
-    const { active, categories, priceshow } = this.state;
+    const { active, categories, priceshow, cartshow } = this.state;
 
     if (!categories) {
       return;
@@ -86,18 +91,19 @@ export default class HeaderContainer extends React.PureComponent {
 
         <Layout.LayoutColumnThree>
           <Layout.LayoutPriceFrame>
-
             <Layout.LayoutPrice onClick={() => { this.priceShowMethod(priceshow) }}>
               <Price />
               {priceshow ? <ArrowTop id="priceArrow" /> : <ArrowDown id="priceArrow" />}
             </Layout.LayoutPrice>
             <PriceDropdown priceShowMethod={this.priceShowMethod} priceshow={priceshow} />
-
           </Layout.LayoutPriceFrame>
-          <Layout.LayoutCartFrame>
+
+          <Layout.LayoutCartFrame onClick={() => {
+            this.cartShowMethod(cartshow)
+          }}>
             <Cart />
             <Layout.LayoutCartNumber></Layout.LayoutCartNumber>
-            <CartOverlay />
+            <CartOverlay cartshow={cartshow} />
           </Layout.LayoutCartFrame>
         </Layout.LayoutColumnThree>
         {this.props.children}

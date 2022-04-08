@@ -13,11 +13,12 @@ export const Overlay = styled.div`
   bottom: 0;
   background-color: #39374838;
   width: 100%;
-  display: block;
+  display: ${({ cartshow }) => (cartshow ? "block" : "none")};
 `
 export const Frame = styled.div`
+    display: ${({ cartshow }) => (cartshow ? "block" : "none")};
     position: absolute;
-    top: 4.7rem;
+    top: 4.6rem;
     z-index: 4;
     background-color: #fff;
     width: 10rem;

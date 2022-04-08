@@ -1,5 +1,5 @@
 import React from 'react';
-import { Container, Frame, Header, Item, Name, Price, Image } from './style/product';
+import { Container, Frame, Header, Item, Name, Price, Image, Cart } from './style/product';
 
 
 export default class Product extends React.PureComponent {
@@ -18,6 +18,10 @@ export default class Product extends React.PureComponent {
 
   static ProductItem({ children, ...restProps }) {
     return <Item {...restProps}>{children}</Item>
+  }
+
+  static ProductCart({ children, ...restProps }) {
+    return <Cart {...restProps}>{children}</Cart>
   }
 
   static ProductFrame({ children, ...restProps }) {

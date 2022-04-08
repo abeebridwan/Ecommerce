@@ -14,7 +14,26 @@ export const Header = styled.h2`
 
 export const Frame = styled.div``;
 
-export const Item = styled.div``;
+export const Item = styled.div`
+
+`;
+
+export const Cart = styled.span`
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  background-color: #5ECE7B;
+  padding: 1rem;
+  border-radius: 50%;
+  margin: .5rem;
+  width: 3.5rem;
+  height: 3.5rem;
+  & svg#cart{
+    path{
+      fill: #fff;
+    }
+  }
+`
 
 export const Image = styled.img`
   width: 10rem;

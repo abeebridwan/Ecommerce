@@ -1,6 +1,8 @@
 import React from "react";
 import { Product } from "../components";
 import { getCategoryApiMethod } from '../graphql-data/sendRequest';
+import { ReactComponent as Cart } from '../assets/Cart.svg'
+
 
 export default class ProductsContainer extends React.PureComponent {
   constructor(props) {
@@ -57,6 +59,9 @@ export default class ProductsContainer extends React.PureComponent {
               <Product.ProductPrice>
                 {item.prices[currencyIndex].currency.symbol}{item.prices[currencyIndex].amount}
               </Product.ProductPrice>
+              <Product.ProductCart>
+                <Cart id="cart" />
+              </Product.ProductCart>
             </Product.ProductItem>
           ))}
         </Product.ProductFrame>

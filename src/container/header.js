@@ -20,6 +20,7 @@ export default class HeaderContainer extends React.PureComponent {
       error: null
     };
     this.priceShowMethod = this.priceShowMethod.bind(this);
+    this.cartShowMethod = this.cartShowMethod.bind(this);
   }
 
   priceShowMethod(priceshow) {
@@ -91,7 +92,10 @@ export default class HeaderContainer extends React.PureComponent {
 
         <Layout.LayoutColumnThree>
           <Layout.LayoutPriceFrame>
-            <Layout.LayoutPrice onClick={() => { this.priceShowMethod(priceshow) }}>
+            <Layout.LayoutPrice onClick={() => {
+              if (cartshow) { this.setState({ cartshow: !cartshow }) };
+              this.priceShowMethod(priceshow)
+            }}>
               <Price />
               {priceshow ? <ArrowTop id="priceArrow" /> : <ArrowDown id="priceArrow" />}
             </Layout.LayoutPrice>
@@ -99,6 +103,7 @@ export default class HeaderContainer extends React.PureComponent {
           </Layout.LayoutPriceFrame>
 
           <Layout.LayoutCartFrame onClick={() => {
+            if (priceshow) { this.setState({ priceshow: !priceshow }) };
             this.cartShowMethod(cartshow)
           }}>
             <Cart />

@@ -28,6 +28,7 @@ export const Cart = styled.span`
   margin: .5rem;
   width: 3.5rem;
   height: 3.5rem;
+  cursor: pointer;
   & svg#cart{
     path{
       fill: #fff;

@@ -32,16 +32,23 @@ export default class Price extends React.PureComponent {
     }
 
     return (
-      <PriceDropdown priceshow={priceshow}>
-        {currencies.map((item, index) => (
-          <PriceDropdown.PriceDropdownItem key={item.label} onClick={() => {
-            changeCurrency(index);
-            priceShowMethod(priceshow)
-          }}>
-            {item.symbol}&#160;&#160;{item.label}
-          </PriceDropdown.PriceDropdownItem>
-        ))}
-      </PriceDropdown>
+      <>
+        <PriceDropdown priceshow={priceshow}>
+          {currencies.map((item, index) => (
+            <PriceDropdown.PriceDropdownItem key={item.label} onClick={() => {
+              changeCurrency(index);
+              priceShowMethod(priceshow);
+            }}>
+              {item.symbol}&#160;&#160;{item.label}
+            </PriceDropdown.PriceDropdownItem>
+          ))}
+        </PriceDropdown>
+
+        <PriceDropdown.PriceDropdownFrame priceshow={priceshow} onClick={() => {
+          priceShowMethod(priceshow);
+        }}>
+        </PriceDropdown.PriceDropdownFrame>
+      </>
     )
   }
 }

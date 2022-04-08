@@ -17,7 +17,6 @@ export const Box = styled.div``
 
 export const ColumnTwo = styled.div``
 export const SignBox = styled.div``
-
 export const AddSign = styled.div``
 export const ValueSign = styled.div``
 export const SubSign = styled.div``
@@ -27,6 +26,6 @@ export const Total = styled.div``
 export const TotalName = styled.span``
 export const TotalValue = styled.span``
 
-export const CheckBox = styled.div``
+export const CheckOutBox = styled.div``
 export const ViewBag = styled.span``
 export const CheckOut = styled.div``

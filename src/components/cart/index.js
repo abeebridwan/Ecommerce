@@ -1,14 +1,60 @@
 import React from "react";
-import { Attributes, Box, ColumnOne, Container, Frame, FrameBody, Heading, Item, Name, Overlay, Price } from "./style/cart";
+import {
+  Image, AddSign, Attributes, Box, ColumnOne, ColumnTwo, Container,
+  Frame, FrameBody, Heading, Item, Name, Overlay, Price, SignBox, SubSign, Total,
+  TotalName, TotalValue, ValueSign, ViewBag, CheckOut, CheckOutBox
+} from "./style/cart";
 
 export default class Cart extends React.PureComponent {
 
-
-
-  static CartColumnOne({ children, ...restProps }) {
-    return <ColumnOne {...restProps}>{children}</ColumnOne>
+  static CartCheckOut({ children, ...restProps }) {
+    return <CheckOut {...restProps}>{children}</CheckOut>
   }
-  
+
+  static CartViewBag({ children, ...restProps }) {
+    return <ViewBag {...restProps}>{children}</ViewBag>
+  }
+
+  static CartCheckOutBox({ children, ...restProps }) {
+    return <CheckOutBox {...restProps}>{children}</CheckOutBox>
+  }
+
+  static CartTotalValue({ children, ...restProps }) {
+    return <TotalValue {...restProps}>{children}</TotalValue>
+  }
+
+  static CartTotalName({ children, ...restProps }) {
+    return <TotalName {...restProps}>{children}</TotalName>
+  }
+
+  static CartTotal({ children, ...restProps }) {
+    return <Total {...restProps}>{children}</Total>
+  }
+
+  static CartImage({ children, ...restProps }) {
+    return <Image {...restProps}>{children}</Image>
+  }
+
+  static CartSubSign({ children, ...restProps }) {
+    return <SubSign {...restProps}>{children}</SubSign>
+  }
+
+  static CartValueSign({ children, ...restProps }) {
+    return <ValueSign {...restProps}>{children}</ValueSign>
+  }
+
+  static CartAddSign({ children, ...restProps }) {
+    return <AddSign {...restProps}>{children}</AddSign>
+  }
+
+  static CartSignBox({ children, ...restProps }) {
+    return <SignBox {...restProps}>{children}</SignBox>
+  }
+
+  static CartColumnTwo({ children, ...restProps }) {
+    return <ColumnTwo {...restProps}>{children}</ColumnTwo>
+  }
+
   static CartBox({ children, ...restProps }) {
     return <Box {...restProps}>{children}</Box>
   }

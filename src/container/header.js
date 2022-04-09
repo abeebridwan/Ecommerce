@@ -41,6 +41,13 @@ export default class HeaderContainer extends React.PureComponent {
     }
   }
 
+  componentDidUpdate() {
+    const { cartshow } = this.state;
+    if (!cartshow) {
+      document.body.style.overflow = "unset";
+    }
+  }
+
   render() {
     const { changeCategory } = this.props;
     const { active, categories, priceshow, cartshow } = this.state;

@@ -41,7 +41,7 @@ export default class ProductsContainer extends React.PureComponent {
     const { category } = this.state;
 
     if (!category) {
-      return;
+      return null;
     }
     const { name, products } = category;
     return (

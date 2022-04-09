@@ -53,7 +53,7 @@ export default class HeaderContainer extends React.PureComponent {
     const { active, categories, priceshow, cartshow } = this.state;
 
     if (!categories) {
-      return;
+      return null;
     }
     return (
       <Layout>

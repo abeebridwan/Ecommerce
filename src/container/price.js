@@ -26,7 +26,6 @@ export default class Price extends React.PureComponent {
     const changeCurrency = this.context;
     const { currencies } = this.state;
     const { priceshow, priceShowMethod } = this.props;
-
     if (!currencies) {
       return
     }

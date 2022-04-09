@@ -2,7 +2,7 @@ import React from "react";
 import {
   Image, AddSign, Attributes, Box, ColumnOne, ColumnTwo, Container,
   Frame, FrameBody, Heading, Item, Name, Overlay, Price, SignBox, SubSign, Total,
-  TotalName, TotalValue, ValueSign, ViewBag, CheckOut, CheckOutBox
+  TotalName, TotalValue, ValueSign, ViewBag, CheckOut, CheckOutBox, HeaderOverlay
 } from "./style/cart";
 
 export default class Cart extends React.PureComponent {
@@ -89,6 +89,10 @@ export default class Cart extends React.PureComponent {
 
   static CartFrame({ children, ...restProps }) {
     return <Frame {...restProps}>{children}</Frame>
+  }
+
+  static CartHeaderOverlay({ children, ...restProps }) {
+    return <HeaderOverlay {...restProps}>{children}</HeaderOverlay>
   }
 
   static CartOverlay({ children, ...restProps }) {

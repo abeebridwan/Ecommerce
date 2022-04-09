@@ -69,10 +69,12 @@ export const DropdownMenu = styled.span`
 
 export const DesktopCategory = styled.span`
   display: none;
+  position: relative;
   height: 8rem;
   align-items: center;
   padding: 0 1.6rem;  
   cursor: pointer;
+  z-index: 17;
   border-bottom: ${({ active }) => (active && '2px solid #5ECE7B')};
   color: ${({ active }) => (active && '#5ECE7B')};  
   & span{
@@ -89,12 +91,15 @@ export const CategoryText = styled.span`
 export const PriceFrame = styled.span`  
   display: inline-flex;
   cursor: pointer; 
- position: relative;
+  position: relative;
+  z-index: 7; 
 `
 
 export const Price = styled.span`
   display: flex;
   align-items: center;
+  position: relative;
+  z-index: 15; 
  
   & svg#priceArrow{
     align-self: flex-end;
@@ -103,12 +108,16 @@ export const Price = styled.span`
     width: 6px;
     height: 3px;     
   } 
-`
+  `
 
 export const CartFrame = styled.span`
-  margin-left: 2.2rem;
-  cursor: pointer;
-  position: relative;
-`
+    margin-left: 2.2rem;
+    cursor: pointer;
+    position: relative;
+    z-index: 9;
+  `
+export const Cart = styled.span`
+    
+  `
 
 export const CartNumber = styled.span``

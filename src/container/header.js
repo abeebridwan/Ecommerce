@@ -83,7 +83,6 @@ export default class HeaderContainer extends React.PureComponent {
               </Layout.LayoutCategoryText>
             </Layout.LayoutDesktopCategory>
           ))}
-
         </Layout.LayoutColumnOne>
 
         <Layout.LayoutColumnTwo>
@@ -99,16 +98,18 @@ export default class HeaderContainer extends React.PureComponent {
               <Price />
               {priceshow ? <ArrowTop id="priceArrow" /> : <ArrowDown id="priceArrow" />}
             </Layout.LayoutPrice>
-            <PriceDropdown priceShowMethod={this.priceShowMethod} priceshow={priceshow} />
+            {priceshow ? <PriceDropdown priceShowMethod={this.priceShowMethod} priceshow={priceshow} /> : null}
           </Layout.LayoutPriceFrame>
 
-          <Layout.LayoutCartFrame onClick={() => {
-            if (priceshow) { this.setState({ priceshow: !priceshow }) };
-            this.cartShowMethod(cartshow)
-          }}>
-            <Cart />
-            <Layout.LayoutCartNumber></Layout.LayoutCartNumber>
-            <CartOverlay cartshow={cartshow} />
+          <Layout.LayoutCartFrame >
+            <Layout.LayoutCart onClick={() => {
+              if (priceshow) { this.setState({ priceshow: !priceshow }) };
+              this.cartShowMethod(cartshow)
+            }}>
+              <Cart />
+              <Layout.LayoutCartNumber></Layout.LayoutCartNumber>
+            </Layout.LayoutCart>
+            {cartshow ? <CartOverlay cartshow={cartshow} cartShowMethod={this.cartShowMethod} /> : null}
           </Layout.LayoutCartFrame>
         </Layout.LayoutColumnThree>
         {this.props.children}

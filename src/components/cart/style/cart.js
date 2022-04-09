@@ -3,6 +3,20 @@ import styled from 'styled-components/macro'
 export const Container = styled.div`
 
 `
+
+export const HeaderOverlay = styled.div`
+  max-width: 1440px;
+  margin: auto;
+  position: fixed;
+  width: 100%;
+  height: 7.8rem;
+  top: 0;
+  left: 0;
+  z-index: 3;
+  background-color: transparent;
+  cursor: default;
+  display: ${({ cartshow }) => (cartshow ? "block" : "none")};
+`
 export const Overlay = styled.div`
   max-width: 1440px;
   margin: auto;
@@ -11,16 +25,19 @@ export const Overlay = styled.div`
   left: 0;
   right: 0; 
   bottom: 0;
+  z-index: 2;
+  cursor: default;
   background-color: #39374838;
   width: 100%;
   display: ${({ cartshow }) => (cartshow ? "block" : "none")};
 `
-export const Frame = styled.div`
-    display: ${({ cartshow }) => (cartshow ? "block" : "none")};
+export const Frame = styled.div`    
+    display: ${({ cartshow }) => (cartshow ? "block" : "none")};    
     position: absolute;
     top: 4.6rem;
-    z-index: 4;
+    z-index: 13;
     background-color: #fff;
+    cursor: default;
     width: 10rem;
     height: 20rem;  
 `

@@ -1,11 +1,19 @@
 import React from "react";
-import { CartFrame, CartNumber, MobileCategory, CategoryText, ColumnOne, ColumnThree, ColumnTwo, Container, DesktopCategory, DropdownMenu, Price, PriceFrame } from "./style/layout";
+import {
+  CartFrame, CartNumber, MobileCategory, CategoryText, ColumnOne, ColumnThree,
+  ColumnTwo, Container, DesktopCategory,
+  DropdownMenu, Price, PriceFrame, Cart
+} from "./style/layout";
 
 
 export default class Layout extends React.PureComponent {
 
   static LayoutCartNumber({ children, ...restProps }) {
     return <CartNumber {...restProps}>{children}</CartNumber>
+  }
+
+  static LayoutCart({ children, ...restProps }) {
+    return <Cart {...restProps}>{children}</Cart>
   }
 
   static LayoutCartFrame({ children, ...restProps }) {

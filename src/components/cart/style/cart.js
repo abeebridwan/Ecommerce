@@ -65,9 +65,8 @@ export const Item = styled.div`
   margin-bottom: 4.1rem;
   &:last-child{
     margin-bottom: 0    
-  }
-`
-
+  }`
+  
 export const ColumnOne = styled.div`
   display: flex;
   flex-direction: column;

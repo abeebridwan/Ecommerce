@@ -25,15 +25,15 @@ export default class CartOverlayContainer extends React.PureComponent {
                 <Cart.CartName>
                   Apollo
                 </Cart.CartName>
-                <Cart.CartName>
+                <Cart.CartName id="brand">
                   Running Short
                 </Cart.CartName>
                 <Cart.CartPrice>
                   {"$50.00"}
                 </Cart.CartPrice>
                 <Cart.CartAttributes>
-                  <Cart.CartBox>S</Cart.CartBox>
-                  <Cart.CartBox>M</Cart.CartBox>
+                  <Cart.CartBox><span>S</span></Cart.CartBox>
+                  <Cart.CartBox><span>M</span></Cart.CartBox>
                 </Cart.CartAttributes>
               </Cart.CartColumnOne>
 

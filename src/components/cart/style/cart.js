@@ -50,13 +50,18 @@ export const Heading = styled.div`
   }
 `
 export const FrameBody = styled.div`
-  overflow-y: auto;
+  overflow-y: scroll;
+  scrollbar-width: none; 
+  -ms-overflow-style: none;  
+  &::-webkit-scrollbar { 
+  width: 0;
+  height: 0;
+  }
   height: 31.5rem;  
 `
 export const Item = styled.div`
   display: flex;
-  height: 13.7rem;  
-  overflow: hidden;
+  height: 13.7rem;   
   margin-bottom: 4.1rem;
   &:last-child{
     margin-bottom: 0    
@@ -65,20 +70,49 @@ export const Item = styled.div`
 `
 
 export const ColumnOne = styled.div`
+  display: flex;
+  flex-direction: column;
+  justify-content: space-between;
+  overflow-y: scroll;
+  scrollbar-width: none; 
+  -ms-overflow-style: none;  
+  &::-webkit-scrollbar { 
+  width: 0;
+  height: 0;
+  }
   margin-right: 1.8rem;
-  width: 13.6rem;
+  min-width: 13.6rem;
 `
 export const Name = styled.p`
   line-height: 25.6px;
   margin-bottom: .25rem;
+
+  &#brand{
+    margin-top: -1rem;
+  }
 `
 export const Price = styled.div`
-
+  padding: .75rem 0  1rem;
 `
-export const Attributes = styled.div``
-export const Box = styled.div``
+export const Attributes = styled.div`  
+  display: flex;
+  flex-wrap: wrap;
+`
+export const Box = styled.div`
+  line-height: 22.4px;
+  font-size: 1.4rem;
+  font-family: 'Source Sans Pro', sans-serif;
+  border: 1px solid #1D1F22;
+  width: 2.4rem;
+  height: 2.4rem;
+  display: flex;
+  justify-content:center;
+  align-items: center; 
+  margin-right:8px;
+`
 
 export const ColumnTwo = styled.div`
+  display: flex;
   width: 13.9rem;
 `
 export const SignBox = styled.div``
@@ -86,7 +120,8 @@ export const AddSign = styled.div``
 export const ValueSign = styled.div``
 export const SubSign = styled.div``
 export const Image = styled.img`
-  width: 10.5rem
+  width: 10.5rem;
+  height: 13.7rem;
 `
 
 export const Total = styled.div``

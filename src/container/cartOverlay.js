@@ -43,7 +43,7 @@ export default class CartOverlayContainer extends React.PureComponent {
                   <Cart.CartValueSign>{0}</Cart.CartValueSign>
                   <Cart.CartSubSign>-</Cart.CartSubSign>
                 </Cart.CartSignBox>
-                <Cart.CartImage src="" alt="cart Image" />
+                <Cart.CartImage src="https://images.canadagoose.com/image/upload/w_480,c_scale,f_auto,q_auto:best/v1576016105/product-image/2409L_61.jpg" alt="cart Image" />
               </Cart.CartColumnTwo>
             </Cart.CartItem>
           </Cart.CartFrameBody>

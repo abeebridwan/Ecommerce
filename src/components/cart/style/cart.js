@@ -41,9 +41,10 @@ export const Frame = styled.div`
     cursor: default;
     padding: 8px 16px;
 `
-export const Heading = styled.h6`
-  font-size: 1.6rem;
+export const Heading = styled.div`  
+  font-weight: 700;
   line-height: 25.6px;
+  margin-bottom: 2.5rem;
   & span{
     font-weight: normal;
   }
@@ -54,6 +55,8 @@ export const FrameBody = styled.div`
 `
 export const Item = styled.div`
   display: flex;
+  height: 13.7rem;  
+  overflow: hidden;
   margin-bottom: 4.1rem;
   &:last-child{
     margin-bottom: 0    
@@ -62,19 +65,29 @@ export const Item = styled.div`
 `
 
 export const ColumnOne = styled.div`
+  margin-right: 1.8rem;
+  width: 13.6rem;
+`
+export const Name = styled.p`
+  line-height: 25.6px;
+  margin-bottom: .25rem;
+`
+export const Price = styled.div`
 
 `
-export const Name = styled.p``
-export const Price = styled.div``
 export const Attributes = styled.div``
 export const Box = styled.div``
 
-export const ColumnTwo = styled.div``
+export const ColumnTwo = styled.div`
+  width: 13.9rem;
+`
 export const SignBox = styled.div``
 export const AddSign = styled.div``
 export const ValueSign = styled.div``
 export const SubSign = styled.div``
-export const Image = styled.img``
+export const Image = styled.img`
+  width: 10.5rem
+`
 
 export const Total = styled.div``
 export const TotalName = styled.span``

@@ -26,7 +26,7 @@ export default class CartOverlayContainer extends React.PureComponent {
                   Apollo
                 </Cart.CartName>
                 <Cart.CartName id="brand">
-                  Running Short
+                  Running Short 
                 </Cart.CartName>
                 <Cart.CartPrice>
                   {"$50.00"}

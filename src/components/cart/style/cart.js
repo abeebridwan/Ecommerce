@@ -66,7 +66,6 @@ export const Item = styled.div`
   &:last-child{
     margin-bottom: 0    
   }
-
 `
 
 export const ColumnOne = styled.div`
@@ -85,16 +84,16 @@ export const ColumnOne = styled.div`
 `
 export const Name = styled.p`
   line-height: 25.6px;
-  margin-bottom: .25rem;
-
+  margin-bottom: 1rem;
   &#brand{
     margin-top: -1rem;
+    margin-bottom: .5rem;
   }
 `
 export const Price = styled.div`
   font-weight: bold;
   line-height: 25.6px;
-  margin: 0 0 2rem;
+  margin: 0 0 2.7rem;
 `
 export const Attributes = styled.div`  
   display: flex;

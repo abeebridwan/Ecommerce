@@ -34,14 +34,15 @@ export const Overlay = styled.div`
 export const Frame = styled.div`    
     display: ${({ cartshow }) => (cartshow ? "block" : "none")};    
     position: absolute;
-    top: 4.6rem;
+    top: 4.6rem;  
+    right: -1rem;
     z-index: 13;
     background-color: #fff;
     cursor: default;
-    width: 10rem;
-    height: 20rem;  
+    /* width: 10rem;
+    height: 20rem;   */
 `
-export const Heading = styled.div``
+export const Heading = styled.h6``
 export const FrameBody = styled.div``
 export const Item = styled.div``
 

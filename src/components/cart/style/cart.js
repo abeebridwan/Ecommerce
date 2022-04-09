@@ -21,7 +21,7 @@ export const Overlay = styled.div`
   max-width: 1440px;
   margin: auto;
   position: fixed;
-  top: 7.8rem;
+  top: 7.8455rem;
   left: 0;
   right: 0; 
   bottom: 0;
@@ -39,14 +39,31 @@ export const Frame = styled.div`
     z-index: 13;
     background-color: #fff;
     cursor: default;
-    /* width: 10rem;
-    height: 20rem;   */
+    padding: 8px 16px;
 `
-export const Heading = styled.h6``
-export const FrameBody = styled.div``
-export const Item = styled.div``
+export const Heading = styled.h6`
+  font-size: 1.6rem;
+  line-height: 25.6px;
+  & span{
+    font-weight: normal;
+  }
+`
+export const FrameBody = styled.div`
+  overflow-y: auto;
+  height: 31.5rem;  
+`
+export const Item = styled.div`
+  display: flex;
+  margin-bottom: 4.1rem;
+  &:last-child{
+    margin-bottom: 0    
+  }
 
-export const ColumnOne = styled.div``
+`
+
+export const ColumnOne = styled.div`
+
+`
 export const Name = styled.p``
 export const Price = styled.div``
 export const Attributes = styled.div``

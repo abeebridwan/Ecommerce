@@ -92,23 +92,30 @@ export const Name = styled.p`
   }
 `
 export const Price = styled.div`
-  padding: .75rem 0  1rem;
+  font-weight: bold;
+  line-height: 25.6px;
+  margin: 0 0 2rem;
 `
 export const Attributes = styled.div`  
   display: flex;
   flex-wrap: wrap;
 `
 export const Box = styled.div`
+  cursor: pointer;
   line-height: 22.4px;
   font-size: 1.4rem;
   font-family: 'Source Sans Pro', sans-serif;
-  border: 1px solid #1D1F22;
+  border: ${({ selected }) => (selected ? '1px solid #A6A6A6' : '1px solid #1D1F22')};
   width: 2.4rem;
   height: 2.4rem;
   display: flex;
   justify-content:center;
   align-items: center; 
   margin-right:8px;
+  background-color: ${({ selected }) => (selected && '#f7f5f0')}; 
+  & span{
+    color: ${({ selected }) => (selected && '#A6A6A6')};
+  }
 `
 
 export const ColumnTwo = styled.div`

@@ -33,7 +33,7 @@ export default class CartOverlayContainer extends React.PureComponent {
                 </Cart.CartPrice>
                 <Cart.CartAttributes>
                   <Cart.CartBox><span>S</span></Cart.CartBox>
-                  <Cart.CartBox><span>M</span></Cart.CartBox>
+                  <Cart.CartBox selected><span>M</span></Cart.CartBox>
                 </Cart.CartAttributes>
               </Cart.CartColumnOne>
 

@@ -46,7 +46,7 @@ export const Heading = styled.div`
   line-height: 25.6px;
   margin-bottom: 2.5rem;
   & span{
-    font-weight: normal;
+    font-weight: 500;
   }
 `
 export const FrameBody = styled.div`
@@ -66,7 +66,7 @@ export const Item = styled.div`
   &:last-child{
     margin-bottom: 0    
   }`
-  
+
 export const ColumnOne = styled.div`
   display: flex;
   flex-direction: column;

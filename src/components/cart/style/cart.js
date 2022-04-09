@@ -34,7 +34,7 @@ export const Overlay = styled.div`
 export const Frame = styled.div`    
     display: ${({ cartshow }) => (cartshow ? "block" : "none")};    
     position: absolute;
-    top: 4.6rem;  
+    top: 4.58rem;  
     right: -1rem;
     z-index: 13;
     background-color: #fff;

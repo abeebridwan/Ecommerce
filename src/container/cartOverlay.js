@@ -1,10 +1,17 @@
 import React from "react";
 import { Cart } from "../components";
 import { DataContext } from "../context/contextData";
+import { getProductData } from "../graphql-data/sendRequest";
 
 export default class CartOverlayContainer extends React.PureComponent {
 
-  componentDidMount() {
+  async componentDidMount() {
+    const { cartIdValues } = this.context;
+    const { product } = await getProductData(cartIdValues[0])
+    console.log({ cartIdValues })
+    console.log({ product })
+
+    
     const { cartshow } = this.props;
     if (cartshow) {
       document.body.style.overflow = "hidden";
@@ -12,8 +19,6 @@ export default class CartOverlayContainer extends React.PureComponent {
   }
   static contextType = DataContext;
   render() {
-    const { cartIdValues } = this.context;
-    console.log({ cartIdValues })
     const { cartshow, cartShowMethod } = this.props;
     return (
       <Cart>

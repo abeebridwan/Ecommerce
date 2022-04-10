@@ -24,6 +24,41 @@ export function categoryData(value) {
   }
 }
 
+
+export function ProductData(id){
+  return {
+    query: `query ($id: String!) {
+      product(id: $id, ) {
+        id,
+        name,
+        brand,
+        inStock,
+        gallery,
+        attributes{
+          id,
+          name,
+          type,
+          items{
+            id, 
+            displayValue,
+            value
+          }
+        }
+        prices{
+          currency{
+            label,
+            symbol
+          }
+        amount 
+        }    
+      }    
+    }`,
+    variables: {
+      "id": id   
+    }
+  }
+}
+
 export const CategoriesNames =
 {
   query: `{

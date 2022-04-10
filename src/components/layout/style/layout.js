@@ -91,15 +91,14 @@ export const CategoryText = styled.span`
 export const PriceFrame = styled.span`  
   display: inline-flex;
   cursor: pointer; 
-  position: relative;
-  z-index: 7; 
+  position: relative  
 `
 
 export const Price = styled.span`
   display: flex;
   align-items: center;
   position: relative;
-  z-index: 15; 
+  z-index: 10;   
  
   & svg#priceArrow{
     align-self: flex-end;
@@ -116,8 +115,6 @@ export const CartFrame = styled.span`
     position: relative;
     z-index: 9;
   `
-export const Cart = styled.span`
-    
-  `
+export const Cart = styled.span``
 
 export const CartNumber = styled.span``

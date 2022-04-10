@@ -1,8 +1,6 @@
 import styled from 'styled-components/macro'
 
-export const Container = styled.div`
-
-`
+export const Container = styled.div``
 
 export const HeaderOverlay = styled.div`
   max-width: 1440px;
@@ -44,7 +42,7 @@ export const Frame = styled.div`
 export const Heading = styled.div`  
   font-weight: 700;
   line-height: 25.6px;
-  margin-bottom: 2.5rem;
+  margin-bottom: 1rem;
   & span{
     font-weight: 500;
   }
@@ -158,10 +156,42 @@ export const Image = styled.img`
   height: 13.7rem;
 `
 
-export const Total = styled.div``
+export const Total = styled.div`
+  margin-top: 1rem;
+  display: flex;
+  justify-content: space-between;
+  font-size: 1.6rem;
+  font-weight: bold;
+  line-height: 18px;
+`
 export const TotalName = styled.span``
 export const TotalValue = styled.span``
 
-export const CheckOutBox = styled.div``
-export const ViewBag = styled.span``
-export const CheckOut = styled.div``
+export const CheckOutBox = styled.div`
+  margin-top: 1rem;
+  display: flex;
+  justify-content: space-between;
+  font-size: 1.4rem;
+  font-weight: bold;
+  line-height: 16.8px;
+`
+export const ViewBag = styled.div`
+  cursor: pointer;
+  display: flex;
+  justify-content:center;
+  align-items: center; 
+  width: 14rem;
+  height: 4.3rem;  
+  border: 1px solid #1D1F22;
+`
+export const CheckOut = styled.div`
+  cursor: pointer;
+  display: flex;
+  justify-content:center;
+  align-items: center; 
+  width: 14rem;
+  height: 4.3rem;
+  color: #fff;    
+  border: 1px solid #5ECE7B;
+  background-color: #5ECE7B;
+  `

@@ -5,13 +5,24 @@ import { getProductData } from "../graphql-data/sendRequest";
 
 export default class CartOverlayContainer extends React.PureComponent {
 
+  constructor(props) {
+    super(props)
+    this.state = {
+      cartValues: null
+    }
+  }
+
   async componentDidMount() {
     const { cartIdValues } = this.context;
-    const { product } = await getProductData(cartIdValues[0])
-    console.log({ cartIdValues })
-    console.log({ product })
+    if (cartIdValues.length !== 0) {
+      const cartValuesPromises = cartIdValues.map(async (item) => {
+        return await getProductData(item)
+      })
+      const cartValues = await Promise.all(cartValuesPromises)
+      this.setState({ cartValues })
+    }
 
-    
+
     const { cartshow } = this.props;
     if (cartshow) {
       document.body.style.overflow = "hidden";
@@ -20,6 +31,9 @@ export default class CartOverlayContainer extends React.PureComponent {
   static contextType = DataContext;
   render() {
     const { cartshow, cartShowMethod } = this.props;
+    const { cartValues } = this.state;
+    console.log(cartValues)
+
     return (
       <Cart>
         <Cart.CartFrame cartshow={cartshow}>

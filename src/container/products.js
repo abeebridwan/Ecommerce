@@ -38,14 +38,17 @@ export default class ProductsContainer extends React.PureComponent {
   }
   static contextType = DataContext;
   render() {
-    const { addToCart } = this.context;
-    const { currencyIndex } = this.props;
     const { category } = this.state;
 
     if (!category) {
       return null;
     }
+
     const { name, products } = category;
+    const { addToCart } = this.context;
+    const { currencyIndex } = this.props;
+
+
     return (
       <Product>
         <Product.ProductHeader>

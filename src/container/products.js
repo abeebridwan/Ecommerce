@@ -1,7 +1,8 @@
 import React from "react";
 import { Product } from "../components";
 import { getCategoryApiMethod } from '../graphql-data/sendRequest';
-import { ReactComponent as Cart } from '../assets/Cart.svg'
+import { ReactComponent as Cart } from '../assets/Cart.svg';
+import { DataContext } from "../context/contextData";
 
 
 export default class ProductsContainer extends React.PureComponent {
@@ -35,8 +36,9 @@ export default class ProductsContainer extends React.PureComponent {
       }
     }
   }
-
+  static contextType = DataContext;
   render() {
+    const { addToCart } = this.context;
     const { currencyIndex } = this.props;
     const { category } = this.state;
 
@@ -59,7 +61,9 @@ export default class ProductsContainer extends React.PureComponent {
               <Product.ProductPrice>
                 {item.prices[currencyIndex].currency.symbol}{item.prices[currencyIndex].amount}
               </Product.ProductPrice>
-              <Product.ProductCart>
+              <Product.ProductCart onClick={() => {
+                addToCart(item.id)
+              }}>
                 <Cart id="cart" />
               </Product.ProductCart>
             </Product.ProductItem>

@@ -23,7 +23,7 @@ export default class Price extends React.PureComponent {
   }
   static contextType = DataContext;
   render() {
-    const changeCurrency = this.context;
+    const { changeCurrency } = this.context;
     const { currencies } = this.state;
     const { priceshow, priceShowMethod } = this.props;
     if (!currencies) {

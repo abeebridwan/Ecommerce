@@ -1,5 +1,6 @@
 import React from "react";
 import { Cart } from "../components";
+import { DataContext } from "../context/contextData";
 
 export default class CartOverlayContainer extends React.PureComponent {
 
@@ -9,8 +10,10 @@ export default class CartOverlayContainer extends React.PureComponent {
       document.body.style.overflow = "hidden";
     }
   }
-
+  static contextType = DataContext;
   render() {
+    const { cartIdValues } = this.context;
+    console.log({ cartIdValues })
     const { cartshow, cartShowMethod } = this.props;
     return (
       <Cart>

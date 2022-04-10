@@ -55,7 +55,7 @@ export default class CartOverlayContainer extends React.PureComponent {
 
           <Cart.CartCheckOutBox>
             <Cart.CartViewBag><span>VIEW BAG</span></Cart.CartViewBag>
-            <Cart.CartCheckOut><span>CHECK OUT</span></Cart.CartCheckOut>
+            <Cart.CartCheckOut><span> CHECK OUT</span></Cart.CartCheckOut>
           </Cart.CartCheckOutBox>
         </Cart.CartFrame>
         <Cart.CartHeaderOverlay cartshow={cartshow} onClick={() => {

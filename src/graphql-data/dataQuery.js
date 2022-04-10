@@ -1,9 +1,10 @@
 export function categoryData(value) {
   return {
     query: `query($input: CategoryInput){
-    category(input:$input){
+    category(input:$input){      
       name,
       products{
+        id,
         name,
         inStock,
         gallery,

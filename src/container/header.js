@@ -16,8 +16,8 @@ export default class HeaderContainer extends React.PureComponent {
       active: sessionStorage.getItem("name") || "all",
       categories: null,
       priceshow: false,
-      cartshow: false,
-      error: null
+      cartshow: false
+      
     };
     this.priceShowMethod = this.priceShowMethod.bind(this);
     this.cartShowMethod = this.cartShowMethod.bind(this);
@@ -35,8 +35,7 @@ export default class HeaderContainer extends React.PureComponent {
     try {
       const { categories } = await getAllCategoriesNames();
       this.setState({ categories })
-    } catch (err) {
-      this.setState({ error: err.message || err.toString() });
+    } catch (err) {     
       console.log(err)
     }
   }

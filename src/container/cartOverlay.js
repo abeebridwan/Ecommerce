@@ -7,8 +7,7 @@ export default class CartOverlayContainer extends React.PureComponent {
   constructor(props) {
     super(props)
     this.state = {
-      cartValues: null,
-      error: null
+      cartValues: null      
     }
   }
 
@@ -23,8 +22,7 @@ export default class CartOverlayContainer extends React.PureComponent {
         })
         const cartValues = await Promise.all(cartValuesPromises)
         this.setState({ cartValues })
-      } catch (err) {
-        this.setState({ error: err.message || err.toString() })
+      } catch (err) {       
         console.log(err)
       }
     }

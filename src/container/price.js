@@ -7,8 +7,7 @@ export default class Price extends React.PureComponent {
   constructor(props) {
     super(props);
     this.state = {
-      currencies: null,
-      error: null
+      currencies: null      
     }
   }
 
@@ -16,8 +15,7 @@ export default class Price extends React.PureComponent {
     try {
       const { currencies } = await getPriceData();
       this.setState({ currencies })
-    } catch (err) {
-      this.setState({ error: err.message || err.toString() });
+    } catch (err) {      
       console.log(err)
     }
   }

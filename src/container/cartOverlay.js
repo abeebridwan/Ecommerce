@@ -26,7 +26,7 @@ export default class CartOverlayContainer extends React.PureComponent {
                   Apollo
                 </Cart.CartName>
                 <Cart.CartName id="brand">
-                  Running Short 
+                  Running Short
                 </Cart.CartName>
                 <Cart.CartPrice>
                   {"$50.00"}
@@ -39,9 +39,9 @@ export default class CartOverlayContainer extends React.PureComponent {
 
               <Cart.CartColumnTwo>
                 <Cart.CartSignBox>
-                  <Cart.CartAddSign><span>+</span></Cart.CartAddSign>
+                  <Cart.CartAddSign><span>&#43;</span></Cart.CartAddSign>
                   <Cart.CartValueSign>{1}</Cart.CartValueSign>
-                  <Cart.CartSubSign><span>-</span></Cart.CartSubSign>
+                  <Cart.CartSubSign><span>&#8722;</span></Cart.CartSubSign>
                 </Cart.CartSignBox>
                 <Cart.CartImage src="https://images.canadagoose.com/image/upload/w_480,c_scale,f_auto,q_auto:best/v1576016105/product-image/2409L_61.jpg" alt="cart Image" />
               </Cart.CartColumnTwo>

@@ -126,10 +126,11 @@ export const SignBox = styled.div`
   flex-direction: column;
   justify-content: space-between;
   font-family: 'Source Sans Pro', sans-serif;
+  line-height: 25.6px;
 `
 export const AddSign = styled.div`
   cursor: pointer;
-  font-size: 1.4rem; 
+  font-size: 2rem; 
   width: 2.4rem;
   height: 2.4rem;
   display: flex;
@@ -139,13 +140,12 @@ export const AddSign = styled.div`
 `
 export const ValueSign = styled.div`
   font-size: 1.6rem;
-  line-height: 25.6px;
   font-weight: 500;  
   margin: auto;
 `
 export const SubSign = styled.div`
   cursor: pointer;
-  font-size: 1.4rem;
+  font-size: 2rem;
   width: 2.4rem;
   height: 2.4rem;
   display: flex;

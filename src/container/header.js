@@ -17,7 +17,6 @@ export default class HeaderContainer extends React.PureComponent {
       categories: null,
       priceshow: false,
       cartshow: false
-      
     };
     this.priceShowMethod = this.priceShowMethod.bind(this);
     this.cartShowMethod = this.cartShowMethod.bind(this);
@@ -35,7 +34,7 @@ export default class HeaderContainer extends React.PureComponent {
     try {
       const { categories } = await getAllCategoriesNames();
       this.setState({ categories })
-    } catch (err) {     
+    } catch (err) {
       console.log(err)
     }
   }
@@ -110,7 +109,7 @@ export default class HeaderContainer extends React.PureComponent {
           <Layout.LayoutCartFrame >
             <Layout.LayoutCart onClick={() => {
               if (priceshow) { this.setState({ priceshow: !priceshow }) };
-              this.cartShowMethod(cartshow)
+              if (cartIdValues.length > 0) { this.cartShowMethod(cartshow) }
             }}>
               <Cart />
               <Layout.LayoutCartNumber></Layout.LayoutCartNumber>

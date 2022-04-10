@@ -120,10 +120,39 @@ export const ColumnTwo = styled.div`
   display: flex;
   width: 13.9rem;
 `
-export const SignBox = styled.div``
-export const AddSign = styled.div``
-export const ValueSign = styled.div``
-export const SubSign = styled.div``
+export const SignBox = styled.div`
+  margin-right: 1rem;
+  display: flex;
+  flex-direction: column;
+  justify-content: space-between;
+  font-family: 'Source Sans Pro', sans-serif;
+`
+export const AddSign = styled.div`
+  cursor: pointer;
+  font-size: 1.4rem; 
+  width: 2.4rem;
+  height: 2.4rem;
+  display: flex;
+  justify-content:center;
+  align-items: center; 
+  border: 1px solid #1D1F22;
+`
+export const ValueSign = styled.div`
+  font-size: 1.6rem;
+  line-height: 25.6px;
+  font-weight: 500;  
+  margin: auto;
+`
+export const SubSign = styled.div`
+  cursor: pointer;
+  font-size: 1.4rem;
+  width: 2.4rem;
+  height: 2.4rem;
+  display: flex;
+  justify-content:center;
+  align-items: center; 
+  border: 1px solid #1D1F22;
+`
 export const Image = styled.img`
   width: 10.5rem;
   height: 13.7rem;

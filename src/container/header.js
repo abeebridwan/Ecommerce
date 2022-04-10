@@ -49,7 +49,7 @@ export default class HeaderContainer extends React.PureComponent {
   }
 
   render() {
-    const { changeCategory } = this.props;
+    const { changeCategory, cartIdValues } = this.props;
     const { active, categories, priceshow, cartshow } = this.state;
 
     if (!categories) {
@@ -116,7 +116,7 @@ export default class HeaderContainer extends React.PureComponent {
               <Cart />
               <Layout.LayoutCartNumber></Layout.LayoutCartNumber>
             </Layout.LayoutCart>
-            {cartshow ? <CartOverlay cartshow={cartshow} cartShowMethod={this.cartShowMethod} /> : null}
+            {cartshow && cartIdValues.length > 0 ? <CartOverlay cartshow={cartshow} cartShowMethod={this.cartShowMethod} /> : null}
           </Layout.LayoutCartFrame>
         </Layout.LayoutColumnThree>
         {this.props.children}

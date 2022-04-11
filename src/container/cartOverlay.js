@@ -11,27 +11,10 @@ export default class CartOverlayContainer extends React.PureComponent {
     }
   }
 
-  cartIdKey() {
-    const { cartIdValues } = this.context;
-    let cartIdKeys = [];
-    for (let cartObj of cartIdValues) {
-      cartIdKeys = [...cartIdKeys, Object.keys(cartObj)]
-    }
-    return cartIdKeys
-  }
-
-  cartIdValue() {
-    const { cartIdValues } = this.context;
-    let CartIdValue = [];
-
-    for (let cartObj of cartIdValues) {
-      CartIdValue = [...CartIdValue, Object.values(cartObj)]
-    }
-    return CartIdValue
-  }
 
   async componentDidMount() {
-    const cartIdKey = this.cartIdKey();
+    const { cartIdValues } = this.context;    
+    const cartIdKey = Object.keys(cartIdValues);
     const { cartshow } = this.props;
 
     if (cartIdKey.length !== 0) {
@@ -60,8 +43,10 @@ export default class CartOverlayContainer extends React.PureComponent {
     }
 
     const { cartshow, cartShowMethod, currencyIndex, selected } = this.props;
-    const cartIdKeys = this.cartIdKey();
-    const cartIdValues = this.cartIdValue();
+    const { cartIdValues } = this.context;
+
+    const arrCartIdKeys = Object.keys(cartIdValues);
+    const arrCartIdValues = Object.values(cartIdValues);
 
 
     return (
@@ -108,8 +93,8 @@ export default class CartOverlayContainer extends React.PureComponent {
                   <Cart.CartSignBox>
                     <Cart.CartAddSign><span>&#43;</span></Cart.CartAddSign>
                     <Cart.CartValueSign>
-                      {cartIdKeys.map((cartKey, index) => (
-                        cartKey === item.product.id ? <> {cartIdValues[index]} </> : null
+                      {arrCartIdKeys.map((cartKey, index) => (
+                        cartKey === item.product.id ? arrCartIdValues[index] : null
                       ))}
                     </Cart.CartValueSign>
                     <Cart.CartSubSign><span>&#8722;</span></Cart.CartSubSign>

@@ -1,6 +1,8 @@
 import styled from 'styled-components/macro'
 
-export const Container = styled.div``
+export const Container = styled.div`
+  scroll-behavior: smooth;
+`
 
 export const HeaderOverlay = styled.div`
   max-width: 1440px;
@@ -38,6 +40,7 @@ export const Frame = styled.div`
     background-color: #fff;
     cursor: default;
     padding: 8px 16px;
+    scroll-behavior: smooth;
 `
 export const Heading = styled.div`  
   font-weight: 700;
@@ -78,6 +81,7 @@ export const ColumnOne = styled.div`
   }
   margin-right: 1.2rem;
   min-width: 16.4rem;
+  scroll-behavior: smooth;
 `
 export const Name = styled.p`
   line-height: 25.6px;

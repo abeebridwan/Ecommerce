@@ -9,7 +9,7 @@ export default class Plp extends React.PureComponent {
     this.state = {
       changeCategoryTo: sessionStorage.getItem("name") || "all",
       currencyIndex: localStorage.getItem("index") || 0,
-      cartIdValues: [],
+      cartIdValues: {},
       error: null
     };
     this.changeCategory = this.changeCategory.bind(this);
@@ -26,20 +26,13 @@ export default class Plp extends React.PureComponent {
   }
 
   addToCart(idValue) {
-    const { cartIdValues } = this.state;
-    let newCartIdValues = cartIdValues
-
-    for (let i = 0; i < newCartIdValues.length; i++) {
-      Object.keys(newCartIdValues[i])[0] === idValue ? newCartIdValues[i][idValue] += 1 : newCartIdValues[i][idValue] = 1
-    }
-
-    this.setState({ cartIdValues: newCartIdValues })
-    console.log('working here')
+    const { cartIdValues } = this.state;    
+    !cartIdValues[idValue] ? cartIdValues[idValue] = 1 : cartIdValues[idValue] += 1
+    this.setState({ cartIdValues })
   }
 
   render() {
     const { currencyIndex, changeCategoryTo, cartIdValues } = this.state;
-    console.log(cartIdValues)
     return (
       <DataContext.Provider value={{
         changeCurrency: this.changeCurrency,

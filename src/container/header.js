@@ -78,7 +78,7 @@ export default class HeaderContainer extends React.PureComponent {
           </Layout.LayoutMobileCategory>
 
           {categories.map((item) => (
-            <Layout.LayoutDesktopCategory key={item.name} active={item.name === active ? {} : null} onClick={() => {
+            <Layout.LayoutDesktopCategory key={item.name} active={item.name === active} onClick={() => {
               changeCategory(item.name)
               this.setState({ active: item.name });
               sessionStorage.setItem("name", item['name']);

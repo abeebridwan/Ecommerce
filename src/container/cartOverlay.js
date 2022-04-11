@@ -40,7 +40,7 @@ export default class CartOverlayContainer extends React.PureComponent {
       return null
     }
 
-    const { cartshow, cartShowMethod, currencyIndex } = this.props;
+    const { cartshow, cartShowMethod, currencyIndex, selected } = this.props;
     return (
       <Cart>
         <Cart.CartFrame cartshow={cartshow}>
@@ -61,10 +61,26 @@ export default class CartOverlayContainer extends React.PureComponent {
                   <Cart.CartPrice>
                     {item.product.prices[currencyIndex].currency.symbol}{item.product.prices[currencyIndex].amount}
                   </Cart.CartPrice>
-                  <Cart.CartAttributes>
-                    <Cart.CartBox><span>S</span></Cart.CartBox>
-                    <Cart.CartBox selected><span>M</span></Cart.CartBox>
-                  </Cart.CartAttributes>
+
+                  {item.product.attributes.map((objAttr) => (
+                    objAttr.type === "swatch" ?
+                      <Cart.CartAttributes key={objAttr.id}>
+                        {objAttr.items.map((attr) => (
+                          <Cart.CartBox key={attr.id} displayValue={attr.value} selected={selected === attr.displayValue} />
+                        ))}
+                      </Cart.CartAttributes> :
+                      <Cart.CartAttributes key={objAttr.id}>
+                        {objAttr.items.map((attr) => (
+                          <Cart.CartBox id="text" key={attr.id} selected={selected === attr.displayValue} text >
+                            <span>
+                              {attr.value}
+                            </span>
+                          </Cart.CartBox>
+                        ))
+                        }
+                      </Cart.CartAttributes>
+                  ))
+                  }
                 </Cart.CartColumnOne>
 
                 <Cart.CartColumnTwo>

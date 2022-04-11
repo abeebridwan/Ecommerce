@@ -49,7 +49,6 @@ export default class HeaderContainer extends React.PureComponent {
   render() {
     const { changeCategory, cartIdValues, currencyIndex } = this.props;
     const { active, categories, priceshow, cartshow } = this.state;
-
     if (!categories) {
       return null;
     }
@@ -78,7 +77,7 @@ export default class HeaderContainer extends React.PureComponent {
           </Layout.LayoutMobileCategory>
 
           {categories.map((item) => (
-            <Layout.LayoutDesktopCategory key={item.name} active={item.name === active ? {} : null} onClick={() => {
+            <Layout.LayoutDesktopCategory key={item.name} active={item.name === active} onClick={() => {
               changeCategory(item.name)
               this.setState({ active: item.name });
               sessionStorage.setItem("name", item['name']);
@@ -108,13 +107,13 @@ export default class HeaderContainer extends React.PureComponent {
 
           <Layout.LayoutCartFrame >
             <Layout.LayoutCart onClick={() => {
-              if (priceshow) { this.setState({ priceshow: !priceshow }) };
-              if (cartIdValues.length > 0) { this.cartShowMethod(cartshow) }
+              if (priceshow) { this.setState({ priceshow: !priceshow }) };              
+              if (Object.keys(cartIdValues).length > 0) { this.cartShowMethod(cartshow) }
             }}>
               <Cart />
               <Layout.LayoutCartNumber></Layout.LayoutCartNumber>
             </Layout.LayoutCart>
-            {cartshow && cartIdValues.length > 0 ? <CartOverlay cartshow={cartshow}
+            {cartshow && Object.keys(cartIdValues).length ? <CartOverlay cartshow={cartshow}
               cartShowMethod={this.cartShowMethod} currencyIndex={currencyIndex} /> : null}
           </Layout.LayoutCartFrame>
         </Layout.LayoutColumnThree>

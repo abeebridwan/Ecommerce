@@ -13,11 +13,13 @@ export default class CartOverlayContainer extends React.PureComponent {
 
   async componentDidMount() {
     const { cartIdValues } = this.context;
+
+    const cartIdKey = Object.keys(cartIdValues);
     const { cartshow } = this.props;
 
-    if (cartIdValues.length !== 0) {
+    if (cartIdKey.length !== 0) {
       try {
-        const cartValuesPromises = cartIdValues.map(async (item) => {
+        const cartValuesPromises = cartIdKey.map(async (item) => {
           return await getProductData(item)
         })
         const cartValues = await Promise.all(cartValuesPromises)
@@ -40,7 +42,13 @@ export default class CartOverlayContainer extends React.PureComponent {
       return null
     }
 
-    const { cartshow, cartShowMethod, currencyIndex } = this.props;
+    const { cartshow, cartShowMethod, currencyIndex, selected } = this.props;
+    const { cartIdValues } = this.context;
+
+    const arrCartIdKeys = Object.keys(cartIdValues);
+    const arrCartIdValues = Object.values(cartIdValues);
+
+
     return (
       <Cart>
         <Cart.CartFrame cartshow={cartshow}>
@@ -61,16 +69,34 @@ export default class CartOverlayContainer extends React.PureComponent {
                   <Cart.CartPrice>
                     {item.product.prices[currencyIndex].currency.symbol}{item.product.prices[currencyIndex].amount}
                   </Cart.CartPrice>
-                  <Cart.CartAttributes>
-                    <Cart.CartBox><span>S</span></Cart.CartBox>
-                    <Cart.CartBox selected><span>M</span></Cart.CartBox>
-                  </Cart.CartAttributes>
+
+                  {item.product.attributes.map((objAttr) => (
+                    objAttr.type === "swatch" ?
+                      <Cart.CartAttributes key={objAttr.id}>
+                        {objAttr.items.map((attr) => (
+                          <Cart.CartBox key={attr.id} displayValue={attr.value} selected={selected === attr.displayValue} />
+                        ))}
+                      </Cart.CartAttributes> :
+                      <Cart.CartAttributes key={objAttr.id}>
+                        {objAttr.items.map((attr) => (
+                          <Cart.CartBox id="text" key={attr.id} selected={selected === attr.displayValue} text >
+                            <span>
+                              {attr.value}
+                            </span>
+                          </Cart.CartBox>
+                        ))}
+                      </Cart.CartAttributes>
+                  ))}
                 </Cart.CartColumnOne>
 
                 <Cart.CartColumnTwo>
                   <Cart.CartSignBox>
                     <Cart.CartAddSign><span>&#43;</span></Cart.CartAddSign>
-                    <Cart.CartValueSign>{1}</Cart.CartValueSign>
+                    <Cart.CartValueSign>
+                      {arrCartIdKeys.map((cartKey, index) => (
+                        cartKey === item.product.id ? arrCartIdValues[index] : null
+                      ))}
+                    </Cart.CartValueSign>
                     <Cart.CartSubSign><span>&#8722;</span></Cart.CartSubSign>
                   </Cart.CartSignBox>
                   <Cart.CartImage src={item.product.gallery[0]} alt={item.product.id} />

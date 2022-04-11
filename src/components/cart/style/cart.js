@@ -1,6 +1,8 @@
 import styled from 'styled-components/macro'
 
-export const Container = styled.div``
+export const Container = styled.div`
+  scroll-behavior: smooth;
+`
 
 export const HeaderOverlay = styled.div`
   max-width: 1440px;
@@ -38,6 +40,7 @@ export const Frame = styled.div`
     background-color: #fff;
     cursor: default;
     padding: 8px 16px;
+    scroll-behavior: smooth;
 `
 export const Heading = styled.div`  
   font-weight: 700;
@@ -76,8 +79,9 @@ export const ColumnOne = styled.div`
   width: 0;
   height: 0;
   }
-  margin-right: 1.8rem;
-  min-width: 13.6rem;
+  margin-right: 1.2rem;
+  min-width: 16.4rem;
+  scroll-behavior: smooth;
 `
 export const Name = styled.p`
   line-height: 25.6px;
@@ -101,16 +105,27 @@ export const Box = styled.div`
   line-height: 22.4px;
   font-size: 1.4rem;
   font-family: 'Source Sans Pro', sans-serif;
-  border: ${({ selected }) => (selected ? '1px solid #A6A6A6' : '1px solid #1D1F22')};
-  width: 2.4rem;
+  min-width: 2.4rem;
   height: 2.4rem;
   display: flex;
   justify-content:center;
   align-items: center; 
-  margin-right:8px;
-  background-color: ${({ selected }) => (selected && '#f7f5f0')}; 
+  margin-top: .4rem;
+  margin-right: 8px;
+  background-color: ${({ selected, text }) => (selected && text && '#f7f5f0')}; 
+  background-color: ${({ displayValue }) => (displayValue && displayValue)}; 
+  border: ${({ displayValue }) => (displayValue === "#FFFFFF" ? '1px solid #1D1F22' : displayValue)};  
+  border: ${({ selected, displayValue }) => (selected && displayValue && '1px solid #e333')};  
+  
+  &#text{
+    padding: 0 .1rem;
+    border: ${({ selected, text }) => (selected && text ? '1px solid #A6A6A6' : '1px solid #1D1F22')};
+  }
   & span{
     color: ${({ selected }) => (selected && '#A6A6A6')};
+  }
+  &:first{
+    margin-top: 0
   }
 `
 
@@ -180,7 +195,7 @@ export const ViewBag = styled.div`
   display: flex;
   justify-content:center;
   align-items: center; 
-  width: 14rem;
+  width: 14.7rem;
   height: 4.3rem;  
   border: 1px solid #1D1F22;
 `
@@ -189,7 +204,7 @@ export const CheckOut = styled.div`
   display: flex;
   justify-content:center;
   align-items: center; 
-  width: 14rem;
+  width: 14.7rem;
   height: 4.3rem;
   color: #fff;    
   border: 1px solid #5ECE7B;

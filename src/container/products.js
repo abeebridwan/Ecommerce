@@ -9,7 +9,7 @@ export default class ProductsContainer extends React.PureComponent {
   constructor(props) {
     super(props);
     this.state = {
-      category: null     
+      category: null
     }
   }
   async componentDidMount() {
@@ -28,7 +28,7 @@ export default class ProductsContainer extends React.PureComponent {
         const { changeCategoryTo } = this.props;
         const { category } = await getCategoryApiMethod(changeCategoryTo)
         this.setState({ category })
-      } catch (err) {        
+      } catch (err) {
         console.log(err)
       }
     }

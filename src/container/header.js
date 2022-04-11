@@ -49,7 +49,7 @@ export default class HeaderContainer extends React.PureComponent {
   render() {
     const { changeCategory, cartIdValues, currencyIndex } = this.props;
     const { active, categories, priceshow, cartshow } = this.state;
-
+    console.log({ cartIdValues })
     if (!categories) {
       return null;
     }

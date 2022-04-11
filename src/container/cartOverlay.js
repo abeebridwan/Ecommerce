@@ -11,13 +11,32 @@ export default class CartOverlayContainer extends React.PureComponent {
     }
   }
 
-  async componentDidMount() {
+  cartIdKey() {
     const { cartIdValues } = this.context;
+    let cartIdKeys = [];
+    for (let cartObj of cartIdValues) {
+      cartIdKeys = [...cartIdKeys, Object.keys(cartObj)]
+    }
+    return cartIdKeys
+  }
+
+  cartIdValue() {
+    const { cartIdValues } = this.context;
+    let CartIdValue = [];
+
+    for (let cartObj of cartIdValues) {
+      CartIdValue = [...CartIdValue, Object.values(cartObj)]
+    }
+    return CartIdValue
+  }
+
+  async componentDidMount() {
+    const cartIdKey = this.cartIdKey();
     const { cartshow } = this.props;
 
-    if (cartIdValues.length !== 0) {
+    if (cartIdKey.length !== 0) {
       try {
-        const cartValuesPromises = cartIdValues.map(async (item) => {
+        const cartValuesPromises = cartIdKey.map(async (item) => {
           return await getProductData(item)
         })
         const cartValues = await Promise.all(cartValuesPromises)
@@ -41,6 +60,10 @@ export default class CartOverlayContainer extends React.PureComponent {
     }
 
     const { cartshow, cartShowMethod, currencyIndex, selected } = this.props;
+    const cartIdKeys = this.cartIdKey();
+    const cartIdValues = this.cartIdValue();
+
+
     return (
       <Cart>
         <Cart.CartFrame cartshow={cartshow}>
@@ -76,17 +99,19 @@ export default class CartOverlayContainer extends React.PureComponent {
                               {attr.value}
                             </span>
                           </Cart.CartBox>
-                        ))
-                        }
+                        ))}
                       </Cart.CartAttributes>
-                  ))
-                  }
+                  ))}
                 </Cart.CartColumnOne>
 
                 <Cart.CartColumnTwo>
                   <Cart.CartSignBox>
                     <Cart.CartAddSign><span>&#43;</span></Cart.CartAddSign>
-                    <Cart.CartValueSign>{1}</Cart.CartValueSign>
+                    <Cart.CartValueSign>
+                      {cartIdKeys.map((cartKey, index) => (
+                        cartKey === item.product.id ? <> {cartIdValues[index]} </> : null
+                      ))}
+                    </Cart.CartValueSign>
                     <Cart.CartSubSign><span>&#8722;</span></Cart.CartSubSign>
                   </Cart.CartSignBox>
                   <Cart.CartImage src={item.product.gallery[0]} alt={item.product.id} />

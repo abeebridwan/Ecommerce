@@ -27,18 +27,26 @@ export default class Plp extends React.PureComponent {
 
   addToCart(idValue) {
     const { cartIdValues } = this.state;
-    this.setState({ cartIdValues: [...cartIdValues, idValue] })
+    let newCartIdValues = cartIdValues
+
+    for (let i = 0; i < newCartIdValues.length; i++) {
+      Object.keys(newCartIdValues[i])[0] === idValue ? newCartIdValues[i][idValue] += 1 : newCartIdValues[i][idValue] = 1
+    }
+
+    this.setState({ cartIdValues: newCartIdValues })
+    console.log('working here')
   }
 
   render() {
     const { currencyIndex, changeCategoryTo, cartIdValues } = this.state;
+    console.log(cartIdValues)
     return (
       <DataContext.Provider value={{
         changeCurrency: this.changeCurrency,
         addToCart: this.addToCart,
         cartIdValues: cartIdValues
       }}>
-        <HeaderContainer changeCategory={this.changeCategory} cartIdValues = {cartIdValues} currencyIndex ={currencyIndex}/>
+        <HeaderContainer changeCategory={this.changeCategory} cartIdValues={cartIdValues} currencyIndex={currencyIndex} />
         <ProductsContainer changeCategoryTo={changeCategoryTo} currencyIndex={currencyIndex} />
       </DataContext.Provider>
     )

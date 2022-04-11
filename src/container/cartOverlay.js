@@ -32,6 +32,7 @@ export default class CartOverlayContainer extends React.PureComponent {
     }
   }
   static contextType = DataContext;
+
   render() {
     const { cartValues } = this.state;
 
@@ -39,7 +40,7 @@ export default class CartOverlayContainer extends React.PureComponent {
       return null
     }
 
-    const { cartshow, cartShowMethod } = this.props;
+    const { cartshow, cartShowMethod, currencyIndex } = this.props;
     return (
       <Cart>
         <Cart.CartFrame cartshow={cartshow}>
@@ -58,7 +59,7 @@ export default class CartOverlayContainer extends React.PureComponent {
                     {item.product.brand}
                   </Cart.CartName>
                   <Cart.CartPrice>
-                    {item.product.prices[0].currency.symbol}{item.product.prices[0].amount}
+                    {item.product.prices[currencyIndex].currency.symbol}{item.product.prices[currencyIndex].amount}
                   </Cart.CartPrice>
                   <Cart.CartAttributes>
                     <Cart.CartBox><span>S</span></Cart.CartBox>

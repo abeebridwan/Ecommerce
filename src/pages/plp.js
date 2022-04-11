@@ -38,7 +38,7 @@ export default class Plp extends React.PureComponent {
         addToCart: this.addToCart,
         cartIdValues: cartIdValues
       }}>
-        <HeaderContainer changeCategory={this.changeCategory} cartIdValues = {cartIdValues}/>
+        <HeaderContainer changeCategory={this.changeCategory} cartIdValues = {cartIdValues} currencyIndex ={currencyIndex}/>
         <ProductsContainer changeCategoryTo={changeCategoryTo} currencyIndex={currencyIndex} />
       </DataContext.Provider>
     )

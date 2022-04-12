@@ -122,8 +122,9 @@ export const CartNumber = styled.span`
   background-color: #1D1F22;
   color: #fff;
   border-radius: 50%;
-  width: 2rem;
-  height: 2rem;
+  padding: .2rem;
+  min-width: 2rem;
+  nin-height: 2rem;
   display: flex;
   justify-content: center;
   align-items: center;

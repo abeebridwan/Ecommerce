@@ -43,13 +43,14 @@ export default class CartOverlayContainer extends React.PureComponent {
 
     const { cartshow, cartShowMethod, currencyIndex, selected } = this.props;
     const { cartIdValues, addRemoveFromCart } = this.context;
+    const cartNumber = Object.values(cartIdValues).reduce((a, b) => { return a + b }, 0)
 
 
     return (
       <Cart>
         <Cart.CartFrame cartshow={cartshow}>
           <Cart.CartHeading>
-            My Bag, <span>{0} items</span>
+            My Bag, <span>{cartNumber || 0} items</span>
           </Cart.CartHeading>
 
           <Cart.CartFrameBody>

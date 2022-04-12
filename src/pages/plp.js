@@ -3,7 +3,7 @@ import HeaderContainer from '../container/header';
 import ProductsContainer from '../container/products';
 import { DataContext } from "../context/contextData";
 
-export default class Plp extends React.PureComponent {
+export default class Plp extends React.Component {
   constructor(props) {
     super(props)
     this.state = {
@@ -36,8 +36,7 @@ export default class Plp extends React.PureComponent {
     }
 
     localStorage.setItem("cartIdValues", JSON.stringify(cartIdValues))
-    this.setState({ cartIdValues })
-    this.forceUpdate()
+    this.setState({ cartIdValues })   
   }
 
   render() {

@@ -42,7 +42,7 @@ export default class ProductsContainer extends React.PureComponent {
     }
 
     const { name, products } = category;
-    const { addToCart } = this.context;
+    const { addRemoveFromCart } = this.context;
     const { currencyIndex } = this.props;
 
 
@@ -62,7 +62,7 @@ export default class ProductsContainer extends React.PureComponent {
                 {item.prices[currencyIndex].currency.symbol}{item.prices[currencyIndex].amount}
               </Product.ProductPrice>
               <Product.ProductCart onClick={() => {
-                addToCart(item.id)
+                addRemoveFromCart(item.id)
               }}>
                 <Cart id="cart" />
               </Product.ProductCart>

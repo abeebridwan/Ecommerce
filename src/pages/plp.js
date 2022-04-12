@@ -14,7 +14,7 @@ export default class Plp extends React.PureComponent {
     };
     this.changeCategory = this.changeCategory.bind(this);
     this.changeCurrency = this.changeCurrency.bind(this);
-    this.addToCart = this.addToCart.bind(this)
+    this.addRemoveFromCart = this.addRemoveFromCart.bind(this)
   }
 
   changeCurrency(currencyIndex) {
@@ -25,9 +25,20 @@ export default class Plp extends React.PureComponent {
     this.setState({ changeCategoryTo })
   }
 
-  addToCart(idValue) {
+  addRemoveFromCart(idValue, decrement = false) {
     const { cartIdValues } = this.state;
-    !cartIdValues[idValue] ? cartIdValues[idValue] = 1 : cartIdValues[idValue] += 1;
+    console.log((idValue))
+    console.log((cartIdValues))
+    if (decrement) {
+      cartIdValues[idValue] -= 1;
+      console.log({ decrement })
+      if (cartIdValues[idValue] === 0) {
+        delete cartIdValues[idValue]
+      }
+    } else {
+      !cartIdValues[idValue] && !decrement ? cartIdValues[idValue] = 1 : cartIdValues[idValue] += 1;
+    }
+
     localStorage.setItem("cartIdValues", JSON.stringify(cartIdValues))
     this.setState({ cartIdValues })
     this.forceUpdate()
@@ -38,7 +49,7 @@ export default class Plp extends React.PureComponent {
     return (
       <DataContext.Provider value={{
         changeCurrency: this.changeCurrency,
-        addToCart: this.addToCart,
+        addRemoveFromCart: this.addRemoveFromCart,
         cartIdValues: cartIdValues
       }}>
         <HeaderContainer changeCategory={this.changeCategory} currencyIndex={currencyIndex} />

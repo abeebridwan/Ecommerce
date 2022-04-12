@@ -122,14 +122,14 @@ export const CartNumber = styled.span`
   background-color: #1D1F22;
   color: #fff;
   border-radius: 50%;
-  padding: .2rem;
-  min-width: 2rem;
-  nin-height: 2rem;
+  padding: .2rem .3rem .15rem .2rem;
+  min-width: 2.1rem;
+  min-height: 2.1rem;
   display: flex;
   justify-content: center;
   align-items: center;
   font-weight: bold;
   font-family: 'Roboto', sans-serif;
-  line-height: 16.41px;
+  line-height: 10.41px;
   font-size: 1.4rem
 `

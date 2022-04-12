@@ -1,10 +1,10 @@
 import React from 'react'
+import { BrowserRouter as Router, Route, Routes } from 'react-router-dom';
 import Plp from './pages/plp';
 import Cart from "./pages/cart"
 //import Pdp from "./pages/Pdp"
 //import Cart from "./pages/cart"
 //import Cart from "./pages/checkout"
-import { BrowserRouter as Router, Route, Routes } from 'react-router-dom';
 class App extends React.PureComponent {
   render() {
     return (

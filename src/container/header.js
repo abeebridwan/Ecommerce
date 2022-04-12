@@ -119,7 +119,7 @@ export default class HeaderContainer extends React.PureComponent {
               <Cart />
               {cartNumber ?
                 <Layout.LayoutCartNumber>
-                  {cartNumber}
+                  <span>{cartNumber}</span>
                 </Layout.LayoutCartNumber> :
                 null
               }

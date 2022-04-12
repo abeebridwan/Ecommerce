@@ -11,7 +11,6 @@ export default class CartOverlayContainer extends React.PureComponent {
     }
   }
 
-
   async componentDidMount() {
     const { cartIdValues } = this.context;
     const cartIdKey = Object.keys(cartIdValues);
@@ -65,7 +64,8 @@ export default class CartOverlayContainer extends React.PureComponent {
                     {item.product.brand}
                   </Cart.CartName>
                   <Cart.CartPrice>
-                    {item.product.prices[currencyIndex].currency.symbol}{item.product.prices[currencyIndex].amount}
+                    {item.product.prices[currencyIndex].currency.symbol}
+                    {Math.round((item.product.prices[currencyIndex].amount * cartIdValues[item.product.id]) * 100 + Number.EPSILON) / 100}
                   </Cart.CartPrice>
 
                   {item.product.attributes.map((objAttr) => (

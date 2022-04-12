@@ -117,4 +117,20 @@ export const CartFrame = styled.span`
   `
 export const Cart = styled.span``
 
-export const CartNumber = styled.span``
+export const CartNumber = styled.span`
+  position : absolute;
+  top: -14px;
+  right: -12px;
+  background-color: #1D1F22;
+  color: #fff;
+  border-radius: 50%;
+  width: 2rem;
+  height: 2rem;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  font-weight: bold;
+  font-family: 'Roboto', sans-serif;
+  line-height: 16.41px;
+  font-size: 1.4rem
+`

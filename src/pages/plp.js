@@ -26,9 +26,10 @@ export default class Plp extends React.PureComponent {
   }
 
   addToCart(idValue) {
-    const { cartIdValues } = this.state;    
+    const { cartIdValues } = this.state;
     !cartIdValues[idValue] ? cartIdValues[idValue] = 1 : cartIdValues[idValue] += 1
     this.setState({ cartIdValues })
+    this.forceUpdate()
   }
 
   render() {
@@ -39,7 +40,7 @@ export default class Plp extends React.PureComponent {
         addToCart: this.addToCart,
         cartIdValues: cartIdValues
       }}>
-        <HeaderContainer changeCategory={this.changeCategory} cartIdValues={cartIdValues} currencyIndex={currencyIndex} />
+        <HeaderContainer changeCategory={this.changeCategory} currencyIndex={currencyIndex} />
         <ProductsContainer changeCategoryTo={changeCategoryTo} currencyIndex={currencyIndex} />
       </DataContext.Provider>
     )

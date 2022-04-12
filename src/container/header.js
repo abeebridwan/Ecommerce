@@ -8,7 +8,7 @@ import { ReactComponent as Cart } from '../assets/Cart.svg'
 import { getAllCategoriesNames } from '../graphql-data/sendRequest';
 import PriceDropdown from "./price";
 import CartOverlay from "./cartOverlay";
-
+import { DataContext } from "../context/contextData";
 export default class HeaderContainer extends React.PureComponent {
   constructor(props) {
     super(props)
@@ -16,7 +16,7 @@ export default class HeaderContainer extends React.PureComponent {
       active: sessionStorage.getItem("name") || "all",
       categories: null,
       priceshow: false,
-      cartshow: false
+      cartshow: false,
     };
     this.priceShowMethod = this.priceShowMethod.bind(this);
     this.cartShowMethod = this.cartShowMethod.bind(this);
@@ -45,13 +45,18 @@ export default class HeaderContainer extends React.PureComponent {
       document.body.style.overflow = "unset";
     }
   }
+  static contextType = DataContext;
 
   render() {
-    const { changeCategory, cartIdValues, currencyIndex } = this.props;
+
+    const { changeCategory, currencyIndex } = this.props;
     const { active, categories, priceshow, cartshow } = this.state;
     if (!categories) {
       return null;
     }
+
+    const { cartIdValues } = this.context;
+    const cartNumber = Object.values(cartIdValues).reduce((a, b) => { return a + b }, 0)
     return (
       <Layout>
         <Layout.LayoutColumnOne>
@@ -107,11 +112,16 @@ export default class HeaderContainer extends React.PureComponent {
 
           <Layout.LayoutCartFrame >
             <Layout.LayoutCart onClick={() => {
-              if (priceshow) { this.setState({ priceshow: !priceshow }) };              
+              if (priceshow) { this.setState({ priceshow: !priceshow }) };
               if (Object.keys(cartIdValues).length > 0) { this.cartShowMethod(cartshow) }
             }}>
               <Cart />
-              <Layout.LayoutCartNumber></Layout.LayoutCartNumber>
+              {cartNumber ?
+                <Layout.LayoutCartNumber>
+                  {cartNumber}
+                </Layout.LayoutCartNumber> :
+                null
+              }
             </Layout.LayoutCart>
             {cartshow && Object.keys(cartIdValues).length ? <CartOverlay cartshow={cartshow}
               cartShowMethod={this.cartShowMethod} currencyIndex={currencyIndex} /> : null}

@@ -189,6 +189,9 @@ export const CheckOutBox = styled.div`
   font-size: 1.4rem;
   font-weight: bold;
   line-height: 16.8px;
+  & a{
+    all: unset
+  }
 `
 export const ViewBag = styled.div`
   cursor: pointer;
@@ -200,7 +203,7 @@ export const ViewBag = styled.div`
   border: 1px solid #1D1F22;
   &:hover{
     opacity: .4
-  }
+  }  
 `
 export const CheckOut = styled.div`
   cursor: pointer;

@@ -2,7 +2,7 @@ import React from "react";
 import { Cart } from "../components";
 import { DataContext } from "../context/contextData";
 import { getProductData } from "../graphql-data/sendRequest";
-
+import { Link } from "react-router-dom";
 export default class CartOverlayContainer extends React.PureComponent {
   constructor(props) {
     super(props)
@@ -123,7 +123,7 @@ export default class CartOverlayContainer extends React.PureComponent {
           </Cart.CartTotal>
 
           <Cart.CartCheckOutBox>
-            <Cart.CartViewBag><span>VIEW BAG</span></Cart.CartViewBag>
+            <Link to="/cart"><Cart.CartViewBag><span>VIEW BAG</span></Cart.CartViewBag></Link>
             <Cart.CartCheckOut><span> CHECK OUT</span></Cart.CartCheckOut>
           </Cart.CartCheckOutBox>
         </Cart.CartFrame>

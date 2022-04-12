@@ -46,9 +46,6 @@ export default class CartOverlayContainer extends React.PureComponent {
     const { cartshow, cartShowMethod, currencyIndex, selected } = this.props;
     const { cartIdValues, addRemoveFromCart } = this.context;
 
-    const arrCartIdKeys = Object.keys(cartIdValues);
-    const arrCartIdValues = Object.values(cartIdValues);
-
 
     return (
       <Cart>
@@ -59,7 +56,7 @@ export default class CartOverlayContainer extends React.PureComponent {
 
           <Cart.CartFrameBody>
             {cartValues.map((item) => (
-              <Cart.CartItem key={item.product.id}>
+              <Cart.CartItem key={item.product.id} hide={!cartIdValues[item.product.id] || false} >
                 <Cart.CartColumnOne>
                   <Cart.CartName>
                     {item.product.name}
@@ -98,13 +95,12 @@ export default class CartOverlayContainer extends React.PureComponent {
                       }}
                     ><span>&#43;</span></Cart.CartAddSign>
                     <Cart.CartValueSign>
-                      {arrCartIdKeys.map((cartKey, index) => (
-                        cartKey === item.product.id ? arrCartIdValues[index] : null
-                      ))}
+                      {cartIdValues[item.product.id] || 0}
                     </Cart.CartValueSign>
                     <Cart.CartSubSign
                       onClick={() => {
                         addRemoveFromCart(item.product.id, true)
+                        if (Object.keys(cartIdValues).length < 1) { cartShowMethod(cartshow) }
                       }}
                     ><span>&#8722;</span></Cart.CartSubSign>
                   </Cart.CartSignBox>

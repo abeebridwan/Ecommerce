@@ -27,14 +27,10 @@ export default class Plp extends React.PureComponent {
 
   addRemoveFromCart(idValue, decrement = false) {
     const { cartIdValues } = this.state;
-    console.log((idValue))
-    console.log((cartIdValues))
     if (decrement) {
+      if (!cartIdValues[idValue]) { return }
       cartIdValues[idValue] -= 1;
-      console.log({ decrement })
-      if (cartIdValues[idValue] === 0) {
-        delete cartIdValues[idValue]
-      }
+      if (cartIdValues[idValue] === 0) { delete cartIdValues[idValue] }
     } else {
       !cartIdValues[idValue] && !decrement ? cartIdValues[idValue] = 1 : cartIdValues[idValue] += 1;
     }

@@ -61,9 +61,9 @@ export const FrameBody = styled.div`
   height: 31.5rem;  
 `
 export const Item = styled.div`
-  display: flex;
+  display: ${({ hide }) => (hide ? "none" : "flex")}; 
   height: 13.7rem;   
-  margin-bottom: 4.1rem;
+  margin-bottom: ${({ hide }) => (hide ? 0 : "4.1rem")};;
   &:last-child{
     margin-bottom: 0    
   }`

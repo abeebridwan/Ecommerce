@@ -9,7 +9,7 @@ export default class Plp extends React.PureComponent {
     this.state = {
       changeCategoryTo: sessionStorage.getItem("name") || "all",
       currencyIndex: localStorage.getItem("index") || 0,
-      cartIdValues: {},
+      cartIdValues: JSON.parse(localStorage.getItem("cartIdValues")) || {},
       error: null
     };
     this.changeCategory = this.changeCategory.bind(this);
@@ -27,7 +27,8 @@ export default class Plp extends React.PureComponent {
 
   addToCart(idValue) {
     const { cartIdValues } = this.state;
-    !cartIdValues[idValue] ? cartIdValues[idValue] = 1 : cartIdValues[idValue] += 1
+    !cartIdValues[idValue] ? cartIdValues[idValue] = 1 : cartIdValues[idValue] += 1;
+    localStorage.setItem("cartIdValues", JSON.stringify(cartIdValues))
     this.setState({ cartIdValues })
     this.forceUpdate()
   }

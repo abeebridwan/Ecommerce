@@ -9,8 +9,7 @@ export default class Plp extends React.Component {
     this.state = {
       changeCategoryTo: sessionStorage.getItem("name") || "all",
       currencyIndex: localStorage.getItem("index") || 0,
-      cartIdValues: JSON.parse(localStorage.getItem("cartIdValues")) || {},
-      error: null
+      cartIdValues: JSON.parse(localStorage.getItem("cartIdValues")) || {}      
     };
     this.changeCategory = this.changeCategory.bind(this);
     this.changeCurrency = this.changeCurrency.bind(this);

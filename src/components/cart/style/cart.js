@@ -101,7 +101,6 @@ export const Attributes = styled.div`
   flex-wrap: wrap;
 `
 export const Box = styled.div`
-  cursor: pointer;
   line-height: 22.4px;
   font-size: 1.4rem;
   font-family: 'Source Sans Pro', sans-serif;

@@ -13,7 +13,7 @@ export default class CartOverlayContainer extends React.PureComponent {
 
 
   async componentDidMount() {
-    const { cartIdValues } = this.context;    
+    const { cartIdValues } = this.context;
     const cartIdKey = Object.keys(cartIdValues);
     const { cartshow } = this.props;
 
@@ -31,6 +31,7 @@ export default class CartOverlayContainer extends React.PureComponent {
 
     if (cartshow) {
       document.body.style.overflow = "hidden";
+      document.body.style["padding-right"] = "15px"
     }
   }
   static contextType = DataContext;

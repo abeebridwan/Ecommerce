@@ -43,6 +43,7 @@ export default class HeaderContainer extends React.PureComponent {
     const { cartshow } = this.state;
     if (!cartshow) {
       document.body.style.overflow = "unset";
+      document.body.style["padding-right"] = "0"
     }
   }
   static contextType = DataContext;

@@ -19,9 +19,7 @@ export const ColumnOne = styled.span`
   display: flex;    
 `;
 
-export const ColumnTwo = styled.span`
-  cursor: pointer;
-`;
+export const ColumnTwo = styled.span``;
 export const ColumnThree = styled.span``;
 
 export const MobileCategory = styled.span`  

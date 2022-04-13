@@ -9,12 +9,15 @@ export default class ProductsContainer extends React.PureComponent {
   constructor(props) {
     super(props);
     this.state = {
+      changeCategoryToValue: "all",
       category: null
     }
   }
+  static contextType = DataContext;
+
   async componentDidMount() {
     try {
-      const { changeCategoryTo } = this.props;
+      const { changeCategoryTo } = this.context;
       const { category } = await getCategoryApiMethod(changeCategoryTo)
       this.setState({ category })
     } catch (err) {
@@ -22,18 +25,19 @@ export default class ProductsContainer extends React.PureComponent {
     }
   }
 
-  async componentDidUpdate(prevProps) {
-    if (prevProps.changeCategoryTo !== this.props.changeCategoryTo) {
+  async componentDidUpdate() {
+    const { changeCategoryTo } = this.context;
+    let { changeCategoryToValue } = this.state
+    if (changeCategoryTo !== changeCategoryToValue) {
       try {
-        const { changeCategoryTo } = this.props;
         const { category } = await getCategoryApiMethod(changeCategoryTo)
-        this.setState({ category })
+        changeCategoryToValue = changeCategoryTo;
+        this.setState({ category, changeCategoryToValue })
       } catch (err) {
         console.log(err)
       }
     }
   }
-  static contextType = DataContext;
   render() {
     const { category } = this.state;
 
@@ -42,8 +46,7 @@ export default class ProductsContainer extends React.PureComponent {
     }
 
     const { name, products } = category;
-    const { addRemoveFromCart } = this.context;
-    const { currencyIndex } = this.props;
+    const { addRemoveFromCart, currencyIndex } = this.context;
 
 
     return (

@@ -10,6 +10,8 @@ import { getAllCategoriesNames } from '../graphql-data/sendRequest';
 import PriceDropdown from "./price";
 import CartOverlay from "./cartOverlay";
 import { DataContext } from "../context/contextData";
+import { Link } from "react-router-dom";
+
 export default class HeaderContainer extends React.PureComponent {
   constructor(props) {
     super(props)
@@ -69,6 +71,7 @@ export default class HeaderContainer extends React.PureComponent {
 
               <Layout.LayoutDropdownMenu className="dropDownMenu">
                 {categories.map((item) => (
+                  <Link to="/" key={item.name}>
                   <Layout.LayoutMobileCategory key={item.name} className='dropItem' onClick={() => {
                     changeCategory(item.name);
                     sessionStorage.setItem("name", item['name']);
@@ -77,20 +80,23 @@ export default class HeaderContainer extends React.PureComponent {
                       {item.name}
                     </Layout.LayoutCategoryText>
                   </Layout.LayoutMobileCategory>
+                  </Link>
                 ))}
               </Layout.LayoutDropdownMenu>
             </Layout.LayoutMobileCategory>
 
             {categories.map((item) => (
-              <Layout.LayoutDesktopCategory key={item.name} active={item.name === active} onClick={() => {
-                changeCategory(item.name)
-                this.setState({ active: item.name });
-                sessionStorage.setItem("name", item['name']);
-              }}>
-                <Layout.LayoutCategoryText>
-                  {item.name}
-                </Layout.LayoutCategoryText>
-              </Layout.LayoutDesktopCategory>
+              <Link to="/" key={item.name}>
+                <Layout.LayoutDesktopCategory key={item.name} active={item.name === active} onClick={() => {
+                  changeCategory(item.name)
+                  this.setState({ active: item.name });
+                  sessionStorage.setItem("name", item['name']);
+                }}>
+                  <Layout.LayoutCategoryText>
+                    {item.name}
+                  </Layout.LayoutCategoryText>
+                </Layout.LayoutDesktopCategory>
+              </Link>
             ))}
           </Layout.LayoutColumnOne>
 

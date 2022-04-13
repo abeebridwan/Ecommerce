@@ -122,7 +122,7 @@ export const Box = styled.div`
   align-items: center; 
   margin-top: .4rem;
   margin-right: 8px;  
-  padding: 0 .1rem;
+  padding: 0 .4rem;
   border: 1px solid #1D1F22;
   opacity: ${({ selected }) => (selected ? 1 : .4)}; 
   background-color: ${({ displayValue }) => (displayValue && displayValue)}; 

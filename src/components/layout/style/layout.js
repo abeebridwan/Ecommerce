@@ -17,6 +17,9 @@ export const Container = styled.div`
 
 export const ColumnOne = styled.span`    
   display: flex;    
+  & a{
+    all: unset
+  }   
 `;
 
 export const ColumnTwo = styled.span``;
@@ -78,7 +81,7 @@ export const DesktopCategory = styled.span`
   & span{
     font-weight: ${({ active }) => (active && '600 !important;')};  
   }
-  ${Media('min-width', "650px", ['display: flex'])};    
+  ${Media('min-width', "650px", ['display: flex'])};  
 `
 
 export const CategoryText = styled.span` 

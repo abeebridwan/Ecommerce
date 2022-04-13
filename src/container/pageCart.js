@@ -36,10 +36,10 @@ export default class CartContainer extends React.PureComponent {
     const { selected, currencyIndex, cartIdValues, addRemoveFromCart } = this.context;
     return (
       <PageCart>
-        <PageCart.CartPageHeader>CART</PageCart.CartPageHeader>
         <PageCart.CartPageFrame>
+          <PageCart.CartPageHeader>CART</PageCart.CartPageHeader>
           {cartValues.map((item) => (
-            <PageCart.CartPageItem key={item.product.id} hide={!cartIdValues[item.product.id] || false}>
+            <PageCart.CartPageItem class="item" key={item.product.id} hide={!cartIdValues[item.product.id] || false}>
               <PageCart.CartPageColumnOne>
                 <PageCart.CartPageName>
                   {item.product.name}
@@ -89,21 +89,19 @@ export default class CartContainer extends React.PureComponent {
                 </PageCart.CartPageSignBox>
                 <PageCart.CartPageImage src={item.product.gallery[0]} alt={item.product.id} />
               </PageCart.CartPageColumnTwo>
-
-              <PageCart.CartPageTotal>
-                <PageCart.CartPageTotalName>Total</PageCart.CartPageTotalName>
-
-                <PageCart.CartPageTotalValue>
-                  {cartValues[0].product.prices[currencyIndex].currency.symbol}
-                  {cartValues.reduce((previous, current) => (
-                    previous + (Math.round((current.product.prices[currencyIndex].amount * cartIdValues[current.product.id]) * 100 + Number.EPSILON) / 100 || 0)
-                  ), 0).toFixed(2)}
-                </PageCart.CartPageTotalValue>
-
-              </PageCart.CartPageTotal>
             </PageCart.CartPageItem>
           ))}
+          <PageCart.CartPageTotal>
+            <PageCart.CartPageTotalName>Total</PageCart.CartPageTotalName>
 
+            <PageCart.CartPageTotalValue>
+              {cartValues[0].product.prices[currencyIndex].currency.symbol}
+              {cartValues.reduce((previous, current) => (
+                previous + (Math.round((current.product.prices[currencyIndex].amount * cartIdValues[current.product.id]) * 100 + Number.EPSILON) / 100 || 0)
+              ), 0).toFixed(2)}
+            </PageCart.CartPageTotalValue>
+
+          </PageCart.CartPageTotal>
           <PageCart.CartPageCheckOutBox>
             <PageCart.CartPageCheckOut><span> CHECK OUT</span></PageCart.CartPageCheckOut>
           </PageCart.CartPageCheckOutBox>

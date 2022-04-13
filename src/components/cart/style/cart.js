@@ -150,6 +150,10 @@ export const AddSign = styled.div`
   justify-content:center;
   align-items: center; 
   border: 1px solid #1D1F22;
+  -webkit-user-select: none;    
+  -moz-user-select: none; 
+  -ms-user-select: none; 
+  user-select: none; 
 `
 export const ValueSign = styled.div`
   font-size: 1.6rem;
@@ -165,6 +169,10 @@ export const SubSign = styled.div`
   justify-content:center;
   align-items: center; 
   border: 1px solid #1D1F22;
+  -webkit-user-select: none;    
+  -moz-user-select: none; 
+  -ms-user-select: none; 
+  user-select: none; 
 `
 export const Image = styled.img`
   width: 10.5rem;

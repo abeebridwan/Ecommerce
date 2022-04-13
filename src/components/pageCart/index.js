@@ -72,7 +72,7 @@ export default class PageCart extends React.PureComponent {
     return <ColumnOne {...restProps}>{children}</ColumnOne>
   }
 
-  static CartName({ children, ...restProps }) {
+  static CartPageItem({ children, ...restProps }) {
     return <Item {...restProps}>{children}</Item>
   }
 

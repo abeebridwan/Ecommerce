@@ -43,10 +43,9 @@ export default class HeaderContainer extends React.PureComponent {
   componentDidUpdate() {
     const { cartshow, prevCartShow } = this.state;
     if (!cartshow && !prevCartShow) {
-      console.log("cartshow")
       document.body.style.overflow = "unset";
       document.body.style["padding-right"] = "0";
-      this.setState({prevCartShow: !prevCartShow})
+      this.setState({ prevCartShow: !prevCartShow })
     }
   }
   static contextType = DataContext;

@@ -25,6 +25,7 @@ html, body {
   max-width: 1440px;
   min-width: 400px;
   margin: auto;  
+  overflow-y: scroll;
   }
 }
 `

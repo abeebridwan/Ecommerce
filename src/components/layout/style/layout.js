@@ -10,7 +10,7 @@ export const Container = styled.div`
  padding:0 1.5rem;
  color: #1D1F22;
  height: 8rem;
- ${Media('min-width', "500px", ['padding:0 4.5rem'])};  
+ ${Media('min-width', "400px", ['padding:0 4.5rem'])};  
  ${Media('min-width', "650px", ['padding:0 6.0rem'])};  
  ${Media('min-width', "750px", ['padding:0 8.8rem'])};  
 `;

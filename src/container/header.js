@@ -28,11 +28,10 @@ export default class HeaderContainer extends React.PureComponent {
 
   cartShowMethod(cartshow) {
     if (!cartshow) {
-      document.body.style.overflow = "hidden";
-      document.body.style["padding-right"] = "15px"
+      document.body.style.position = "fixed";
+      document.body.style.width = "100%"
     } else {
-      document.body.style.overflow = "unset";
-      document.body.style["padding-right"] = "0";
+      document.body.style.position = "static";
     }
     this.setState({ cartshow: !cartshow })
   }

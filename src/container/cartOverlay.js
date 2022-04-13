@@ -13,7 +13,7 @@ export default class CartOverlayContainer extends React.PureComponent {
   async componentDidMount() {
     const { cartIdValues } = this.context;
     const cartIdKey = Object.keys(cartIdValues);
-  
+
     if (cartIdKey.length !== 0) {
       try {
         const cartValuesPromises = cartIdKey.map(async (item) => {
@@ -24,12 +24,9 @@ export default class CartOverlayContainer extends React.PureComponent {
       } catch (err) {
         console.log(err)
       }
-    }    
+    }
   }
-  ScrollToggle() {
-    document.body.style.overflow = "unset";
-    document.body.style["padding-right"] = "0";
-  }
+  
   static contextType = DataContext;
 
   render() {
@@ -122,7 +119,7 @@ export default class CartOverlayContainer extends React.PureComponent {
 
           <Cart.CartCheckOutBox>
             <Link to="/cart" onClick={() => {
-              this.ScrollToggle()
+              cartShowMethod(cartshow)
             }}><Cart.CartViewBag><span>VIEW BAG</span></Cart.CartViewBag></Link>
             <Cart.CartCheckOut><span> CHECK OUT</span></Cart.CartCheckOut>
           </Cart.CartCheckOutBox>

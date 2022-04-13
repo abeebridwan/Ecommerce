@@ -49,7 +49,7 @@ export default class CartContainer extends React.PureComponent {
                 </PageCart.CartPageName>
                 <PageCart.CartPagePrice>
                   {item.product.prices[currencyIndex].currency.symbol}
-                  {(Math.round((item.product.prices[currencyIndex].amount * cartIdValues[item.product.id]) * 100 + Number.EPSILON) / 100).toFixed(2)}
+                  {(Math.round((item.product.prices[currencyIndex].amount * cartIdValues[item.product.id]) * 100 + Number.EPSILON) / 100).toFixed(2).replace(/\B(?<!\.\d*)(?=(\d{3})+(?!\d))/g, ",")}
                 </PageCart.CartPagePrice>
 
                 {item.product.attributes.map((objAttr) => (
@@ -98,7 +98,7 @@ export default class CartContainer extends React.PureComponent {
               {cartValues[0].product.prices[currencyIndex].currency.symbol}
               {cartValues.reduce((previous, current) => (
                 previous + (Math.round((current.product.prices[currencyIndex].amount * cartIdValues[current.product.id]) * 100 + Number.EPSILON) / 100 || 0)
-              ), 0).toFixed(2)}
+              ), 0).toFixed(2).replace(/\B(?<!\.\d*)(?=(\d{3})+(?!\d))/g, ",")}
             </PageCart.CartPageTotalValue>
 
           </PageCart.CartPageTotal>

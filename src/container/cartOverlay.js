@@ -26,7 +26,7 @@ export default class CartOverlayContainer extends React.PureComponent {
       }
     }
   }
-  
+
   static contextType = DataContext;
 
   render() {
@@ -60,7 +60,7 @@ export default class CartOverlayContainer extends React.PureComponent {
                   </Cart.CartName>
                   <Cart.CartPrice>
                     {item.product.prices[currencyIndex].currency.symbol}
-                    {(Math.round((item.product.prices[currencyIndex].amount * cartIdValues[item.product.id]) * 100 + Number.EPSILON) / 100).toFixed(2)}
+                    {(Math.round((item.product.prices[currencyIndex].amount * cartIdValues[item.product.id]) * 100 + Number.EPSILON) / 100).toFixed(2).replace(/\B(?<!\.\d*)(?=(\d{3})+(?!\d))/g, ",")}
                   </Cart.CartPrice>
 
                   {item.product.attributes.map((objAttr) => (
@@ -112,7 +112,7 @@ export default class CartOverlayContainer extends React.PureComponent {
               {cartValues[0].product.prices[currencyIndex].currency.symbol}
               {cartValues.reduce((previous, current) => (
                 previous + (Math.round((current.product.prices[currencyIndex].amount * cartIdValues[current.product.id]) * 100 + Number.EPSILON) / 100 || 0)
-              ), 0).toFixed(2)}
+              ), 0).toFixed(2).replace(/\B(?<!\.\d*)(?=(\d{3})+(?!\d))/g, ",")}
             </Cart.CartTotalValue>
 
           </Cart.CartTotal>

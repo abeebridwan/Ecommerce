@@ -16,8 +16,7 @@ export default class HeaderContainer extends React.PureComponent {
       active: sessionStorage.getItem("name") || "all",
       categories: null,
       priceshow: false,
-      cartshow: false,
-      prevCartShow: true
+      cartshow: false
     };
     this.priceShowMethod = this.priceShowMethod.bind(this);
     this.cartShowMethod = this.cartShowMethod.bind(this);
@@ -28,6 +27,13 @@ export default class HeaderContainer extends React.PureComponent {
   }
 
   cartShowMethod(cartshow) {
+    if (!cartshow) {
+      document.body.style.overflow = "hidden";
+      document.body.style["padding-right"] = "15px"
+    } else {
+      document.body.style.overflow = "unset";
+      document.body.style["padding-right"] = "0";
+    }
     this.setState({ cartshow: !cartshow })
   }
 
@@ -39,21 +45,12 @@ export default class HeaderContainer extends React.PureComponent {
       console.log(err)
     }
   }
-
-  componentDidUpdate() {
-    const { cartshow, prevCartShow } = this.state;
-    if (!cartshow && !prevCartShow) {
-      document.body.style.overflow = "unset";
-      document.body.style["padding-right"] = "0";
-      this.setState({ prevCartShow: !prevCartShow })
-    }
-  }
   static contextType = DataContext;
 
   render() {
 
     const { changeCategory, currencyIndex, cartIdValues } = this.context;
-    const { active, categories, priceshow, cartshow, prevCartShow } = this.state;
+    const { active, categories, priceshow, cartshow } = this.state;
     if (!categories) {
       return null;
     }
@@ -117,7 +114,6 @@ export default class HeaderContainer extends React.PureComponent {
               if (priceshow) { this.setState({ priceshow: !priceshow }) };
               if (Object.keys(cartIdValues).length > 0) {
                 this.cartShowMethod(cartshow)
-                this.setState({ prevCartShow: !prevCartShow })
               }
             }}>
               <Cart />

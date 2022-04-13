@@ -1,4 +1,5 @@
 import React from "react";
+import { Outlet } from "react-router-dom";
 import { Layout } from '../components';
 import { ReactComponent as Logo } from '../assets/Logo.svg'
 import { ReactComponent as Price } from '../assets/Price.svg'
@@ -56,79 +57,82 @@ export default class HeaderContainer extends React.PureComponent {
 
     const cartNumber = Object.values(cartIdValues).reduce((a, b) => { return a + b }, 0)
     return (
-      <Layout>
-        <Layout.LayoutColumnOne>
+      <>
+        <Layout>
+          <Layout.LayoutColumnOne>
 
-          <Layout.LayoutMobileCategory>
-            <Layout.LayoutCategoryText>
-              Categories
-            </Layout.LayoutCategoryText>
-            <ArrowDown id="categoryArrow" />
-
-            <Layout.LayoutDropdownMenu className="dropDownMenu">
-              {categories.map((item) => (
-                <Layout.LayoutMobileCategory key={item.name} className='dropItem' onClick={() => {
-                  changeCategory(item.name);
-                  sessionStorage.setItem("name", item['name']);
-                }}>
-                  <Layout.LayoutCategoryText>
-                    {item.name}
-                  </Layout.LayoutCategoryText>
-                </Layout.LayoutMobileCategory>
-              ))}
-            </Layout.LayoutDropdownMenu>
-          </Layout.LayoutMobileCategory>
-
-          {categories.map((item) => (
-            <Layout.LayoutDesktopCategory key={item.name} active={item.name === active} onClick={() => {
-              changeCategory(item.name)
-              this.setState({ active: item.name });
-              sessionStorage.setItem("name", item['name']);
-            }}>
+            <Layout.LayoutMobileCategory>
               <Layout.LayoutCategoryText>
-                {item.name}
+                Categories
               </Layout.LayoutCategoryText>
-            </Layout.LayoutDesktopCategory>
-          ))}
-        </Layout.LayoutColumnOne>
+              <ArrowDown id="categoryArrow" />
 
-        <Layout.LayoutColumnTwo>
-          <Logo />
-        </Layout.LayoutColumnTwo>
+              <Layout.LayoutDropdownMenu className="dropDownMenu">
+                {categories.map((item) => (
+                  <Layout.LayoutMobileCategory key={item.name} className='dropItem' onClick={() => {
+                    changeCategory(item.name);
+                    sessionStorage.setItem("name", item['name']);
+                  }}>
+                    <Layout.LayoutCategoryText>
+                      {item.name}
+                    </Layout.LayoutCategoryText>
+                  </Layout.LayoutMobileCategory>
+                ))}
+              </Layout.LayoutDropdownMenu>
+            </Layout.LayoutMobileCategory>
 
-        <Layout.LayoutColumnThree>
-          <Layout.LayoutPriceFrame>
-            <Layout.LayoutPrice onClick={() => {
-              if (cartshow) { this.setState({ cartshow: !cartshow }) };
-              this.priceShowMethod(priceshow)
-            }}>
-              <Price />
-              {priceshow ? <ArrowTop id="priceArrow" /> : <ArrowDown id="priceArrow" />}
-            </Layout.LayoutPrice>
-            {priceshow ? <PriceDropdown priceShowMethod={this.priceShowMethod} priceshow={priceshow} /> : null}
-          </Layout.LayoutPriceFrame>
+            {categories.map((item) => (
+              <Layout.LayoutDesktopCategory key={item.name} active={item.name === active} onClick={() => {
+                changeCategory(item.name)
+                this.setState({ active: item.name });
+                sessionStorage.setItem("name", item['name']);
+              }}>
+                <Layout.LayoutCategoryText>
+                  {item.name}
+                </Layout.LayoutCategoryText>
+              </Layout.LayoutDesktopCategory>
+            ))}
+          </Layout.LayoutColumnOne>
 
-          <Layout.LayoutCartFrame >
-            <Layout.LayoutCart onClick={() => {
-              if (priceshow) { this.setState({ priceshow: !priceshow }) };
-              if (Object.keys(cartIdValues).length > 0) {
-                this.cartShowMethod(cartshow)
-              }
-            }}>
-              <Cart />
-              {cartNumber ?
-                <Layout.LayoutCartNumber>
-                  <span>{cartNumber}</span>
-                </Layout.LayoutCartNumber> :
-                null
-              }
-            </Layout.LayoutCart>
-            {cartshow && Object.keys(cartIdValues).length ? <CartOverlay cartshow={cartshow}
-              cartShowMethod={this.cartShowMethod} currencyIndex={currencyIndex} /> : null}
-          </Layout.LayoutCartFrame>
-        </Layout.LayoutColumnThree>
-        {this.props.children}
-      </Layout >
+          <Layout.LayoutColumnTwo>
+            <Logo />
+          </Layout.LayoutColumnTwo>
+
+          <Layout.LayoutColumnThree>
+            <Layout.LayoutPriceFrame>
+              <Layout.LayoutPrice onClick={() => {
+                if (cartshow) { this.setState({ cartshow: !cartshow }) };
+                this.priceShowMethod(priceshow)
+              }}>
+                <Price />
+                {priceshow ? <ArrowTop id="priceArrow" /> : <ArrowDown id="priceArrow" />}
+              </Layout.LayoutPrice>
+              {priceshow ? <PriceDropdown priceShowMethod={this.priceShowMethod} priceshow={priceshow} /> : null}
+            </Layout.LayoutPriceFrame>
+
+            <Layout.LayoutCartFrame >
+              <Layout.LayoutCart onClick={() => {
+                if (priceshow) { this.setState({ priceshow: !priceshow }) };
+                if (Object.keys(cartIdValues).length > 0) {
+                  this.cartShowMethod(cartshow)
+                }
+              }}>
+                <Cart />
+                {cartNumber ?
+                  <Layout.LayoutCartNumber>
+                    <span>{cartNumber}</span>
+                  </Layout.LayoutCartNumber> :
+                  null
+                }
+              </Layout.LayoutCart>
+              {cartshow && Object.keys(cartIdValues).length ? <CartOverlay cartshow={cartshow}
+                cartShowMethod={this.cartShowMethod} currencyIndex={currencyIndex} /> : null}
+            </Layout.LayoutCartFrame>
+          </Layout.LayoutColumnThree>
+          {this.props.children}
+        </Layout >
+        <Outlet />
+      </>
     )
   }
 }

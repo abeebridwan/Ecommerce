@@ -3,6 +3,7 @@ import { DataContext } from "./context/contextData";
 import { BrowserRouter as Router, Route, Routes } from 'react-router-dom';
 import Plp from './pages/plp';
 import Cart from "./pages/cart"
+import Layout from './container/header';
 //import Pdp from "./pages/Pdp"
 //import Cart from "./pages/cart"
 //import Cart from "./pages/checkout"
@@ -53,13 +54,12 @@ class App extends React.Component {
       }}>
         <Router>
           <Routes>
-            <Route path="/" element={<Plp />} />
-            <Route path="/cart" element={<Cart />} />
-            {/* 
-            <Route path="/detail" element={<Pdp/>} /> 
-            <Route path="/checkout" element={<Checkout/>} /> 
-            */  }
-            {/* <Route element={<Error/>} /> */}
+            <Route path="/" element={<Layout />}>
+              <Route index element={<Plp />} />
+              <Route path="cart" element={<Cart />} />
+              {/* <Route path="contact" element={<Contact />} />
+              <Route path="*" element={<NoPage />} /> */}
+            </Route>
           </Routes>
         </Router>
       </DataContext.Provider>

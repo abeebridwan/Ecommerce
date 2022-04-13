@@ -1,11 +1,10 @@
 
 import React from "react";
-import { PageCart } from "../components";
-
+import CartContainer from "../container/pageCart"
 
 export default class Cart extends React.PureComponent {
 
   render() {
-    return <PageCart>Yello &</PageCart>
+    return <CartContainer></CartContainer>
   }
 }

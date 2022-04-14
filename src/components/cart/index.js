@@ -2,10 +2,14 @@ import React from "react";
 import {
   Image, AddSign, Attributes, Box, ColumnOne, ColumnTwo, Container,
   Frame, FrameBody, Heading, Item, Name, Overlay, Price, SignBox, SubSign, Total,
-  TotalName, TotalValue, ValueSign, ViewBag, CheckOut, CheckOutBox, HeaderOverlay
+  TotalName, TotalValue, ValueSign, ViewBag, CheckOut, CheckOutBox, HeaderOverlay, InStock
 } from "./style/cart";
 
 export default class Cart extends React.PureComponent {
+
+  static CartInStock({ children, ...restProps }) {
+    return <InStock {...restProps}>{children}</InStock>
+  }
 
   static CartCheckOut({ children, ...restProps }) {
     return <CheckOut {...restProps}>{children}</CheckOut>

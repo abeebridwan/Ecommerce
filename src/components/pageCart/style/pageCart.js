@@ -107,8 +107,8 @@ export const SignBox = styled.div`
 export const AddSign = styled.div`
   cursor: pointer;
   font-size: 3rem; 
-  width: 2.5rem;
-  height: 2.5rem;
+  width: 2.1rem;
+  height: 2.1rem;
   display: flex;
   justify-content:center;
   align-items: center; 
@@ -118,7 +118,7 @@ export const AddSign = styled.div`
   -ms-user-select: none; 
   user-select: none; 
   opacity: .7;
-  ${Media('min-width', "530px", ['width: 3.5rem; height: 3.5rem;'])};
+  ${Media('min-width', "530px", ['width: 3rem; height: 3rem;'])};
 `
 
 export const ValueSign = styled.div`
@@ -129,8 +129,8 @@ export const ValueSign = styled.div`
 export const SubSign = styled.div`
   cursor: pointer;
   font-size: 3rem;
-  width: 2.5rem;
-  height: 2.5rem;
+  width: 2.1rem;
+  height: 2.1rem;
   display: flex;
   justify-content: center;
   align-items: center; 
@@ -140,7 +140,7 @@ export const SubSign = styled.div`
   -ms-user-select: none; 
   user-select: none; 
   opacity: .7;
-  ${Media('min-width', "530px", ['width: 3.5rem; height: 3.5rem;'])};
+  ${Media('min-width', "530px", ['width: 3rem; height: 3rem;'])};
 `
 export const Total = styled.div`
   margin-top: 5rem;

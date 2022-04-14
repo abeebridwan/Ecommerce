@@ -36,3 +36,13 @@ export const ToggleLink = styled.a`
     left: 87%
   }
   `
+
+export const InStock = styled.span`
+  display: ${({ inStock }) => (inStock ? "none" : "block")};
+  position: absolute;
+  top: 40%;
+  left: 10%;
+  font-size: 1.5rem;
+  Line height: 38.4px;
+  color: #8D8F9A;
+`

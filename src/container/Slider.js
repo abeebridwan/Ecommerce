@@ -32,7 +32,7 @@ export default class SliderContainer extends React.PureComponent {
   }
 
   render() {
-    const { dataSlider, name } = this.props;
+    const { dataSlider, name, inStock } = this.props;
     const { slideIndex } = this.state;
     return (
       <>
@@ -55,6 +55,9 @@ export default class SliderContainer extends React.PureComponent {
                   </Slider.SliderToggleLink>
                 </>
                 : null}
+
+                {inStock? null: <Slider.SliderInStock>OUT OF STOCK</Slider.SliderInStock>}
+                
             </Slider>
           ))}
       </>

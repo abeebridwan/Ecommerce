@@ -88,7 +88,7 @@ export default class CartContainer extends React.PureComponent {
                     }}
                   ><span>&#8722;</span></PageCart.CartPageSubSign>
                 </PageCart.CartPageSignBox>
-                {<Slider dataSlider={item.product.gallery} name={item.product.name}></Slider>}
+                {<Slider dataSlider={item.product.gallery} name={item.product.name} inStock={item.product.inStock}></Slider>}
               </PageCart.CartPageColumnTwo>
             </PageCart.CartPageItem>
           ))}

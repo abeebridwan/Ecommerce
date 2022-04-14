@@ -57,14 +57,16 @@ export const DropdownMenu = styled.span`
   background: #eee;
   box-shadow: 0 8px 8px -4px; 
   padding: 12px 16px;
-  border-radius: 3px;
-  
+  border-radius: 3px;  
   & span.dropItem{
-    padding: 5px 0px;
+    display: block; 
+    padding: 5px 0px;    
+    margin-top: 1.2rem !important;   
     &:hover{
       color: #fff;
-      background: #5ECE7B;
+      background: #5ECE7B;        
     }
+
   }
 `
 

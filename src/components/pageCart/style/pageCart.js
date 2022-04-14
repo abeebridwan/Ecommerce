@@ -4,17 +4,23 @@ import { Media } from '../../mixins'
 export const Container = styled.div``
 
 export const Header = styled.h1`
-  font-size: 2.3rem;
-  margin-top: 5rem;
-  margin-bottom: 5rem;  
+  font-size: 1.8rem;
+  margin: 3rem 0;
+  ${Media('min-width', "530px", ['margin: 5rem 0; font-size: 2.3rem;'])};
+
   `
 
 export const Frame = styled.div`
-  max-width: 90vw;
+  ${Media('min-width', "800px", ['max-width: 90vw'])};  
+  ${Media('max-width', "800px", ['max-width: 95vw'])};
+  ${Media('max-width', "600px", ['max-width: 100vw'])};
+
   ${Media('max-width', "399px", ['padding:0 1.5rem'])};
   ${Media('min-width', "400px", ['padding:0 4.5rem'])};  
   ${Media('min-width', "650px", ['padding:0 6.0rem'])};  
   ${Media('min-width', "750px", ['padding:0 8.8rem'])};
+  min-width: 350px;
+  scroll-behavior: smooth;
 `
 export const Item = styled.div`
   display: ${({ hide }) => (hide ? "none" : "flex")};  
@@ -32,16 +38,18 @@ export const ColumnOne = styled.div`
   display: flex;
   height: 18.5rem;
   flex-direction: column;
-  font-size: 1.8rem;
+  font-size: 1.6rem;
   justify-content: space-between;
   overflow-y: scroll;
   scrollbar-width: none; 
   -ms-overflow-style: none;  
+  margin-right: 1.5rem;
   &::-webkit-scrollbar { 
   width: 0;
   height: 0;
   }  
   scroll-behavior: smooth;
+  ${Media('min-width', "530px", ['font-size: 1.8rem; margin-right: 1rem'])};
 `
 export const Name = styled.p`
   line-height: 27px;
@@ -58,28 +66,31 @@ export const Price = styled.div`
 `
 export const Attributes = styled.div`  
   display: flex;  
-  flex-wrap: wrap;  
+  flex-wrap: wrap;    
 `
 
 export const Box = styled.div`
   line-height: 22.4px;
   font-size: 1.6rem;
   font-family: 'Source Sans Pro', sans-serif;
-  min-width: 3.5rem;
-  height: 2.8rem;
+  min-width: 2.4rem;
+  height: 1.8rem;
   display: flex;
   justify-content:center; 
   align-items: center;  
   padding: 0 .4rem; 
-  margin-right: 1.2rem;    
+  margin-right: 1rem;    
   border: 1px solid #1D1F22;
   opacity: .7;
+  margin-top:.3rem;
   background-color: ${({ selected, text }) => (selected && text && "#1D1F22")}; 
   opacity: ${({ selected, text }) => (selected && text && 1)}; 
   opacity: ${({ selected, displayValue }) => (selected && displayValue && 1)}; 
   opacity: ${({ displayValue }) => (displayValue && .4)}; 
   background-color: ${({ displayValue }) => (displayValue && displayValue)}; 
-  border: ${({ displayValue }) => (displayValue === "#FFFFFF" ? '1px solid #1D1F22' : displayValue)};  
+  border: ${({ displayValue }) => (displayValue === "#FFFFFF" ? '1px solid #1D1F22' : displayValue)}; 
+  ${Media('min-width', "500px", ['height: 2.5rem; min-width: 2.5rem;'])};
+  ${Media('min-width', "530px", ['height: 2.8rem; min-width: 3.5rem;'])};
 `
 
 export const ColumnTwo = styled.div`
@@ -97,8 +108,8 @@ export const SignBox = styled.div`
 export const AddSign = styled.div`
   cursor: pointer;
   font-size: 3rem; 
-  width: 3.5rem;
-  height: 3.1rem;
+  width: 2.5rem;
+  height: 2.5rem;
   display: flex;
   justify-content:center;
   align-items: center; 
@@ -108,6 +119,7 @@ export const AddSign = styled.div`
   -ms-user-select: none; 
   user-select: none; 
   opacity: .7;
+  ${Media('min-width', "530px", ['width: 3.5rem; height: 3.5rem;'])};
 `
 
 export const ValueSign = styled.div`
@@ -118,8 +130,8 @@ export const ValueSign = styled.div`
 export const SubSign = styled.div`
   cursor: pointer;
   font-size: 3rem;
-  width: 3.5rem;
-  height: 3.1rem;
+  width: 2.5rem;
+  height: 2.5rem;
   display: flex;
   justify-content: center;
   align-items: center; 
@@ -129,6 +141,7 @@ export const SubSign = styled.div`
   -ms-user-select: none; 
   user-select: none; 
   opacity: .7;
+  ${Media('min-width', "530px", ['width: 3.5rem; height: 3.5rem;'])};
 `
 export const Total = styled.div`
   margin-top: 5rem;

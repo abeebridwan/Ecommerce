@@ -2,11 +2,15 @@ import React from "react";
 import {
   AddSign, Attributes, Box,
   CheckOut, CheckOutBox, ColumnOne, ColumnTwo, Container, Frame, Header, Image, Item, Name,
-  Price, SignBox, SubSign, Total, TotalName, TotalValue, ValueSign
+  Price, SignBox, SubSign, ToggleLink, Total, TotalName, TotalValue, ValueSign
 } from "./style/pageCart";
 
 
 export default class PageCart extends React.PureComponent {
+
+  static CartPageToggleLink({ children, ...restProps }) {
+    return <ToggleLink {...restProps}>{children}</ToggleLink>
+  }
 
   static CartPageCheckOut({ children, ...restProps }) {
     return <CheckOut {...restProps}>{children}</CheckOut>

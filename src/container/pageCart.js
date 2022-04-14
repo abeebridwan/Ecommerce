@@ -39,7 +39,7 @@ export default class CartContainer extends React.PureComponent {
         <PageCart.CartPageFrame>
           <PageCart.CartPageHeader>CART</PageCart.CartPageHeader>
           {cartValues.map((item) => (
-            <PageCart.CartPageItem class="item" key={item.product.id} hide={!cartIdValues[item.product.id] || false}>
+            <PageCart.CartPageItem key={item.product.id} hide={!cartIdValues[item.product.id] || false}>
               <PageCart.CartPageColumnOne>
                 <PageCart.CartPageName>
                   {item.product.name}
@@ -87,7 +87,11 @@ export default class CartContainer extends React.PureComponent {
                     }}
                   ><span>&#8722;</span></PageCart.CartPageSubSign>
                 </PageCart.CartPageSignBox>
-                <PageCart.CartPageImage src={item.product.gallery[0]} alt={item.product.id} />
+                <span id="imageBox">
+                  <PageCart.CartPageImage src={item.product.gallery[0]} alt={item.product.id} />
+                  <PageCart.CartPageToggleLink>&#10094;</PageCart.CartPageToggleLink>
+                  <PageCart.CartPageToggleLink id="right" >&#10095;</PageCart.CartPageToggleLink>
+                </span>
               </PageCart.CartPageColumnTwo>
             </PageCart.CartPageItem>
           ))}

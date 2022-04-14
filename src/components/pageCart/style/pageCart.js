@@ -84,6 +84,9 @@ export const Box = styled.div`
 
 export const ColumnTwo = styled.div`
   display: flex;  
+  & span#imageBox{
+    position: relative
+  }
 `
 
 export const SignBox = styled.div`
@@ -132,7 +135,7 @@ export const SubSign = styled.div`
 `
 export const Image = styled.img`
   width: 14.1rem;
-  height: 18.5rem;
+  height: 18.5rem; 
 `
 export const Total = styled.div`
   margin-top: 5rem;
@@ -172,5 +175,18 @@ export const CheckOut = styled.div`
 
   &:hover{
     opacity: .5
+  }
+  `
+export const ToggleLink = styled.a`
+  & a{
+    all: unset
+  }
+  font-size: 1.5rem;
+  color: #fff;
+   position: absolute;  
+  top: 44%;
+  left: 3%;
+  &#right{
+    left: 85%
   }
   `

@@ -1,11 +1,13 @@
-import styled from "styled-components";
+import styled from "styled-components/macro";
 
 export const Container = styled.div``
 
 export const ColumnOne = styled.div``
 
-export const SmallImages = styled.div``
-export const BigImage = styled.div``
+export const SmallImageBox = styled.div``
+
+export const SmallImage = styled.img``
+export const BigImage = styled.img``
 
 
 export const ColumnTwo = styled.div``

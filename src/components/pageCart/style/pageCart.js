@@ -177,7 +177,10 @@ export const CheckOut = styled.div`
   border: 1px solid #5ECE7B;
   background-color: #5ECE7B;
   margin-bottom: 25rem;
-
+  -webkit-user-select: none;    
+  -moz-user-select: none; 
+  -ms-user-select: none; 
+  user-select: none; 
   &:hover{
     opacity: .5
   }

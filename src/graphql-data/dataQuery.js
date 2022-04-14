@@ -25,7 +25,7 @@ export function categoryData(value) {
 }
 
 
-export function ProductData(id){
+export function ProductData(id) {
   return {
     query: `query ($id: String!) {
       product(id: $id, ) {
@@ -34,6 +34,8 @@ export function ProductData(id){
         brand,
         inStock,
         gallery,
+        description,
+        category,
         attributes{
           id,
           name,
@@ -54,7 +56,7 @@ export function ProductData(id){
       }    
     }`,
     variables: {
-      "id": id   
+      "id": id
     }
   }
 }

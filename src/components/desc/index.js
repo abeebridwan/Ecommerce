@@ -1,7 +1,7 @@
 import React from "react";
 import {
   AddToCart, AttriBox, Attributes, AttriText, BigImage, ColumnOne, ColumnTwo, Container,
-  Name, Price, PriceText, SmallImages
+  Name, Price, PriceText, SmallImageBox, SmallImage
 } from "./style/desc";
 
 
@@ -46,8 +46,12 @@ export default class Desc extends React.PureComponent {
     return <BigImage {...restProps}>{children}</BigImage>
   }
 
-  static DescSmallImages({ children, ...restProps }) {
-    return <SmallImages {...restProps}>{children}</SmallImages>
+  static DescSmallImageBox({ children, ...restProps }) {
+    return <SmallImageBox {...restProps}>{children}</SmallImageBox>
+  }
+
+  static DescSmallImage({ children, ...restProps }) {
+    return <SmallImage {...restProps}>{children}</SmallImage>
   }
 
   static DescColumnOne({ children, ...restProps }) {

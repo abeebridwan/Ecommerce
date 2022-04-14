@@ -204,6 +204,10 @@ export const CheckOutBox = styled.div`
   font-size: 1.4rem;
   font-weight: bold;
   line-height: 16.8px;
+  -webkit-user-select: none;    
+  -moz-user-select: none; 
+  -ms-user-select: none; 
+  user-select: none; 
   & a{
     all: unset
   }

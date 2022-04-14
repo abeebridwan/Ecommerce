@@ -1,16 +1,12 @@
 import React from "react";
 import {
   AddSign, Attributes, Box,
-  CheckOut, CheckOutBox, ColumnOne, ColumnTwo, Container, Frame, Header, Image, Item, Name,
-  Price, SignBox, SubSign, ToggleLink, Total, TotalName, TotalValue, ValueSign
+  CheckOut, CheckOutBox, ColumnOne, ColumnTwo, Container, Frame, Header, Item, Name,
+  Price, SignBox, SubSign, Total, TotalName, TotalValue, ValueSign
 } from "./style/pageCart";
 
 
 export default class PageCart extends React.PureComponent {
-
-  static CartPageToggleLink({ children, ...restProps }) {
-    return <ToggleLink {...restProps}>{children}</ToggleLink>
-  }
 
   static CartPageCheckOut({ children, ...restProps }) {
     return <CheckOut {...restProps}>{children}</CheckOut>
@@ -30,10 +26,6 @@ export default class PageCart extends React.PureComponent {
 
   static CartPageTotal({ children, ...restProps }) {
     return <Total {...restProps}>{children}</Total>
-  }
-
-  static CartPageImage({ children, ...restProps }) {
-    return <Image {...restProps}>{children}</Image>
   }
 
   static CartPageSubSign({ children, ...restProps }) {

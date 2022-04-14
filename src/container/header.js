@@ -72,14 +72,14 @@ export default class HeaderContainer extends React.PureComponent {
               <Layout.LayoutDropdownMenu className="dropDownMenu">
                 {categories.map((item) => (
                   <Link to="/" key={item.name}>
-                  <Layout.LayoutMobileCategory key={item.name} className='dropItem' onClick={() => {
-                    changeCategory(item.name);
-                    sessionStorage.setItem("name", item['name']);
-                  }}>
-                    <Layout.LayoutCategoryText>
-                      {item.name}
-                    </Layout.LayoutCategoryText>
-                  </Layout.LayoutMobileCategory>
+                    <Layout.LayoutMobileCategory key={item.name} className='dropItem' onClick={() => {
+                      changeCategory(item.name);
+                      sessionStorage.setItem("name", item['name']);
+                    }}>
+                      <Layout.LayoutCategoryText>
+                        {item.name}
+                      </Layout.LayoutCategoryText>
+                    </Layout.LayoutMobileCategory>
                   </Link>
                 ))}
               </Layout.LayoutDropdownMenu>
@@ -107,7 +107,7 @@ export default class HeaderContainer extends React.PureComponent {
           <Layout.LayoutColumnThree>
             <Layout.LayoutPriceFrame>
               <Layout.LayoutPrice onClick={() => {
-                if (cartshow) { this.setState({ cartshow: !cartshow }) };
+                if (cartshow) { this.cartShowMethod(cartshow) };
                 this.priceShowMethod(priceshow)
               }}>
                 <Price />
@@ -118,7 +118,7 @@ export default class HeaderContainer extends React.PureComponent {
 
             <Layout.LayoutCartFrame >
               <Layout.LayoutCart onClick={() => {
-                if (priceshow) { this.setState({ priceshow: !priceshow }) };
+                if (priceshow) { this.priceShowMethod(priceshow) };
                 if (Object.keys(cartIdValues).length > 0) {
                   this.cartShowMethod(cartshow)
                 }

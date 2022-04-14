@@ -2,6 +2,7 @@ import React from "react";
 import { PageCart } from "../components";
 import { getProductData } from "../graphql-data/sendRequest";
 import { DataContext } from "../context/contextData";
+import Slider from "./Slider";
 export default class CartContainer extends React.PureComponent {
   constructor(props) {
     super(props)
@@ -87,11 +88,7 @@ export default class CartContainer extends React.PureComponent {
                     }}
                   ><span>&#8722;</span></PageCart.CartPageSubSign>
                 </PageCart.CartPageSignBox>
-                <span id="imageBox">
-                  <PageCart.CartPageImage src={item.product.gallery[0]} alt={item.product.id} />
-                  <PageCart.CartPageToggleLink>&#10094;</PageCart.CartPageToggleLink>
-                  <PageCart.CartPageToggleLink id="right" >&#10095;</PageCart.CartPageToggleLink>
-                </span>
+                {<Slider dataSlider={item.product.gallery} name={item.product.name}></Slider>}
               </PageCart.CartPageColumnTwo>
             </PageCart.CartPageItem>
           ))}

@@ -1,14 +1,11 @@
 import React from "react";
 import {
   AddToCart, AttriBox, Attributes, AttriText, BigImage, ColumnOne, ColumnTwo, Container,
-  Name, Price, PriceText, SmallImageBox, SmallImage
+  Name, Price, PriceText, SmallImageBox, SmallImage, Box
 } from "./style/desc";
 
 
 export default class Desc extends React.PureComponent {
-  static DescDesc({ children, ...restProps }) {
-    return <Desc {...restProps}>{children}</Desc>
-  }
 
   static DescAddToCart({ children, ...restProps }) {
     return <AddToCart {...restProps}>{children}</AddToCart>
@@ -20,6 +17,10 @@ export default class Desc extends React.PureComponent {
 
   static DescPriceText({ children, ...restProps }) {
     return <PriceText {...restProps}>{children}</PriceText>
+  }
+
+  static DescBox({ children, ...restProps }) {
+    return <Box {...restProps}>{children}</Box>
   }
 
   static DescAttributes({ children, ...restProps }) {

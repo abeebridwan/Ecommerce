@@ -4,7 +4,7 @@ import { BrowserRouter as Router, Route, Routes } from 'react-router-dom';
 import Layout from './container/header';
 import Cart from "./container/pageCart"
 import PLP from './container/products';
-//import Pdp from "./pages/Pdp"
+import PDP from './container/desc';
 //import Cart from "./pages/cart"
 //import Cart from "./pages/checkout"
 class App extends React.Component {
@@ -57,8 +57,7 @@ class App extends React.Component {
             <Route path="/" element={<Layout />}>
               <Route index element={<PLP />} />
               <Route path="cart" element={<Cart />} />
-              {/* <Route path="contact" element={<Contact />} />
-              <Route path="*" element={<NoPage />} /> */}
+              <Route path="pdp" element={<PDP />} />
             </Route>
           </Routes>
         </Router>

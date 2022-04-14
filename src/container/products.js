@@ -3,6 +3,7 @@ import { Product } from "../components";
 import { getCategoryApiMethod } from '../graphql-data/sendRequest';
 import { ReactComponent as Cart } from '../assets/Cart.svg';
 import { DataContext } from "../context/contextData";
+import { Link } from "react-router-dom";
 
 
 export default class ProductsContainer extends React.PureComponent {
@@ -47,7 +48,7 @@ export default class ProductsContainer extends React.PureComponent {
 
     const { name, products } = category;
     const { addRemoveFromCart, currencyIndex } = this.context;
-
+    const { pickedProduct } = this.context;
 
     return (
       <Product>
@@ -56,23 +57,32 @@ export default class ProductsContainer extends React.PureComponent {
         </Product.ProductHeader>
         <Product.ProductFrame>
           {products.map((item) => (
-            <Product.ProductItem key={item.id}>
-              <Product.ProductImage src={item.gallery[0]} alt={item.name} />
-              <Product.ProductName>
-                {item.name}
-              </Product.ProductName>
-              <Product.ProductPrice>
-                {item.prices[currencyIndex].currency.symbol}{item.prices[currencyIndex].amount}
-              </Product.ProductPrice>
+            <span key={item.id}>
+              <Link to="/pdp" >
+                <Product.ProductItem
+                  onClick={() => {
+                    pickedProduct(item.id)
+                  }}
+                >
+                  <Product.ProductImage src={item.gallery[0]} alt={item.name} />
+                  <Product.ProductName>
+                    {item.name}
+                  </Product.ProductName>
+                  <Product.ProductPrice>
+                    {item.prices[currencyIndex].currency.symbol}{item.prices[currencyIndex].amount}
+                  </Product.ProductPrice>
+                </Product.ProductItem>
+              </Link>
+
               <Product.ProductCart onClick={() => {
                 addRemoveFromCart(item.id)
               }}>
                 <Cart id="cart" />
               </Product.ProductCart>
-            </Product.ProductItem>
+            </span>
           ))}
         </Product.ProductFrame>
-      </Product>
+      </Product >
     )
   }
 }

@@ -1,8 +1,12 @@
 import styled from 'styled-components/macro';
 
 export const Container = styled.div`
-font-size: 1.5rem;
+  font-size: 1.5rem;
+  /* position: relative; */
 
+  & a{
+    all: unset
+  }
 `;
 
 export const Header = styled.h2` 
@@ -19,6 +23,7 @@ export const Item = styled.div`
 `;
 
 export const Cart = styled.span`
+  /* position: absolute;  */
   display: flex;
   justify-content: center;
   align-items: center;

@@ -45,4 +45,8 @@ export const InStock = styled.span`
   font-size: 1.5rem;
   Line height: 38.4px;
   color: #8D8F9A;
+  -webkit-user-select: none;    
+  -moz-user-select: none; 
+  -ms-user-select: none; 
+  user-select: none;
 `

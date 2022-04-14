@@ -180,6 +180,10 @@ export const SubSign = styled.div`
 export const Image = styled.img`
   width: 10.5rem;
   height: 13.7rem;
+  -webkit-user-select: none;    
+  -moz-user-select: none; 
+  -ms-user-select: none; 
+  user-select: none;
 `
 
 export const Total = styled.div`
@@ -238,4 +242,8 @@ export const InStock = styled.span`
   font-size: 1.2rem;
   Line height: 38.4px;
   color: #8D8F9A;
+  -webkit-user-select: none;    
+  -moz-user-select: none; 
+  -ms-user-select: none; 
+  user-select: none;
 `

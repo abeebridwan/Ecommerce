@@ -36,7 +36,6 @@ export default class DescContainer extends React.PureComponent {
       return null
     }
     const { selected, currencyIndex } = this.context;
-    console.log(product.description)
     return (
       <Desc>
         <Desc.DescColumnOne>

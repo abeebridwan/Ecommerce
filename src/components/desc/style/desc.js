@@ -48,14 +48,13 @@ export const SmallImage = styled.img`
 `
 export const BigImage = styled.img`
     width: 61rem;
-    height: 51.1rem;    
+    height: 57.1rem;    
     margin-bottom: 10rem;
     -webkit-user-select: none;    
     -moz-user-select: none; 
     -ms-user-select: none; 
     user-select: none;   
-    block-size: auto;
-    aspect-ration: 1/1;  
+   
      ${Media('max-width', "800px", ['max-inline-size: 100%;'])}; 
 
 `

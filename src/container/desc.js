@@ -41,7 +41,9 @@ export default class DescContainer extends React.PureComponent {
         <Desc.DescColumnOne>
           <Desc.DescSmallImageBox>
             {product.gallery.map((src, index) => (
-              <Desc.DescSmallImage src={src} alt={product.name} key={this.generateKey(product.name, index)} />
+              <Desc.DescSmallImage
+                onClick={() => { this.setState({ current: index }) }}
+                src={src} alt={product.name} key={this.generateKey(product.name, index)} />
             ))}
           </Desc.DescSmallImageBox>
           <Desc.DescBigImage src={product.gallery[current]} alt={product.name} />

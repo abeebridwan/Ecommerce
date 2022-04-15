@@ -5,9 +5,9 @@ import { Media } from '../../mixins'
 export const Container = styled.div`
     font-size: 1.6rem;
     display: flex;
-    margin-top: 6rem;
-    /* flex-wrap: wrap; */
-    ${Media('min-width', "800px", ['max-width: 90vw'])};  
+    margin-top: 6rem;   
+  
+    ${Media('min-width', "800px", ['max-width: 91vw'])};  
     ${Media('max-width', "800px", ['max-width: 95vw'])};
     ${Media('max-width', "600px", ['max-width: 100vw'])};
 
@@ -15,11 +15,15 @@ export const Container = styled.div`
     ${Media('min-width', "400px", ['padding:0 4.5rem'])};  
     ${Media('min-width', "650px", ['padding:0 6.0rem'])};  
     ${Media('min-width', "750px", ['padding:0 8.8rem'])};     
+
+    ${Media('max-width', "800px", ['flex-wrap: wrap;'])}; 
+    min-width: 400px;
 `
 
 export const ColumnOne = styled.div`
     display:flex; 
     margin-right: 1rem;
+    margin-bottom: 2rem;
 `
 
 export const SmallImageBox = styled.div`
@@ -40,20 +44,26 @@ export const SmallImage = styled.img`
     -moz-user-select: none; 
     -ms-user-select: none; 
     user-select: none; 
+    
 `
 export const BigImage = styled.img`
     width: 61rem;
-    height: 51.1rem;
+    height: 51.1rem;    
     margin-bottom: 10rem;
     -webkit-user-select: none;    
     -moz-user-select: none; 
     -ms-user-select: none; 
-    user-select: none; 
+    user-select: none;   
+    block-size: auto;
+    aspect-ration: 1/1;  
+     ${Media('max-width', "800px", ['max-inline-size: 100%;'])}; 
+
 `
 
 
 export const ColumnTwo = styled.div`
-    
+    padding-right: 1rem;    
+
 `
 
 export const Name = styled.h2`

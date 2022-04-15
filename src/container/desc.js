@@ -35,7 +35,7 @@ export default class DescContainer extends React.PureComponent {
     if (!product) {
       return null
     }
-    const { selected, currencyIndex } = this.context;
+    const { selected, currencyIndex, addRemoveFromCart } = this.context;
     return (
       <Desc>
         <Desc.DescColumnOne>
@@ -78,7 +78,9 @@ export default class DescContainer extends React.PureComponent {
             {product.prices[currencyIndex].currency.symbol}
             {product.prices[currencyIndex].amount}
           </Desc.DescPrice>
-          <Desc.DescAddToCart>ADD TO CART</Desc.DescAddToCart>
+          <Desc.DescAddToCart onClick={() => {
+            addRemoveFromCart(product.id)
+          }}>ADD TO CART</Desc.DescAddToCart>
           {<div dangerouslySetInnerHTML={{ __html: product.description }} />}
         </Desc.DescColumnTwo>
       </Desc>

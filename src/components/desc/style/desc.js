@@ -99,6 +99,10 @@ export const Box = styled.div`
     border: ${({ displayValue }) => (displayValue === "#FFFFFF" ? '1px solid #1D1F22' : displayValue)}; 
     ${Media('min-width', "500px", ['height: 2.9rem; min-width: 3.5rem;'])};
     ${Media('min-width', "530px", ['height: 3.2rem; min-width: 4.5rem;'])};
+    -webkit-user-select: none;    
+    -moz-user-select: none; 
+    -ms-user-select: none;
+    cursor: pointer;
 `
 
 

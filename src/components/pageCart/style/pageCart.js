@@ -80,7 +80,7 @@ export const Box = styled.div`
   padding: 0 .4rem; 
   margin-right: 1rem;    
   border: 1px solid #1D1F22;
-  opacity: .7;
+  opacity: .4;
   margin-top:.3rem;
   background-color: ${({ selected, text }) => (selected && text && "#1D1F22")}; 
   opacity: ${({ selected, text }) => (selected && text && 1)}; 

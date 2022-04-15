@@ -71,12 +71,12 @@ export default class DescContainer extends React.PureComponent {
               </Desc.DescAttriBox>
           ))}
 
-          <Desc.DescPriceText>Price:</Desc.DescPriceText>
+          <Desc.DescPriceText>PRICE:</Desc.DescPriceText>
           <Desc.DescPrice>
             {product.prices[currencyIndex].currency.symbol}
             {product.prices[currencyIndex].amount}
           </Desc.DescPrice>
-          <Desc.DescAddToCart>ADD To CART</Desc.DescAddToCart>
+          <Desc.DescAddToCart>ADD TO CART</Desc.DescAddToCart>
           {<div dangerouslySetInnerHTML={{ __html: product.description }} />}
         </Desc.DescColumnTwo>
       </Desc>

@@ -3,7 +3,6 @@ import { Media } from '../../mixins'
 
 export const Container = styled.div`
   font-size: 1.5rem;
-  /* position: relative; */  
   ${Media('min-width', "400px", ['margin:0 2.5rem'])};  
   ${Media('min-width', "630px", ['margin:0 4.0rem'])};
   ${Media('min-width', "750px", ['margin:0 5.0rem'])};  
@@ -22,31 +21,47 @@ export const Header = styled.h2`
   ${Media('min-width', "530px", ['margin: 5rem 0; font-size: 2.3rem;'])}; 
 `;
 
+
 export const Frame = styled.div`
   display: grid;    
-  grid-template-columns: repeat(auto-fill, minmax(max(100%, 5rem), 1fr));
-  
+  grid-template-columns: repeat(auto-fill, minmax(max(100%, 5rem), 1fr));  
   ${Media('min-width', "450px", ['grid-template-columns: repeat(auto-fill, minmax(max(50%, 7rem), 1fr));'])};
   ${Media('min-width', "830px", ['grid-template-columns: repeat(auto-fill, minmax(max(33%, 10rem), 1fr));'])};
  
+ `;
 
-`;
 
-export const Item = styled.div`
-  margin-right: 4rem;
-  margin-bottom: 6rem;
+export const Item = styled.div`   
   display: flex;
   flex-direction: column;
   justify-content: center;
   align-items: center;
   padding: 1.5rem;   
+  margin-right: 4rem;
+  margin-bottom: 6rem; 
+
   &:hover{
     box-shadow: 0 4px 8px 0 rgba(0, 0, 0, 0.2), 0 6px 20px 0 rgba(0, 0, 0, 0.19);  
   }
+  & span.item{
+    position: relative;   
+    display: flex;
+    padding: 0;   
+    &:hover{      
+      & span.cartBox{
+        display: flex;
+      }
+    }   
+  }
+   ${Media('min-width', "830px", ['margin-right: 2rem;'])}; 
+  ${Media('min-width', "910px", ['margin-right: 4rem;'])}; 
+ 
 `;
 
 export const Cart = styled.span`
-  /* position: absolute;  */
+  position: absolute;
+  bottom: -8%;
+  left: 79%;
   display: none;
   justify-content: center;
   align-items: center;
@@ -54,14 +69,16 @@ export const Cart = styled.span`
   padding: 1rem;
   border-radius: 50%;
   margin: .5rem;
-  width: 3.5rem;
-  height: 3.5rem;
+  width: 3em;
+  height: 3em;
   cursor: pointer;
   & svg#cart{
     path{
       fill: #fff;
     }
   }
+  ${Media('min-width', "450px", ['width: 2em; height: 2em;  padding: .7rem; bottom: -9%;'])};
+  ${Media('min-width', "660px", ['width: 3em; height: 3em;  padding: 1rem; bottom: -8%;'])};  
 `
 
 export const Image = styled.img`
@@ -74,19 +91,19 @@ export const Image = styled.img`
   ${Media('min-width', "660px", ['width: 35rem; height: 27rem;'])}; 
   ${Media('min-width', "920px", ['width: 35.5rem; height: 31rem;'])};
   ${Media('min-width', "1300px", ['width: 35.5rem; height: 35rem;'])};
-
-  ${Media('min-width', "1200px", ['width: 37.5rem; height: 35rem;'])};   
- 
+  ${Media('min-width', "1200px", ['width: 37.5rem; height: 35rem;'])};    
 `;
 
 export const Name = styled.p`
   margin-top: 2.4rem;
   align-self: flex-start;
-  
+  font-size: 1.8rem;  
 `;
 
 export const Price = styled.p`
   margin-top: 1rem;
   align-self: flex-start;
-
+  font-size: 1.8rem;
+  font-weight: bold;
+  line-height: 28.8px;
 `;

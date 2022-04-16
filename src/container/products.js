@@ -56,15 +56,22 @@ export default class ProductsContainer extends React.PureComponent {
           {name}
         </Product.ProductHeader>
         <Product.ProductFrame>
-          {products.map((item) => (
-            <span key={item.id}>
-              <Link to="/pdp" >
+          {products.map((item) => (           
+              <Link to="/pdp" key={item.id}>
                 <Product.ProductItem
                   onClick={() => {
                     pickedProduct(item.id)
                   }}
                 >
+               <span className="item" >
                   <Product.ProductImage src={item.gallery[0]} alt={item.name} />
+                  <Product.ProductCart className="cartBox" onClick={(e) => {
+                    e.preventDefault();
+                    addRemoveFromCart(item.id)
+                  }}>                 
+                    <Cart id="cart" />
+                  </Product.ProductCart>
+                </span>    
                   <Product.ProductName>
                     {item.name}
                   </Product.ProductName>
@@ -72,14 +79,7 @@ export default class ProductsContainer extends React.PureComponent {
                     {item.prices[currencyIndex].currency.symbol}{item.prices[currencyIndex].amount}
                   </Product.ProductPrice>
                 </Product.ProductItem>
-              </Link>
-
-              <Product.ProductCart onClick={() => {
-                addRemoveFromCart(item.id)
-              }}>
-                <Cart id="cart" />
-              </Product.ProductCart>
-            </span>
+              </Link>            
           ))}
         </Product.ProductFrame>
       </Product >

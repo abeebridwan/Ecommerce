@@ -6,13 +6,13 @@ export const Container = styled.div`
  display: flex;
  justify-content: space-between;
  align-items: center;
- font-size: 1.6rem;
- padding:0 1.5rem;
+ font-size: 1.6rem; 
+ margin: 0 2rem;
  color: #1D1F22;
  height: 8rem;
- ${Media('min-width', "400px", ['padding:0 4.5rem'])};  
- ${Media('min-width', "650px", ['padding:0 6.0rem'])};  
- ${Media('min-width', "750px", ['padding:0 8.8rem'])};  
+ ${Media('min-width', "400px", ['margin:0 2.5rem'])};  
+ ${Media('min-width', "630px", ['margin:0 4.0rem'])};  
+ ${Media('min-width', "750px", ['margin:0 5.0rem'])};  
 `;
 
 export const ColumnOne = styled.span`    

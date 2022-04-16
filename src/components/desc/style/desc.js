@@ -5,16 +5,15 @@ import { Media } from '../../mixins'
 export const Container = styled.div`
     font-size: 1.6rem;
     display: flex;
-    margin-top: 6rem;   
+    margin-top: 6rem !important;   
   
     ${Media('min-width', "800px", ['max-width: 91vw'])};  
     ${Media('max-width', "800px", ['max-width: 95vw'])};
     ${Media('max-width', "600px", ['max-width: 100vw'])};
 
-    ${Media('max-width', "399px", ['padding:0 1.5rem'])};
-    ${Media('min-width', "400px", ['padding:0 4.5rem'])};  
-    ${Media('min-width', "650px", ['padding:0 6.0rem'])};  
-    ${Media('min-width', "750px", ['padding:0 8.8rem'])};     
+    ${Media('min-width', "400px", ['margin:0 2.5rem'])};  
+    ${Media('min-width', "630px", ['margin:0 4.0rem'])};  
+    ${Media('min-width', "750px", ['margin:0 5.0rem'])};   
 
     ${Media('max-width', "800px", ['flex-wrap: wrap;'])}; 
     min-width: 400px;

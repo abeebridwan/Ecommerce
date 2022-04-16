@@ -107,3 +107,19 @@ export const Price = styled.p`
   font-weight: bold;
   line-height: 28.8px;
 `;
+ export const InStock = styled.div`
+  display: block;
+  position: absolute;
+  top: 46%;
+  left: 24.5%;
+  font-size: 1.4em;
+  line-height: 12.4px;
+  color: #8D8F9A;
+  -webkit-user-select: none;    
+  -moz-user-select: none; 
+  -ms-user-select: none; 
+  user-select: none; 
+  ${Media('min-width', "450px", ['font-size: .8em; left: 20%;'])};
+  ${Media('min-width', "660px", ['font-size: 1.2em; left: 21%;'])};
+  ${Media('min-width', "870px", ['font-size: 1.3em; left: 22.5%;'])};
+ `

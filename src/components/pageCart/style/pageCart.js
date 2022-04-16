@@ -173,7 +173,7 @@ export const CheckOut = styled.div`
   align-items: center; 
   width: 15.5rem;
   height: 5.6rem;
-  color: #fff;    
+  color: #fff;  
   border: 1px solid #5ECE7B;
   background-color: #5ECE7B;
   margin-bottom: 25rem;

@@ -136,5 +136,9 @@ export const CartNumber = styled.span`
   font-weight: bold;
   font-family: 'Roboto', sans-serif;
   line-height: 10.41px;
-  font-size: 1.4rem
+  font-size: 1.4rem;
+  -webkit-user-select: none;    
+  -moz-user-select: none; 
+  -ms-user-select: none; 
+  user-select: none;
 `

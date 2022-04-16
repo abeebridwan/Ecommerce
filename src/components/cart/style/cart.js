@@ -239,12 +239,11 @@ export const CheckOut = styled.div`
   }
   `
 export const InStock = styled.span`
-  display: ${({ inStock }) => (inStock ? "none" : "block")};
+  display: block;
   position: absolute;
   top: 40%;
   left: 15%;
   font-size: 1.2rem;
-  Line height: 38.4px;
   color: #8D8F9A;
   -webkit-user-select: none;    
   -moz-user-select: none; 

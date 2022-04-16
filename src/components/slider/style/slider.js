@@ -43,12 +43,11 @@ export const ToggleLink = styled.a`
 `
 
 export const InStock = styled.span`
-  display: ${({ inStock }) => (inStock ? "none" : "block")};
+  display:  block;
   position: absolute;
   top: 40%;
   left: 10%;
   font-size: 1.5rem;
-  Line height: 38.4px;
   color: #8D8F9A;
   -webkit-user-select: none;    
   -moz-user-select: none; 

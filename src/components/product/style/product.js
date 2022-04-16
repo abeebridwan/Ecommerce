@@ -19,6 +19,10 @@ export const Header = styled.h2`
   font-size: 2rem;
   margin: 3rem 0;
   ${Media('min-width', "530px", ['margin: 5rem 0; font-size: 2.3rem;'])}; 
+  -webkit-user-select: none;    
+  -moz-user-select: none; 
+  -ms-user-select: none; 
+  user-select: none; 
 `;
 
 

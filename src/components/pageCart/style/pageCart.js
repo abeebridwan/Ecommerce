@@ -7,6 +7,10 @@ export const Header = styled.h1`
   font-size: 1.8rem;
   margin: 3rem 0;
   ${Media('min-width', "530px", ['margin: 5rem 0; font-size: 2.3rem;'])};
+  -webkit-user-select: none;    
+  -moz-user-select: none; 
+  -ms-user-select: none; 
+  user-select: none; 
   `
 
 export const Frame = styled.div`

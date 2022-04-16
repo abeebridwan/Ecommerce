@@ -13,13 +13,13 @@ export const Container = styled.div`
  ${Media('min-width', "400px", ['margin:0 2.5rem'])};  
  ${Media('min-width', "630px", ['margin:0 4.0rem'])};  
  ${Media('min-width', "750px", ['margin:0 5.0rem'])};  
+  & a{
+    all: unset
+  }
 `;
 
 export const ColumnOne = styled.span`    
-  display: flex;    
-  & a{
-    all: unset
-  }   
+  display: flex;      
 `;
 
 export const ColumnTwo = styled.span``;

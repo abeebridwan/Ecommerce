@@ -11,7 +11,6 @@ import PriceDropdown from "./price";
 import CartOverlay from "./cartOverlay";
 import { DataContext } from "../context/contextData";
 import { Link } from "react-router-dom";
-
 export default class HeaderContainer extends React.PureComponent {
   constructor(props) {
     super(props)
@@ -57,7 +56,9 @@ export default class HeaderContainer extends React.PureComponent {
       return null;
     }
 
-    const cartNumber = Object.values(cartIdValues).reduce((a, b) => { return a + b }, 0)
+    const cartNumber = Object.values(cartIdValues).reduce((a, b) => { return a + b }, 0);
+    const mq = window.matchMedia("(min-width: 400px)");
+
     return (
       <>
         <Layout>
@@ -117,20 +118,43 @@ export default class HeaderContainer extends React.PureComponent {
             </Layout.LayoutPriceFrame>
 
             <Layout.LayoutCartFrame >
-              <Layout.LayoutCart onClick={() => {
-                if (priceshow) { this.priceShowMethod(priceshow) };
-                if (Object.keys(cartIdValues).length > 0) {
-                  this.cartShowMethod(cartshow)
-                }
-              }}>
-                <Cart />
-                {cartNumber ?
-                  <Layout.LayoutCartNumber>
-                    <span>{cartNumber}</span>
-                  </Layout.LayoutCartNumber> :
-                  null
-                }
-              </Layout.LayoutCart>
+              {mq.matches ?
+                 <Layout.LayoutCart onClick={() => {
+                  if (priceshow) { this.priceShowMethod(priceshow) };
+                  if (Object.keys(cartIdValues).length > 0) {
+                    this.cartShowMethod(cartshow)
+                  }
+                }}>
+                  <Cart />
+                  {cartNumber ?
+                    <Layout.LayoutCartNumber>
+                      <span>{cartNumber}</span>
+                    </Layout.LayoutCartNumber> :
+                    null
+                  }
+                </Layout.LayoutCart> :
+                Object.keys(cartIdValues).length ?
+                  <Link to="/cart">
+                    <Layout.LayoutCart >
+                      <Cart />
+                      {cartNumber ?
+                        <Layout.LayoutCartNumber>
+                          <span>{cartNumber}</span>
+                        </Layout.LayoutCartNumber> :
+                        null
+                      }
+                    </Layout.LayoutCart>
+                  </Link> : <Layout.LayoutCart >
+                    <Cart />
+                    {cartNumber ?
+                      <Layout.LayoutCartNumber>
+                        <span>{cartNumber}</span>
+                      </Layout.LayoutCartNumber> :
+                      null
+                    }
+                  </Layout.LayoutCart>
+              }
+
               {cartshow && Object.keys(cartIdValues).length ? <CartOverlay cartshow={cartshow}
                 cartShowMethod={this.cartShowMethod} currencyIndex={currencyIndex} /> : null}
             </Layout.LayoutCartFrame>

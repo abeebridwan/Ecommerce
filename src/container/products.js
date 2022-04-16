@@ -56,31 +56,31 @@ export default class ProductsContainer extends React.PureComponent {
           {name}
         </Product.ProductHeader>
         <Product.ProductFrame>
-          {products.map((item) => (           
-              <Link to="/pdp" key={item.id}>
-                <Product.ProductItem
-                  onClick={() => {
-                    pickedProduct(item.id)
-                  }}
-                >
-               <span className="item" >
+          {products.map((item) => (
+            <Link to="/pdp" key={item.id}>
+              <Product.ProductItem
+                onClick={() => {
+                  pickedProduct(item.id, item.category);
+                  sessionStorage.setItem("name", item.category);
+                }}>
+                <span className="item" >
                   <Product.ProductImage src={item.gallery[0]} alt={item.name} />
-                 {item.inStock ? null : <Product.ProductInStock>OUT OF STOCK</Product.ProductInStock>}
+                  {item.inStock ? null : <Product.ProductInStock>OUT OF STOCK</Product.ProductInStock>}
                   <Product.ProductCart className="cartBox" onClick={(e) => {
                     e.preventDefault();
                     addRemoveFromCart(item.id)
-                  }}>                 
+                  }}>
                     <Cart id="cart" />
                   </Product.ProductCart>
-                </span>    
-                  <Product.ProductName>
-                    {item.name}
-                  </Product.ProductName>
-                  <Product.ProductPrice>
-                    {item.prices[currencyIndex].currency.symbol}{item.prices[currencyIndex].amount}
-                  </Product.ProductPrice>                  
-                </Product.ProductItem>
-              </Link>            
+                </span>
+                <Product.ProductName>
+                  {item.name}
+                </Product.ProductName>
+                <Product.ProductPrice>
+                  {item.prices[currencyIndex].currency.symbol}{item.prices[currencyIndex].amount}
+                </Product.ProductPrice>
+              </Product.ProductItem>
+            </Link>
           ))}
         </Product.ProductFrame>
       </Product >

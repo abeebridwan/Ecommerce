@@ -7,6 +7,7 @@ export function categoryData(value) {
         id,
         name,
         inStock,
+        category,
         gallery,
         prices{
           currency{

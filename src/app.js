@@ -12,17 +12,22 @@ class App extends React.Component {
       changeCategoryTo: sessionStorage.getItem("name") || "all",
       currencyIndex: localStorage.getItem("index") || 0,
       cartIdValues: JSON.parse(localStorage.getItem("cartIdValues")) || {},
+      category: null,
       productId: null
     };
     this.changeCategory = this.changeCategory.bind(this);
     this.changeCurrency = this.changeCurrency.bind(this);
     this.addRemoveFromCart = this.addRemoveFromCart.bind(this);
     this.pickedProduct = this.pickedProduct.bind(this);
+    this.setToCatNull = this.setToCatNull.bind(this);
 
   }
+  setToCatNull(){
+    this.setState({ category: null })
+  }
 
-  pickedProduct(productId) {
-    this.setState({ productId })
+  pickedProduct(productId, category) {
+    this.setState({ productId, category })
   }
 
   changeCurrency(currencyIndex) {
@@ -46,17 +51,19 @@ class App extends React.Component {
     this.setState({ cartIdValues })
   }
   render() {
-    const { cartIdValues, changeCategoryTo, currencyIndex, productId } = this.state;
+    const { cartIdValues, changeCategoryTo, currencyIndex, productId, category } = this.state;
     return (
       <DataContext.Provider value={{
         changeCurrency: this.changeCurrency,
         addRemoveFromCart: this.addRemoveFromCart,
-        cartIdValues: cartIdValues,
         changeCategory: this.changeCategory,
         changeCategoryTo: changeCategoryTo,
-        currencyIndex: currencyIndex,
         pickedProduct: this.pickedProduct,
-        productId: productId
+        setToCatNull: this.setToCatNull,
+        currencyIndex,
+        cartIdValues,
+        productId,
+        category
       }}>
         <Router>
           <Routes>

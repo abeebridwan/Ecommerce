@@ -42,6 +42,7 @@ export default class HeaderContainer extends React.PureComponent {
     try {
       const { categories } = await getAllCategoriesNames();
       this.setState({ categories })
+      console.log({ categories })
     } catch (err) {
       console.log(err)
     }
@@ -49,8 +50,7 @@ export default class HeaderContainer extends React.PureComponent {
   static contextType = DataContext;
 
   render() {
-
-    const { changeCategory, currencyIndex, cartIdValues } = this.context;
+    const { changeCategory, currencyIndex, cartIdValues, setToCatNull, category } = this.context;
     const { active, categories, priceshow, cartshow } = this.state;
     if (!categories) {
       return null;
@@ -88,8 +88,9 @@ export default class HeaderContainer extends React.PureComponent {
 
             {categories.map((item) => (
               <Link to="/" key={item.name}>
-                <Layout.LayoutDesktopCategory key={item.name} active={item.name === active} onClick={() => {
+                <Layout.LayoutDesktopCategory key={item.name} active={category ? category === item.name : item.name === active} onClick={() => {
                   changeCategory(item.name)
+                  if (category) { setToCatNull() }
                   this.setState({ active: item.name });
                   sessionStorage.setItem("name", item['name']);
                 }}>
@@ -119,7 +120,7 @@ export default class HeaderContainer extends React.PureComponent {
 
             <Layout.LayoutCartFrame >
               {mq.matches ?
-                 <Layout.LayoutCart onClick={() => {
+                <Layout.LayoutCart onClick={() => {
                   if (priceshow) { this.priceShowMethod(priceshow) };
                   if (Object.keys(cartIdValues).length > 0) {
                     this.cartShowMethod(cartshow)

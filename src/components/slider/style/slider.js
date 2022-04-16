@@ -32,7 +32,7 @@ export const ToggleLink = styled.a`
    cursor: pointer;
   top: 44%;
   left: 2%;
-  text-shadow: 2px 2px 5px #000;
+  text-shadow: 2px 2px 1px #000;
   &#right{
     left: 87%
   }

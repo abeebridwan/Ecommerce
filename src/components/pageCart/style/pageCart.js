@@ -1,7 +1,9 @@
 import styled from "styled-components/macro"
 import { Media } from '../../mixins'
 
-export const Container = styled.div``
+export const Container = styled.div`
+ 
+`
 
 export const Header = styled.h1`
   font-size: 1.8rem;
@@ -14,15 +16,15 @@ export const Header = styled.h1`
   `
 
 export const Frame = styled.div`
-  ${Media('min-width', "800px", ['max-width: 90vw'])};  
-  ${Media('max-width', "800px", ['max-width: 95vw'])};
-  ${Media('max-width', "600px", ['max-width: 100vw'])};
+  margin: 0 2rem;
+ 
+  ${Media('max-width', "500px", ['max-width: 100%'])};  
+  ${Media('min-width', "501px", ['max-width: 80%'])};
 
-  ${Media('max-width', "399px", ['padding:0 1.5rem'])};
-  ${Media('min-width', "400px", ['padding:0 4.5rem'])};  
-  ${Media('min-width', "650px", ['padding:0 6.0rem'])};  
-  ${Media('min-width', "750px", ['padding:0 8.8rem'])};
-  min-width: 350px;
+  ${Media('min-width', "400px", ['margin:0 2.5rem'])};  
+  ${Media('min-width', "630px", ['margin:0 4.0rem'])};  
+  ${Media('min-width', "750px", ['margin:0 5.0rem'])};  
+  min-width: 350px; 
   scroll-behavior: smooth;
 `
 export const Item = styled.div`

@@ -65,7 +65,7 @@ export default class ProductsContainer extends React.PureComponent {
                 >
                <span className="item" >
                   <Product.ProductImage src={item.gallery[0]} alt={item.name} />
-                  {item.inStock ? null : <Product.ProductInStock>OUT OF STOCK</Product.ProductInStock>}
+                 {item.inStock ? null : <Product.ProductInStock>OUT OF STOCK</Product.ProductInStock>}
                   <Product.ProductCart className="cartBox" onClick={(e) => {
                     e.preventDefault();
                     addRemoveFromCart(item.id)

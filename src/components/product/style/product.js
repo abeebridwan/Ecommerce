@@ -26,12 +26,11 @@ export const Frame = styled.div`
   display: grid;    
   grid-template-columns: repeat(auto-fill, minmax(max(100%, 5rem), 1fr));  
   ${Media('min-width', "450px", ['grid-template-columns: repeat(auto-fill, minmax(max(50%, 7rem), 1fr));'])};
-  ${Media('min-width', "830px", ['grid-template-columns: repeat(auto-fill, minmax(max(33%, 10rem), 1fr));'])};
- 
+  ${Media('min-width', "830px", ['grid-template-columns: repeat(auto-fill, minmax(max(33%, 10rem), 1fr));'])}; 
  `;
 
 
-export const Item = styled.div`   
+export const Item = styled.div` 
   display: flex;
   flex-direction: column;
   justify-content: center;
@@ -41,16 +40,14 @@ export const Item = styled.div`
   margin-bottom: 6rem; 
 
   &:hover{
-    box-shadow: 0 4px 8px 0 rgba(0, 0, 0, 0.2), 0 6px 20px 0 rgba(0, 0, 0, 0.19);  
-  }
-  & span.item{
-    position: relative;   
-    display: flex;
-    padding: 0;   
-    &:hover{      
+    box-shadow: 0 4px 8px 0 rgba(0, 0, 0, 0.2), 0 6px 20px 0 rgba(0, 0, 0, 0.19);      
       & span.cartBox{
         display: flex;
       }
+  }
+  & span.item{
+    position: relative;   
+    display: flex;   
     }   
   }
    ${Media('min-width', "830px", ['margin-right: 2rem;'])}; 
@@ -95,7 +92,7 @@ export const Image = styled.img`
 `;
 
 export const Name = styled.p`
-  margin-top: 2.4rem;
+  margin-top: 2rem;
   align-self: flex-start;
   font-size: 1.8rem;  
 `;
@@ -107,7 +104,7 @@ export const Price = styled.p`
   font-weight: bold;
   line-height: 28.8px;
 `;
- export const InStock = styled.div`
+export const InStock = styled.div`
   display: block;
   position: absolute;
   top: 46%;

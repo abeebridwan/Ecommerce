@@ -18,6 +18,15 @@ export const HeaderOverlay = styled.div`
   cursor: default;
   display: ${({ cartshow }) => (cartshow ? "block" : "none")};
 `
+const SlideInOverlay = keyframes`
+  0% {  
+    top: -60rem;
+  }
+  100% {
+    top: 7.8455rem;
+  }
+`
+
 export const Overlay = styled.div`
   max-width: 1440px;
   margin: auto;
@@ -31,6 +40,8 @@ export const Overlay = styled.div`
   background-color: #39374838;
   width: 100%;
   display: ${({ cartshow }) => (cartshow ? "block" : "none")};
+  animation: ${SlideInOverlay} .5s ease-in 0s
+
 `
 const SlideIn = keyframes`
   0% {

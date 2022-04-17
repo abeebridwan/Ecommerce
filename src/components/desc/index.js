@@ -1,11 +1,15 @@
 import React from "react";
 import {
   AddToCart, AttriBox, Attributes, AttriText, BigImage, ColumnOne, ColumnTwo, Container,
-  Name, Price, PriceText, SmallImageBox, SmallImage, Box
+  Name, Price, PriceText, SmallImageBox, SmallImage, Box, InStock
 } from "./style/desc";
 
 
 export default class Desc extends React.PureComponent {
+
+  static DescInStock({ children, ...restProps }) {
+    return <InStock {...restProps}>{children}</InStock>
+  }
 
   static DescAddToCart({ children, ...restProps }) {
     return <AddToCart {...restProps}>{children}</AddToCart>

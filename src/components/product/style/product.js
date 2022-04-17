@@ -17,7 +17,7 @@ export const Header = styled.h2`
   line-height: 19.2px !important; 
   text-transform: uppercase;
   font-size: 2rem;
-  margin: 3rem 0;
+  margin: 5rem 0 3rem;
   ${Media('min-width', "530px", ['margin: 5rem 0; font-size: 2.3rem;'])}; 
   -webkit-user-select: none;    
   -moz-user-select: none; 
@@ -120,6 +120,7 @@ export const InStock = styled.div`
   -moz-user-select: none; 
   -ms-user-select: none; 
   user-select: none; 
+  cursor: default;
   ${Media('min-width', "450px", ['font-size: .8em; left: 20%;'])};
   ${Media('min-width', "660px", ['font-size: 1.2em; left: 21%;'])};
   ${Media('min-width', "870px", ['font-size: 1.3em; left: 22.5%;'])};

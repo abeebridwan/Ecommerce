@@ -59,7 +59,7 @@ export default class ProductsContainer extends React.PureComponent {
           {products.map((item) => (
             <Link to="/pdp" key={item.id}>
               <Product.ProductItem
-                onClick={() => {
+                onClick={(e) => {
                   pickedProduct(item.id, item.category);
                   sessionStorage.setItem("name", item.category);
                 }}>
@@ -68,6 +68,8 @@ export default class ProductsContainer extends React.PureComponent {
                   {item.inStock ? null : <Product.ProductInStock>OUT OF STOCK</Product.ProductInStock>}
                   <Product.ProductCart className="cartBox" onClick={(e) => {
                     e.preventDefault();
+                    e.stopPropagation();
+                    e.nativeEvent.stopImmediatePropagation(); 
                     addRemoveFromCart(item.id)
                   }}>
                     <Cart id="cart" />

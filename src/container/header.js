@@ -42,7 +42,6 @@ export default class HeaderContainer extends React.PureComponent {
     try {
       const { categories } = await getAllCategoriesNames();
       this.setState({ categories })
-      console.log({ categories })
     } catch (err) {
       console.log(err)
     }

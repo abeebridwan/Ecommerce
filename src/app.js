@@ -22,11 +22,12 @@ class App extends React.Component {
     this.setToCatNull = this.setToCatNull.bind(this);
 
   }
-  setToCatNull(){
+  setToCatNull() {
     this.setState({ category: null })
   }
 
   pickedProduct(productId, category) {
+    console.log({ productId, category })
     this.setState({ productId, category })
   }
 

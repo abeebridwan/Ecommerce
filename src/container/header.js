@@ -15,7 +15,6 @@ export default class HeaderContainer extends React.PureComponent {
   constructor(props) {
     super(props)
     this.state = {
-      active: sessionStorage.getItem("name") || "all",
       categories: null,
       priceshow: false,
       cartshow: false
@@ -49,8 +48,8 @@ export default class HeaderContainer extends React.PureComponent {
   static contextType = DataContext;
 
   render() {
-    const { changeCategory, currencyIndex, cartIdValues, setToCatNull, category } = this.context;
-    const { active, categories, priceshow, cartshow } = this.state;
+    const { changeCategory, currencyIndex, cartIdValues, setToCat, category } = this.context;
+    const { categories, priceshow, cartshow } = this.state;
     if (!categories) {
       return null;
     }
@@ -87,10 +86,9 @@ export default class HeaderContainer extends React.PureComponent {
 
             {categories.map((item) => (
               <Link to="/" key={item.name}>
-                <Layout.LayoutDesktopCategory key={item.name} active={category ? category === item.name : item.name === active} onClick={() => {
+                <Layout.LayoutDesktopCategory key={item.name} active={category === item.name} onClick={() => {
                   changeCategory(item.name)
-                  if (category) { setToCatNull() }
-                  this.setState({ active: item.name });
+                  setToCat(item.name);
                   sessionStorage.setItem("name", item['name']);
                 }}>
                   <Layout.LayoutCategoryText>

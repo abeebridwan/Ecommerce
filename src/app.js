@@ -12,18 +12,18 @@ class App extends React.Component {
       changeCategoryTo: sessionStorage.getItem("name") || "all",
       currencyIndex: localStorage.getItem("index") || 0,
       cartIdValues: JSON.parse(localStorage.getItem("cartIdValues")) || {},
-      category: null,
+      category: sessionStorage.getItem("name") || "all",
       productId: null
     };
     this.changeCategory = this.changeCategory.bind(this);
     this.changeCurrency = this.changeCurrency.bind(this);
     this.addRemoveFromCart = this.addRemoveFromCart.bind(this);
     this.pickedProduct = this.pickedProduct.bind(this);
-    this.setToCatNull = this.setToCatNull.bind(this);
+    this.setToCat = this.setToCat.bind(this);
 
   }
-  setToCatNull() {
-    this.setState({ category: null })
+  setToCat(category) {
+    this.setState({ category })
   }
 
   pickedProduct(productId, category) {
@@ -60,7 +60,7 @@ class App extends React.Component {
         changeCategory: this.changeCategory,
         changeCategoryTo: changeCategoryTo,
         pickedProduct: this.pickedProduct,
-        setToCatNull: this.setToCatNull,
+        setToCat: this.setToCat,
         currencyIndex,
         cartIdValues,
         productId,

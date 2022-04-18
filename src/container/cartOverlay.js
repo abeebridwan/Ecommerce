@@ -96,7 +96,7 @@ export default class CartOverlayContainer extends React.PureComponent {
                     <Cart.CartAddSign
                       onClick={() => {
                         addRemoveFromCart(item.product.id)
-                        incrementAttr(item.product.id)
+                        incrementAttr(item.product.id, item.product.attributes)
                       }}
                     ><span>&#43;</span></Cart.CartAddSign>
                     <Cart.CartValueSign>

@@ -88,7 +88,7 @@ export default class CartContainer extends React.PureComponent {
                   <PageCart.CartPageAddSign
                     onClick={() => {
                       addRemoveFromCart(item.product.id)
-                      incrementAttr(item.product.id)
+                      incrementAttr(item.product.id, item.product.attributes)
                     }}
                   ><span>&#43;</span></PageCart.CartPageAddSign>
                   <PageCart.CartPageValueSign>

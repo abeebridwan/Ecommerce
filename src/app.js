@@ -26,7 +26,8 @@ class App extends React.Component {
     this.incrementAttr = this.incrementAttr.bind(this);
     this.decrementAttr = this.decrementAttr.bind(this);
   }
-  incrementAttr(productId) {
+  incrementAttr(productId, attrItemId) {
+    if (attrItemId.length === 0) { return; }
     const { attributes } = this.state;
     const idValue = attributes[productId]
     const newValue = attributes[productId][attributes[productId].length - 1];
@@ -54,10 +55,10 @@ class App extends React.Component {
     this.setState({ attributes: { ...attributes } })
   }
   getAttri(id) {
-    const { attributes } = this.state;   
+    const { attributes } = this.state;
     if (!attributes[id]) {
       return false
-    }    
+    }
     return attributes[id][attributes[id].length - 1]
   }
   setToCat(category) {

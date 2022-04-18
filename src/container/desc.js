@@ -35,6 +35,8 @@ export default class DescContainer extends React.PureComponent {
 
   sendOut(productId) {
     const { localAttr } = this.state;
+    if (Object.keys(localAttr[productId][0]).length === 0) { return; }
+    console.log({ localAttr })
     const { toggleAttri } = this.context
 
     const sendOutValue = localAttr[productId][0]
@@ -129,7 +131,7 @@ export default class DescContainer extends React.PureComponent {
           <Desc.DescPriceText>PRICE:</Desc.DescPriceText>
           <Desc.DescPrice>
             {product.prices[currencyIndex].currency.symbol}
-            {product.prices[currencyIndex].amount}
+            {(Math.round((product.prices[currencyIndex].amount) * 100 + Number.EPSILON) / 100).toFixed(2).replace(/\B(?<!\.\d*)(?=(\d{3})+(?!\d))/g, ",")}
           </Desc.DescPrice>
           <Desc.DescAddToCart onClick={() => {
             addRemoveFromCart(product.id)

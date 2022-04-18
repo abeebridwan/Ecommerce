@@ -122,8 +122,10 @@ export const Box = styled.div`
     margin-top:.3rem;
     background-color: ${({ selected, text }) => (selected && text && "#1D1F22")}; 
     opacity: ${({ selected, text }) => (selected && text && 1)}; 
+    color: ${({ selected, text }) => (selected && text && '#fff')}; 
+    opacity: ${({ displayValue }) => (displayValue && .3)}; 
     opacity: ${({ selected, displayValue }) => (selected && displayValue && 1)}; 
-    opacity: ${({ displayValue }) => (displayValue && .4)}; 
+    transform: ${({ selected, displayValue }) => (selected && displayValue && 'scale3d(1.2, 1.2, 1.2)')}; 
     background-color: ${({ displayValue }) => (displayValue && displayValue)}; 
     border: ${({ displayValue }) => (displayValue === "#FFFFFF" ? '1px solid #1D1F22' : displayValue)}; 
     ${Media('min-width', "500px", ['height: 2.9rem; min-width: 3.5rem;'])};

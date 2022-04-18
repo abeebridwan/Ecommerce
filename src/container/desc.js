@@ -8,20 +8,50 @@ export default class DescContainer extends React.PureComponent {
     this.state = {
       product: null,
       current: 0,
+      localAttr: null,
       productId: JSON.parse(sessionStorage.getItem("product")) || null
     }
     this.generateKey = this.generateKey.bind(this)
+    this.matchAttr = this.matchAttr.bind(this)
+    this.getInitialValues = this.getInitialValues.bind(this)
+    this.updateValues = this.updateValues.bind(this)
   }
   generateKey = (pre, index) => {
     return `${pre}_${new Date().getTime()}_${index}`;
   }
+  
+  matchAttr(productId, attriId) {
+    const { localAttr } = this.state
+    const attributes = localAttr[productId][localAttr[productId].length - 1];
+    return attributes[attriId]
+  }
+
+  updateValues(productId, attriId, attrItemId) {
+    const { localAttr } = this.state
+    localAttr[productId][0][attriId] = attrItemId
+    this.setState({ localAttr: { ...localAttr } })
+  }
+
+  getInitialValues(product) {
+    const ObjValue = {}
+    ObjValue[product.id] = []
+    ObjValue[product.id][0] = {}
+    product.attributes.forEach((element) => {
+      const objId = element.id;
+      const itemId = element.items[1]['id'] || element.items[0]['id']
+      ObjValue[product.id][0][objId] = itemId
+    })
+    return ObjValue
+  }
+  
   async componentDidMount() {
     try {
       const { productId } = this.context
       const productIdValue = productId || JSON.parse(sessionStorage.getItem("productId"));
       const { product } = await getProductData(productIdValue);
       sessionStorage.setItem("productId", JSON.stringify(productIdValue))
-      this.setState({ product })
+      const attrInit = this.getInitialValues(product)
+      this.setState({ product, localAttr: attrInit })
     } catch (err) {
       console.log(err)
     }
@@ -35,7 +65,7 @@ export default class DescContainer extends React.PureComponent {
     if (!product) {
       return null
     }
-    const { selected, currencyIndex, addRemoveFromCart } = this.context;
+    const { currencyIndex, addRemoveFromCart } = this.context;
     return (
       <Desc>
         <Desc.DescColumnOne>
@@ -62,16 +92,24 @@ export default class DescContainer extends React.PureComponent {
               <Desc.DescAttriBox key={attri.id}>
                 <Desc.DescAttriText>{attri.name}:</Desc.DescAttriText>
                 <Desc.DescAttributes>
-                  {attri.items.map((attriItem) => (
-                    <Desc.DescBox key={attriItem.id} displayValue={attriItem.value} selected={selected === attriItem.displayValue} />
+                  {attri.items.map((attriItem, index) => (
+                    <Desc.DescBox
+                      onClick={() => {
+                        this.updateValues(product.id, attri.id, attriItem.id)
+                      }}
+                      key={attriItem.id} selected={this.matchAttr(product.id, attri.id) === attriItem.id} displayValue={attriItem.value} />
                   ))}
                 </Desc.DescAttributes>
               </Desc.DescAttriBox> :
               <Desc.DescAttriBox key={attri.id}>
                 <Desc.DescAttriText>{attri.name}:</Desc.DescAttriText>
                 <Desc.DescAttributes>
-                  {attri.items.map((attriItem) => (
-                    <Desc.DescBox key={attriItem.id} selected={selected === attriItem.displayValue} text>
+                  {attri.items.map((attriItem, index) => (
+                    <Desc.DescBox
+                      onClick={() => {
+                        this.updateValues(product.id, attri.id, attriItem.id)
+                      }}
+                      key={attriItem.id} selected={this.matchAttr(product.id, attri.id) === attriItem.id} text>
                       {attriItem.value}
                     </Desc.DescBox>
                   ))}

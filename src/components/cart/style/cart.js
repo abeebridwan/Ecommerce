@@ -135,7 +135,7 @@ export const Box = styled.div`
   margin-right: 8px;  
   padding: 0 .4rem;
   border: 1px solid #1D1F22;
-  opacity: ${({ selected }) => (selected ? 1 : .4)}; 
+  opacity: ${({ selected }) => (selected ? 1 : .3)}; 
   background-color: ${({ displayValue }) => (displayValue && displayValue)}; 
   border: ${({ displayValue }) => (displayValue === "#FFFFFF" ? '1px solid #1D1F22' : displayValue)};  
 `

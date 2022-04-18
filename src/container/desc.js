@@ -38,7 +38,6 @@ export default class DescContainer extends React.PureComponent {
     const { toggleAttri } = this.context
 
     const sendOutValue = localAttr[productId][0]
-    console.log({ sendOutValue })
     toggleAttri(productId, sendOutValue)
   }
 
@@ -53,7 +52,7 @@ export default class DescContainer extends React.PureComponent {
     })
     return ObjValue
   }
-  
+
   async componentDidMount() {
     try {
       const { productId } = this.context

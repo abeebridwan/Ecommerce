@@ -13,7 +13,7 @@ class App extends React.Component {
       currencyIndex: localStorage.getItem("index") || 0,
       cartIdValues: JSON.parse(localStorage.getItem("cartIdValues")) || {},
       category: sessionStorage.getItem("name") || "all",
-      attributes: {},
+      attributes: JSON.parse(localStorage.getItem("Attr")) || {},
       productId: null
     };
     this.changeCategory = this.changeCategory.bind(this);
@@ -32,20 +32,18 @@ class App extends React.Component {
     attributes.hasOwnProperty(productId) ? idValue = attributes[productId] : idValue = [];
     idValue.push(newValue)
     attributes[productId] = idValue
-    console.log(attributes)
+    localStorage.setItem("Attr", JSON.stringify(attributes))
     this.setState({ attributes: { ...attributes } })
   }
   getAttri(id) {
-    const currentState = this.state;
-    const arrId = currentState[id];
-    return arrId[arrId.length - 1]
+    const { attributes } = this.state;
+    return attributes[id][attributes[id].length - 1];
   }
   setToCat(category) {
     this.setState({ category })
   }
 
   pickedProduct(productId, category) {
-    /* console.log({ productId, category }) */
     this.setState({ productId, category })
   }
 

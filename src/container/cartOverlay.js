@@ -9,6 +9,7 @@ export default class CartOverlayContainer extends React.PureComponent {
     this.state = {
       cartValues: null
     }
+    this.matchAttr = this.matchAttr.bind(this)
   }
   async componentDidMount() {
     const { cartIdValues } = this.context;
@@ -26,7 +27,14 @@ export default class CartOverlayContainer extends React.PureComponent {
       }
     }
   }
-
+  matchAttr(productId, attriId) {
+    if (!attriId) {
+      return;
+    }
+    const { getAttri } = this.context;
+    const attrObj = JSON.parse(getAttri(productId))
+    return attrObj[attriId]
+  }
   static contextType = DataContext;
 
   render() {
@@ -36,7 +44,7 @@ export default class CartOverlayContainer extends React.PureComponent {
       return null
     }
 
-    const { cartshow, cartShowMethod, currencyIndex, selected } = this.props;
+    const { cartshow, cartShowMethod, currencyIndex } = this.props;
     const { cartIdValues, addRemoveFromCart } = this.context;
     const cartNumber = Object.values(cartIdValues).reduce((a, b) => { return a + b }, 0)
 
@@ -67,12 +75,12 @@ export default class CartOverlayContainer extends React.PureComponent {
                     objAttr.type === "swatch" ?
                       <Cart.CartAttributes key={objAttr.id}>
                         {objAttr.items.map((attr) => (
-                          <Cart.CartBox key={attr.id} displayValue={attr.value} selected={selected === attr.displayValue} />
+                          <Cart.CartBox key={attr.id} displayValue={attr.value} selected={this.matchAttr(item.product.id, objAttr.id) === attr.id} />
                         ))}
                       </Cart.CartAttributes> :
                       <Cart.CartAttributes key={objAttr.id}>
                         {objAttr.items.map((attr) => (
-                          <Cart.CartBox id="text" key={attr.id} selected={selected === attr.displayValue} text >
+                          <Cart.CartBox id="text" key={attr.id} selected={this.matchAttr(item.product.id, objAttr.id) === attr.id} text >
                             <span>
                               {attr.value}
                             </span>

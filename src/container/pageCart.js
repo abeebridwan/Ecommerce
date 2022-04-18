@@ -9,8 +9,19 @@ export default class CartContainer extends React.PureComponent {
     this.state = {
       cartValues: null
     }
+    this.matchAttr = this.matchAttr.bind(this)
   }
   static contextType = DataContext;
+
+  matchAttr(productId, attriId) {
+    const { getAttri } = this.context;
+    if (!attriId || !productId) {
+      return false;
+    }
+    const attrObj = JSON.parse(getAttri(productId)) || false
+    if (!attrObj) { return false }
+    return attrObj[attriId]
+  }
 
   async componentDidMount() {
     const { cartIdValues } = this.context;
@@ -34,7 +45,7 @@ export default class CartContainer extends React.PureComponent {
     if (!cartValues) {
       return null
     }
-    const { selected, currencyIndex, cartIdValues, addRemoveFromCart } = this.context;
+    const { currencyIndex, cartIdValues, addRemoveFromCart, incrementAttr, decrementAttr } = this.context;
     return (
       <PageCart>
         <PageCart.CartPageFrame>
@@ -57,12 +68,12 @@ export default class CartContainer extends React.PureComponent {
                   objAttr.type === "swatch" ?
                     <PageCart.CartPageAttributes key={objAttr.id}>
                       {objAttr.items.map((attr) => (
-                        <PageCart.CartPageBox key={attr.id} displayValue={attr.value} selected={selected === attr.displayValue} />
+                        <PageCart.CartPageBox key={attr.id} displayValue={attr.value} selected={this.matchAttr(item.product.id, objAttr.id) === attr.id} />
                       ))}
                     </PageCart.CartPageAttributes> :
                     <PageCart.CartPageAttributes key={objAttr.id}>
                       {objAttr.items.map((attr) => (
-                        <PageCart.CartPageBox id="text" key={attr.id} selected={selected === attr.displayValue} text >
+                        <PageCart.CartPageBox id="text" key={attr.id} selected={this.matchAttr(item.product.id, objAttr.id) === attr.id} text >
                           <span>
                             {attr.value}
                           </span>
@@ -77,6 +88,7 @@ export default class CartContainer extends React.PureComponent {
                   <PageCart.CartPageAddSign
                     onClick={() => {
                       addRemoveFromCart(item.product.id)
+                      incrementAttr(item.product.id)
                     }}
                   ><span>&#43;</span></PageCart.CartPageAddSign>
                   <PageCart.CartPageValueSign>
@@ -85,6 +97,7 @@ export default class CartContainer extends React.PureComponent {
                   <PageCart.CartPageSubSign
                     onClick={() => {
                       addRemoveFromCart(item.product.id, true)
+                      decrementAttr(item.product.id)
                     }}
                   ><span>&#8722;</span></PageCart.CartPageSubSign>
                 </PageCart.CartPageSignBox>

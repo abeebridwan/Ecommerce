@@ -90,12 +90,18 @@ export const Box = styled.div`
   margin-top:.3rem;
   background-color: ${({ selected, text }) => (selected && text && "#1D1F22")}; 
   opacity: ${({ selected, text }) => (selected && text && 1)}; 
+  color: ${({ selected, text }) => (selected && text && '#fff')}; 
+  transform: ${({ selected, displayValue }) => (selected && displayValue && 'scale3d(1.2, 1.2, 1.2)')}; 
+  opacity: ${({ displayValue }) => (displayValue && .3)}; 
   opacity: ${({ selected, displayValue }) => (selected && displayValue && 1)}; 
-  opacity: ${({ displayValue }) => (displayValue && .4)}; 
   background-color: ${({ displayValue }) => (displayValue && displayValue)}; 
   border: ${({ displayValue }) => (displayValue === "#FFFFFF" ? '1px solid #1D1F22' : displayValue)}; 
   ${Media('min-width', "500px", ['height: 2.5rem; min-width: 2.5rem;'])};
   ${Media('min-width', "530px", ['height: 2.8rem; min-width: 3.5rem;'])};
+  -webkit-user-select: none;    
+  -moz-user-select: none; 
+  -ms-user-select: none; 
+  user-select: none; 
 `
 
 export const ColumnTwo = styled.div`

@@ -32,7 +32,6 @@ export default class CartOverlayContainer extends React.PureComponent {
     if (!attriId || !productId) {
       return false;
     }
-    console.log({ productId })
     const attrObj = JSON.parse(getAttri(productId)) || false
     if (!attrObj) { return false }
     return attrObj[attriId]

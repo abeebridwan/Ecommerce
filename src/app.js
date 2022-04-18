@@ -33,7 +33,6 @@ class App extends React.Component {
     idValue.push(newValue)
     attributes[productId] = idValue
     localStorage.setItem("Attr", JSON.stringify(attributes))
-    console.log({ attributes }, "incre")
     this.setState({ attributes: { ...attributes } })
   }
   decrementAttr(productId) {
@@ -42,7 +41,6 @@ class App extends React.Component {
     idValue.pop()
     idValue.length === 0 ? delete attributes[productId] : attributes[productId] = idValue
     localStorage.setItem("Attr", JSON.stringify(attributes))
-    console.log({ attributes }, "decre")
     this.setState({ attributes: { ...attributes } })
   }
   toggleAttri(productId, newAttributes) {

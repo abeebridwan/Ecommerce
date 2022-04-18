@@ -69,7 +69,7 @@ export default class ProductsContainer extends React.PureComponent {
                   <Product.ProductCart className="cartBox" onClick={(e) => {
                     e.preventDefault();
                     e.stopPropagation();
-                    e.nativeEvent.stopImmediatePropagation(); 
+                    e.nativeEvent.stopImmediatePropagation();
                     addRemoveFromCart(item.id)
                   }}>
                     <Cart id="cart" />
@@ -79,7 +79,8 @@ export default class ProductsContainer extends React.PureComponent {
                   {item.name}
                 </Product.ProductName>
                 <Product.ProductPrice>
-                  {item.prices[currencyIndex].currency.symbol}{item.prices[currencyIndex].amount}
+                  {item.prices[currencyIndex].currency.symbol}
+                  {(Math.round((item.prices[currencyIndex].amount) * 100 + Number.EPSILON) / 100).toFixed(2).replace(/\B(?<!\.\d*)(?=(\d{3})+(?!\d))/g, ",")}
                 </Product.ProductPrice>
               </Product.ProductItem>
             </Link>

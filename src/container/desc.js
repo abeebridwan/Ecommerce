@@ -15,11 +15,12 @@ export default class DescContainer extends React.PureComponent {
     this.matchAttr = this.matchAttr.bind(this)
     this.getInitialValues = this.getInitialValues.bind(this)
     this.updateValues = this.updateValues.bind(this)
+    this.sendOut = this.sendOut.bind(this)
   }
   generateKey = (pre, index) => {
     return `${pre}_${new Date().getTime()}_${index}`;
   }
-  
+
   matchAttr(productId, attriId) {
     const { localAttr } = this.state
     const attributes = localAttr[productId][localAttr[productId].length - 1];
@@ -30,6 +31,15 @@ export default class DescContainer extends React.PureComponent {
     const { localAttr } = this.state
     localAttr[productId][0][attriId] = attrItemId
     this.setState({ localAttr: { ...localAttr } })
+  }
+
+  sendOut(productId) {
+    const { localAttr } = this.state;
+    const { toggleAttri } = this.context
+
+    const sendOutValue = localAttr[productId][0]
+    console.log({ sendOutValue })
+    toggleAttri(productId, sendOutValue)
   }
 
   getInitialValues(product) {
@@ -51,7 +61,7 @@ export default class DescContainer extends React.PureComponent {
       const { product } = await getProductData(productIdValue);
       sessionStorage.setItem("productId", JSON.stringify(productIdValue))
       const attrInit = this.getInitialValues(product)
-      this.setState({ product, localAttr: attrInit })
+      this.setState({ product, localAttr: attrInit, attrInit })
     } catch (err) {
       console.log(err)
     }
@@ -124,6 +134,7 @@ export default class DescContainer extends React.PureComponent {
           </Desc.DescPrice>
           <Desc.DescAddToCart onClick={() => {
             addRemoveFromCart(product.id)
+            this.sendOut(product.id)
           }}>ADD TO CART</Desc.DescAddToCart>
           {<div dangerouslySetInnerHTML={{ __html: product.description }} />}
         </Desc.DescColumnTwo>

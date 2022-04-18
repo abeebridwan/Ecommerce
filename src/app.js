@@ -13,6 +13,7 @@ class App extends React.Component {
       currencyIndex: localStorage.getItem("index") || 0,
       cartIdValues: JSON.parse(localStorage.getItem("cartIdValues")) || {},
       category: sessionStorage.getItem("name") || "all",
+      attributes: {},
       productId: null
     };
     this.changeCategory = this.changeCategory.bind(this);
@@ -20,14 +21,31 @@ class App extends React.Component {
     this.addRemoveFromCart = this.addRemoveFromCart.bind(this);
     this.pickedProduct = this.pickedProduct.bind(this);
     this.setToCat = this.setToCat.bind(this);
+    this.toggleAttri = this.toggleAttri.bind(this);
+    this.getAttri = this.getAttri.bind(this);
+  }
 
+  toggleAttri(productId, newAttributes, remove = {}) {
+    const { attributes } = this.state;
+    const newValue = JSON.stringify(newAttributes)
+    let idValue;
+    attributes.hasOwnProperty(productId) ? idValue = attributes[productId] : idValue = [];
+    idValue.push(newValue)
+    attributes[productId] = idValue
+    console.log(attributes)
+    this.setState({ attributes: { ...attributes } })
+  }
+  getAttri(id) {
+    const currentState = this.state;
+    const arrId = currentState[id];
+    return arrId[arrId.length - 1]
   }
   setToCat(category) {
     this.setState({ category })
   }
 
   pickedProduct(productId, category) {
-    console.log({ productId, category })
+    /* console.log({ productId, category }) */
     this.setState({ productId, category })
   }
 
@@ -60,7 +78,9 @@ class App extends React.Component {
         changeCategory: this.changeCategory,
         changeCategoryTo: changeCategoryTo,
         pickedProduct: this.pickedProduct,
+        toggleAttri: this.toggleAttri,
         setToCat: this.setToCat,
+        getAttri: this.getAttri,
         currencyIndex,
         cartIdValues,
         productId,

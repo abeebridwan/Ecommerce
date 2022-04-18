@@ -60,7 +60,7 @@ export default class DescContainer extends React.PureComponent {
       const { product } = await getProductData(productIdValue);
       sessionStorage.setItem("productId", JSON.stringify(productIdValue))
       const attrInit = this.getInitialValues(product)
-      this.setState({ product, localAttr: attrInit, attrInit })
+      this.setState({ product, localAttr: attrInit })
     } catch (err) {
       console.log(err)
     }

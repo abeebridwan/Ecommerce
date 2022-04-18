@@ -28,11 +28,13 @@ export default class CartOverlayContainer extends React.PureComponent {
     }
   }
   matchAttr(productId, attriId) {
-    if (!attriId) {
-      return;
-    }
     const { getAttri } = this.context;
-    const attrObj = JSON.parse(getAttri(productId))
+    if (!attriId || !productId) {
+      return false;
+    }
+    console.log({ productId })
+    const attrObj = JSON.parse(getAttri(productId)) || false
+    if (!attrObj) { return false }
     return attrObj[attriId]
   }
   static contextType = DataContext;
@@ -45,7 +47,7 @@ export default class CartOverlayContainer extends React.PureComponent {
     }
 
     const { cartshow, cartShowMethod, currencyIndex } = this.props;
-    const { cartIdValues, addRemoveFromCart } = this.context;
+    const { cartIdValues, addRemoveFromCart, incrementAttr, decrementAttr } = this.context;
     const cartNumber = Object.values(cartIdValues).reduce((a, b) => { return a + b }, 0)
 
 
@@ -95,6 +97,7 @@ export default class CartOverlayContainer extends React.PureComponent {
                     <Cart.CartAddSign
                       onClick={() => {
                         addRemoveFromCart(item.product.id)
+                        incrementAttr(item.product.id)
                       }}
                     ><span>&#43;</span></Cart.CartAddSign>
                     <Cart.CartValueSign>
@@ -104,6 +107,7 @@ export default class CartOverlayContainer extends React.PureComponent {
                       onClick={() => {
                         addRemoveFromCart(item.product.id, true)
                         if (Object.keys(cartIdValues).length < 1) { cartShowMethod(cartshow) }
+                        decrementAttr(item.product.id)
                       }}
                     ><span>&#8722;</span></Cart.CartSubSign>
                   </Cart.CartSignBox>

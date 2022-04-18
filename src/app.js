@@ -23,9 +23,29 @@ class App extends React.Component {
     this.setToCat = this.setToCat.bind(this);
     this.toggleAttri = this.toggleAttri.bind(this);
     this.getAttri = this.getAttri.bind(this);
+    this.incrementAttr = this.incrementAttr.bind(this);
+    this.decrementAttr = this.decrementAttr.bind(this);
   }
-
-  toggleAttri(productId, newAttributes, remove = {}) {
+  incrementAttr(productId) {
+    const { attributes } = this.state;
+    const idValue = attributes[productId]
+    const newValue = attributes[productId][attributes[productId].length - 1];
+    idValue.push(newValue)
+    attributes[productId] = idValue
+    localStorage.setItem("Attr", JSON.stringify(attributes))
+    console.log({ attributes }, "incre")
+    this.setState({ attributes: { ...attributes } })
+  }
+  decrementAttr(productId) {
+    const { attributes } = this.state;
+    const idValue = attributes[productId]
+    idValue.pop()
+    idValue.length === 0 ? delete attributes[productId] : attributes[productId] = idValue
+    localStorage.setItem("Attr", JSON.stringify(attributes))
+    console.log({ attributes }, "decre")
+    this.setState({ attributes: { ...attributes } })
+  }
+  toggleAttri(productId, newAttributes) {
     const { attributes } = this.state;
     const newValue = JSON.stringify(newAttributes)
     let idValue;
@@ -36,8 +56,11 @@ class App extends React.Component {
     this.setState({ attributes: { ...attributes } })
   }
   getAttri(id) {
-    const { attributes } = this.state;
-    return attributes[id][attributes[id].length - 1];
+    const { attributes } = this.state;   
+    if (!attributes[id]) {
+      return false
+    }    
+    return attributes[id][attributes[id].length - 1]
   }
   setToCat(category) {
     this.setState({ category })
@@ -76,6 +99,8 @@ class App extends React.Component {
         changeCategory: this.changeCategory,
         changeCategoryTo: changeCategoryTo,
         pickedProduct: this.pickedProduct,
+        incrementAttr: this.incrementAttr,
+        decrementAttr: this.decrementAttr,
         toggleAttri: this.toggleAttri,
         setToCat: this.setToCat,
         getAttri: this.getAttri,

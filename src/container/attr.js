@@ -51,7 +51,6 @@ export default class Attributes extends React.PureComponent {
     try {
       const { id } = this.props;
       const { product } = await getAttrData(id);
-      console.log({ product })
       const attrInit = this.getInitialValues(product)
       this.setState({ attrData: product, localAttr: attrInit })
     } catch (err) {

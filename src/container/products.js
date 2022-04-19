@@ -22,10 +22,10 @@ export default class ProductsContainer extends React.PureComponent {
 
   attrStatusMethod(attrShow, id) {
     if (!attrShow) {
-      document.body.style.overflow = 'hidden';
+      document.body.style.overflowY = 'hidden';
       document.body.style.paddingRight = '15px';
     } else {
-      document.body.style.overflow = 'unset';
+      document.body.style.overflowY = 'scroll';
       document.body.style.paddingRight = '0px';
     }
     this.setState({ attrShow: !attrShow, id })
@@ -86,6 +86,7 @@ export default class ProductsContainer extends React.PureComponent {
                     e.nativeEvent.stopImmediatePropagation();
                     if (item.attributes[0]) {
                       this.attrStatusMethod(attrShow, item.id)
+                      return;
                     }
                     addRemoveFromCart(item.id)
                   }}>

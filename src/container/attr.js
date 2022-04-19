@@ -5,7 +5,7 @@ export default class Attributes extends React.PureComponent {
 
 
   render() {
-
-    return <Attr>Hello there</Attr>
+    const { attrShow, attrMethod } = this.props
+    return <Attr attrShow={attrShow}>Hello there</Attr>
   }
 }

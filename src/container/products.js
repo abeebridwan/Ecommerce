@@ -11,10 +11,17 @@ export default class ProductsContainer extends React.PureComponent {
     super(props);
     this.state = {
       changeCategoryToValue: "all",
+      attrShow: false,
+      attrStatus: false,
       category: null
     }
+    this.attrStatusMethod = this.attrStatusMethod.bind(this)
   }
   static contextType = DataContext;
+
+  attrStatusMethod(attrStatus) {
+    this.setState({ attrStatus: !attrStatus })
+  }
 
   async componentDidMount() {
     try {
@@ -47,9 +54,8 @@ export default class ProductsContainer extends React.PureComponent {
     }
 
     const { name, products } = category;
-    const { addRemoveFromCart, currencyIndex } = this.context;
-    const { pickedProduct } = this.context;
-
+    const { addRemoveFromCart, currencyIndex, pickedProduct } = this.context;
+    const { attrShow } = this.state
     return (
       <Product>
         <Product.ProductHeader>
@@ -70,6 +76,7 @@ export default class ProductsContainer extends React.PureComponent {
                     e.preventDefault();
                     e.stopPropagation();
                     e.nativeEvent.stopImmediatePropagation();
+                    this.setState({ attrShow: !attrShow })
                     addRemoveFromCart(item.id)
                   }}>
                     <Cart id="cart" />
@@ -86,7 +93,7 @@ export default class ProductsContainer extends React.PureComponent {
             </Link>
           ))}
         </Product.ProductFrame>
-        <Attributes />
+        <Attributes attrShow={attrShow} attrMethod={this.attrStatusMethod} />
       </Product >
     )
   }

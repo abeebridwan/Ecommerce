@@ -2,7 +2,10 @@ import styled from 'styled-components/macro';
 import { Media } from '../../mixins'
 import { keyframes } from 'styled-components';
 
-export const Container = styled.div``
+export const Container = styled.div`
+  display: ${({ attrShow }) => (attrShow ? "block" : "none")};
+
+`
 
 export const HeaderOverlay = styled.div`
   max-width: 1440px;

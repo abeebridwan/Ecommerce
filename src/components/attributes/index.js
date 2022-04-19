@@ -1,6 +1,6 @@
 import React from "react"
 import {
-  Overlay, Container, HeaderOverlay, Frame, ContainerBox, Text, AttriContainer, Box,
+  Overlay, Container, Frame, ContainerBox, Text, AttriContainer, Box,
   Cancel, AddToCart
 } from "./style/attri";
 
@@ -38,10 +38,6 @@ export default class Attri extends React.PureComponent {
 
   static AttriOverlay({ children, ...restProps }) {
     return <Overlay {...restProps}>{children}</Overlay>
-  }
-
-  static AttriHeaderOverlay({ children, ...restProps }) {
-    return <HeaderOverlay {...restProps}>{children}</HeaderOverlay>
   }
 
   render() {

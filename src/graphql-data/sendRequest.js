@@ -1,5 +1,5 @@
 import getData from "./get-data";
-import { categoryData, CategoriesNames, PricesData, ProductData } from './dataQuery';
+import { categoryData, CategoriesNames, PricesData, ProductData, AttrData } from './dataQuery';
 
 /* get a single category data with right argument */
 export function getCategoryApiMethod(input) {
@@ -17,5 +17,10 @@ export function getPriceData() {
 
 export function getProductData(id) {
   let result = ProductData(id);
+  return getData(result)
+}
+
+export function getAttrData(id) {
+  let result = AttrData(id);
   return getData(result)
 }

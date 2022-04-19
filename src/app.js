@@ -39,6 +39,7 @@ class App extends React.Component {
   decrementAttr(productId) {
     const { attributes } = this.state;
     const idValue = attributes[productId]
+    if (!idValue) { return }
     idValue.pop()
     idValue.length === 0 ? delete attributes[productId] : attributes[productId] = idValue
     localStorage.setItem("Attr", JSON.stringify(attributes))

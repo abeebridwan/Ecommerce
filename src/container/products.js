@@ -12,15 +12,23 @@ export default class ProductsContainer extends React.PureComponent {
     this.state = {
       changeCategoryToValue: "all",
       attrShow: false,
-      attrStatus: false,
+      id: null,
+      addToCart: false,
       category: null
     }
     this.attrStatusMethod = this.attrStatusMethod.bind(this)
   }
   static contextType = DataContext;
 
-  attrStatusMethod(attrStatus) {
-    this.setState({ attrStatus: !attrStatus })
+  attrStatusMethod(attrShow, id) {
+    if (!attrShow) {
+      document.body.style.overflow = 'hidden';
+      document.body.style.paddingRight = '15px';
+    } else {
+      document.body.style.overflow = 'unset';
+      document.body.style.paddingRight = '0px';
+    }
+    this.setState({ attrShow: !attrShow, id })
   }
 
   async componentDidMount() {
@@ -55,7 +63,7 @@ export default class ProductsContainer extends React.PureComponent {
 
     const { name, products } = category;
     const { addRemoveFromCart, currencyIndex, pickedProduct } = this.context;
-    const { attrShow } = this.state
+    const { attrShow, id } = this.state
     return (
       <Product>
         <Product.ProductHeader>
@@ -76,7 +84,9 @@ export default class ProductsContainer extends React.PureComponent {
                     e.preventDefault();
                     e.stopPropagation();
                     e.nativeEvent.stopImmediatePropagation();
-                    this.setState({ attrShow: !attrShow })
+                    if (item.attributes[0]) {
+                      this.attrStatusMethod(attrShow, item.id)
+                    }
                     addRemoveFromCart(item.id)
                   }}>
                     <Cart id="cart" />
@@ -93,7 +103,7 @@ export default class ProductsContainer extends React.PureComponent {
             </Link>
           ))}
         </Product.ProductFrame>
-        <Attributes attrShow={attrShow} attrMethod={this.attrStatusMethod} />
+        {attrShow ? <Attributes id={id} attrShow={attrShow} attrMethod={this.attrStatusMethod} /> : null}
       </Product >
     )
   }

@@ -9,6 +9,9 @@ export function categoryData(value) {
         inStock,
         category,
         gallery,
+        attributes{
+          id
+        },
         prices{
           currency{
             label,
@@ -81,6 +84,30 @@ export const PricesData =
   }`
 }
 
+export function AttrData(id) {
+  return {
+    query: `query ($id: String!) {
+      product(id: $id, ) {
+        name,
+        id,       
+       attributes{
+          id,
+          name,
+          type,
+          items{
+            id, 
+            displayValue,
+            value
+          }
+        }
+        
+      }    
+    }`,
+    variables: {
+      "id": id
+    }
+  }
+}
 
 
 

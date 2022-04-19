@@ -36,9 +36,7 @@ export default class DescContainer extends React.PureComponent {
   sendOut(productId) {
     const { localAttr } = this.state;
     if (Object.keys(localAttr[productId][0]).length === 0) { return; }
-    console.log({ localAttr })
-    const { toggleAttri } = this.context
-
+    const { toggleAttri } = this.context;
     const sendOutValue = localAttr[productId][0]
     toggleAttri(productId, sendOutValue)
   }
@@ -103,7 +101,7 @@ export default class DescContainer extends React.PureComponent {
               <Desc.DescAttriBox key={attri.id}>
                 <Desc.DescAttriText>{attri.name}:</Desc.DescAttriText>
                 <Desc.DescAttributes>
-                  {attri.items.map((attriItem, index) => (
+                  {attri.items.map((attriItem) => (
                     <Desc.DescBox
                       onClick={() => {
                         this.updateValues(product.id, attri.id, attriItem.id)
@@ -115,7 +113,7 @@ export default class DescContainer extends React.PureComponent {
               <Desc.DescAttriBox key={attri.id}>
                 <Desc.DescAttriText>{attri.name}:</Desc.DescAttriText>
                 <Desc.DescAttributes>
-                  {attri.items.map((attriItem, index) => (
+                  {attri.items.map((attriItem) => (
                     <Desc.DescBox
                       onClick={() => {
                         this.updateValues(product.id, attri.id, attriItem.id)

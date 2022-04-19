@@ -155,8 +155,9 @@ export const AddToCart = styled.button`
     cursor: pointer;
     display: flex;
     justify-content:center;
-    align-items: center; 
-    font-size: bold;
+    align-items: center;
+    font-weight: bold; 
+    font-size: 1.6rem;
     width: 100%;
     height: 4.5rem;
     color: #fff;    

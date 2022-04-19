@@ -1,5 +1,6 @@
 import styled from "styled-components/macro";
 import { Media } from '../../mixins'
+import { keyframes } from 'styled-components';
 
 
 export const Container = styled.div`
@@ -171,6 +172,11 @@ export const AddToCart = styled.button`
     }
     ${Media('min-width', "800px", [' width: 80%;'])};   
 `
+const SlideIn = keyframes`
+    0% {opacity:0;}
+    100% {opacity:1;}
+`
+
 export const InStock = styled.span`
   position: absolute;
   display: flex;
@@ -191,5 +197,6 @@ export const InStock = styled.span`
   ${Media('min-width', "550px", ['font-size: 1.4em; line-height: 18.4px;'])};
   ${Media('min-width', "800px", ['top: 40%;'])}; 
   ${Media('min-width', "950px", ['left: 28.5%;'])}; 
+   animation: ${SlideIn} 0.5s ease-in 0s
   }  
  `

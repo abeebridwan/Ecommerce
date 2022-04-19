@@ -4,7 +4,7 @@ import { getCategoryApiMethod } from '../graphql-data/sendRequest';
 import { ReactComponent as Cart } from '../assets/Cart.svg';
 import { DataContext } from "../context/contextData";
 import { Link } from "react-router-dom";
-
+import Attributes from "./attr";
 
 export default class ProductsContainer extends React.PureComponent {
   constructor(props) {
@@ -86,6 +86,7 @@ export default class ProductsContainer extends React.PureComponent {
             </Link>
           ))}
         </Product.ProductFrame>
+        <Attributes />
       </Product >
     )
   }

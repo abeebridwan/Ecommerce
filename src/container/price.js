@@ -2,12 +2,11 @@ import React from "react";
 import { PriceDropdown } from "../components";
 import { getPriceData } from "../graphql-data/sendRequest";
 import { DataContext } from "../context/contextData";
-
 export default class Price extends React.PureComponent {
   constructor(props) {
     super(props);
     this.state = {
-      currencies: null      
+      currencies: null
     }
   }
 
@@ -15,7 +14,7 @@ export default class Price extends React.PureComponent {
     try {
       const { currencies } = await getPriceData();
       this.setState({ currencies })
-    } catch (err) {      
+    } catch (err) {
       console.log(err)
     }
   }

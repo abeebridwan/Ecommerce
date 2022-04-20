@@ -46,11 +46,10 @@ Built-in with the following pages: PLP, PDP and cart + cartOverlay.
 - price
   - price made accurately in two decimal places with commas appropriately
 
-- mobile support
+- mobile support and responsiveness
 - cross browser compatibility
 - accessibility
 - thorough modularity and organization
-- several checks to prevent unauthorized access
 - unit and integration test done
 - many more - find out by checking the app by running it locally
 

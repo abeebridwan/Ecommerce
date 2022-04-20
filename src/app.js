@@ -39,10 +39,10 @@ class App extends React.Component {
   decrementAttr(productId) {
     const { attributes } = this.state;
     const idValue = attributes[productId]
-    if (!idValue) { return }
-    idValue.pop()
-    idValue.length === 0 ? delete attributes[productId] : attributes[productId] = idValue
-    localStorage.setItem("Attr", JSON.stringify(attributes))
+    if (!idValue) { return; }
+    idValue.pop();
+    idValue.length === 0 ? delete attributes[productId] : attributes[productId] = idValue;
+    localStorage.setItem("Attr", JSON.stringify(attributes));
     this.setState({ attributes: { ...attributes } })
   }
   toggleAttri(productId, newAttributes) {
@@ -57,9 +57,7 @@ class App extends React.Component {
   }
   getAttri(id) {
     const { attributes } = this.state;
-    if (!attributes[id]) {
-      return false
-    }
+    if (!attributes[id]) {return false; }
     return attributes[id][attributes[id].length - 1]
   }
   setToCat(category) {

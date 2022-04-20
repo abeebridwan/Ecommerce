@@ -1,9 +1,7 @@
 import styled from "styled-components/macro"
 import { Media } from '../../mixins'
 
-export const Container = styled.div`
- 
-`
+export const Container = styled.div``
 
 export const Header = styled.h1`
   font-size: 1.8rem;

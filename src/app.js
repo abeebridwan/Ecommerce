@@ -55,15 +55,17 @@ class App extends React.Component {
     localStorage.setItem("Attr", JSON.stringify(attributes))
     this.setState({ attributes: { ...attributes } })
   }
+  
   getAttri(id) {
     const { attributes } = this.state;
     if (!attributes[id]) {return false; }
     return attributes[id][attributes[id].length - 1]
   }
+
   setToCat(category) {
     this.setState({ category })
   }
-
+  
   pickedProduct(productId, category) {
     this.setState({ productId, category })
   }

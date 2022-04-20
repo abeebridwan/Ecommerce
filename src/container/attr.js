@@ -41,7 +41,7 @@ export default class Attributes extends React.PureComponent {
     ObjValue[product.id][0] = {}
     product.attributes.forEach((element) => {
       const objId = element.id;
-      const itemId = element.items[1]['id'] || element.items[0]['id']
+      const itemId = element.items[0]['id']
       ObjValue[product.id][0][objId] = itemId
     })
     return ObjValue

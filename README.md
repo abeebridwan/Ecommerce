@@ -70,6 +70,7 @@ Built-in with the following pages: PLP, PDP and cart + cartOverlay.
 
 - Clone the project and run `yarn` to add packages.
 - Load the BE on `http://localhost:4000/`
+- run `yarn build` 
 - run `yarn start` 
 
 ## Committing Style 

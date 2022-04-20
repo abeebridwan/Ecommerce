@@ -1,70 +1,83 @@
-# Getting Started with Create React App
+## ---------Hope you read about the features before checking it out-----------
 
-This project was bootstrapped with [Create React App](https://github.com/facebook/create-react-app).
+## Scandiweb React Developer Test
 
-## Available Scripts
+This application was built using React, Styled Components, React Router DOM and Browser Apis.
 
-In the project directory, you can run:
+## About
 
-### `yarn start`
+Check all features this app offers:
 
-Runs the app in the development mode.\
-Open [http://localhost:3000](http://localhost:3000) to view it in your browser.
+Built-in with the following pages: PLP, PDP and cart + cartOverlay.
 
-The page will reload when you make changes.\
-You may also see any lint errors in the console.
+## More Features in the App
 
-### `yarn test`
+- Switch between Header clickable without clicking out ---- ALL, clothes, Tech, price icon and cartOverlay icon
 
-Launches the test runner in the interactive watch mode.\
-See the section about [running tests](https://facebook.github.io/create-react-app/docs/running-tests) for more information.
+- Inside mini-Cart
+  - last immediate picked will be shown while other stacked underneath
+  - scroll down to see all products
+  - scroll the product to see all of its attributes ( **incase it has more one line of attributes** ).
+  - clicking the increment will add new product stacked on top, ( **using all attributes of the last one** )
+  - Decrement will take away the last immediate one.
 
-### `yarn build`
 
-Builds the app for production to the `build` folder.\
-It correctly bundles React in production mode and optimizes the build for the best performance.
+- Inside Cart page
+  - arrows appear on items images that has more than one picture from the Back-End
+  
 
-The build is minified and the filenames include the hashes.\
-Your app is ready to be deployed!
+- Inside the Header
+  - header categories( all, clothes, or any other added ) will be clickable(links) back to PLP page from anywhere in the app
 
-See the section about [deployment](https://facebook.github.io/create-react-app/docs/deployment) for more information.
 
-### `yarn eject`
+- inside PDP page
+  - small images on the left side of the big image are clickable
+  - first attributes are picked by default
 
-**Note: this is a one-way operation. Once you `eject`, you can't go back!**
 
-If you aren't satisfied with the build tool and configuration choices, you can `eject` at any time. This command will remove the single build dependency from your project.
+- inside PLP page
+  - click on the blue cart to add products and set attributes
+  - click on the product itself to go to PLP page
 
-Instead, it will copy all the configuration files and the transitive dependencies (webpack, Babel, ESLint, etc) right into your project so you have full control over them. All of the commands except `eject` will still work, but they will point to the copied scripts so you can tweak them. At this point you're on your own.
 
-You don't have to ever use `eject`. The curated feature set is suitable for small and middle deployments, and you shouldn't feel obligated to use this feature. However we understand that this tool wouldn't be useful if you couldn't customize it when you are ready for it.
+- persistent all over the app
+  - the persistent session was done using local storage and session Storage
 
-## Learn More
 
-You can learn more in the [Create React App documentation](https://facebook.github.io/create-react-app/docs/getting-started).
+- mobile support
+- cross browser compatibility
+- accessibility
+- thorough modularity and organization
+- several checks to prevent unauthorized access
+- unit and integration test done
+- many more - find out by checking the app by running it locally
 
-To learn React, check out the [React documentation](https://reactjs.org/).
 
-### Code Splitting
 
-This section has moved here: [https://facebook.github.io/create-react-app/docs/code-splitting](https://facebook.github.io/create-react-app/docs/code-splitting)
+## Built with
 
-### Analyzing the Bundle Size
+#### Core Tech (no unnecessary packages used )
 
-This section has moved here: [https://facebook.github.io/create-react-app/docs/analyzing-the-bundle-size](https://facebook.github.io/create-react-app/docs/analyzing-the-bundle-size)
+- [React](https://github.com/facebook/react)
+- [Styled-components](https://styled-components.com/)
+- [React Router](https://reactrouter.com/docs/en/v6/api)
+- [Browser Apis](https://fusejs.io/)
+  - Fetch, session storage, local storage
 
-### Making a Progressive Web App
 
-This section has moved here: [https://facebook.github.io/create-react-app/docs/making-a-progressive-web-app](https://facebook.github.io/create-react-app/docs/making-a-progressive-web-app)
+## Run locally
 
-### Advanced Configuration
+- Clone the project and run `yarn` to add packages.
+- Load the BE on `http://localhost:4000/`
+- run `yarn start` 
 
-This section has moved here: [https://facebook.github.io/create-react-app/docs/advanced-configuration](https://facebook.github.io/create-react-app/docs/advanced-configuration)
 
-### Deployment
+## Author
 
-This section has moved here: [https://facebook.github.io/create-react-app/docs/deployment](https://facebook.github.io/create-react-app/docs/deployment)
+Abeeb Ridwan Olumide
 
-### `yarn build` fails to minify
 
-This section has moved here: [https://facebook.github.io/create-react-app/docs/troubleshooting#npm-run-build-fails-to-minify](https://facebook.github.io/create-react-app/docs/troubleshooting#npm-run-build-fails-to-minify)
+## Thank You for the opportunity
+- All features were build and completed
+- non - stop committing from the beginning to the end- two(2) weeks plus.... 
+- Looking forward to your response and thank you once again taking your time to check it out

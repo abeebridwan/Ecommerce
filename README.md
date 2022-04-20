@@ -10,7 +10,7 @@ Check all features this app offers:
 
 Built-in with the following pages: PLP, PDP and cart + cartOverlay.
 
-## More Features in the App
+## Features in the App
 
 - Switch between Header clickable without clicking out ---- ALL, clothes, Tech, price icon and cartOverlay icon
 
@@ -59,10 +59,11 @@ Built-in with the following pages: PLP, PDP and cart + cartOverlay.
 #### Core Tech (no unnecessary packages used )
 
 - [React](https://github.com/facebook/react)
+  - Context Api for state management/props drilling manager
 - [Styled-components](https://styled-components.com/)
 - [React Router](https://reactrouter.com/docs/en/v6/api)
 - [Browser Apis](https://fusejs.io/)
-  - Fetch, session storage, local storage
+  - Fetch, session storage, local storage etc.
 
 
 ## Run locally
@@ -71,6 +72,10 @@ Built-in with the following pages: PLP, PDP and cart + cartOverlay.
 - Load the BE on `http://localhost:4000/`
 - run `yarn start` 
 
+## Committing Style 
+  - feat - for new feature added
+  - refactor - for refactor(no new changes)
+  - fix- for fixing bugs etc.
 
 ## Author
 
@@ -80,4 +85,4 @@ Abeeb Ridwan Olumide
 ## Thank You for the opportunity
 - All features were build and completed
 - non - stop committing from the beginning to the end- two(2) weeks plus.... 
-- Looking forward to your response and thank you once again taking your time to check it out
+- Looking forward to your response and thank you once again for taking your time to check this out

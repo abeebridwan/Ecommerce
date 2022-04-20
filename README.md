@@ -43,6 +43,8 @@ Built-in with the following pages: PLP, PDP and cart + cartOverlay.
 - persistent all over the app
   - the persistent session was done using local storage and session Storage
 
+- price
+  - price made accurately in two decimal places with commas appropriately
 
 - mobile support
 - cross browser compatibility
@@ -71,7 +73,7 @@ Built-in with the following pages: PLP, PDP and cart + cartOverlay.
 - Clone the project and run `yarn` to add packages.
 - Load the BE on `http://localhost:4000/`
 - run `yarn build` 
-- run `yarn start` 
+- run `yarn run serve -s build` 
 
 ## Committing Style 
   - feat - for new feature added

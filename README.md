@@ -1,8 +1,28 @@
-## ---------Hope you read about the features before checking it out-----------
 
 ## Scandiweb React Developer Test
 
 This application was built using React, Styled Components, React Router DOM and Browser Apis.
+
+## Changes
+
+  - height increased to avoid distortion for some images
+
+  - Out of stock products shaded and add cart icon hidden for them
+
+  - background spread to the header with any outside click cart overlay will toggle the cartOverlay -- no more clickable header upon CartOverlay on.... **(I can change the background color of the HeaderOverlay, but I left as per the design)**
+
+  - No more shifting left for the cart Overlay
+
+  - Currency switcher effect extends to the whole line
+
+  - product price static on increment or decrement
+
+  - direct DOM access and dangerouslySetInnerHTML removed
+
+I really do appreciate the feedback and everything is done to match your expectations.
+
+**If there is anymore feature or anything you want me to change I can do it immediately... literally anything**
+
 
 ## About
 

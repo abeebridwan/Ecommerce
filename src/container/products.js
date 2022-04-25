@@ -63,12 +63,12 @@ export default class ProductsContainer extends React.PureComponent {
         </Product.ProductHeader>
         <Product.ProductFrame>
           {products.map((item) => (
-            <Link to="/pdp" key={item.id}>
-              <Product.ProductItem
-                onClick={(e) => {
-                  pickedProduct(item.id, item.category);
-                  sessionStorage.setItem("name", item.category);
-                }}  >
+            <Product.ProductItem
+              onClick={(e) => {
+                pickedProduct(item.id, item.category);
+                sessionStorage.setItem("name", item.category);
+              }} key={item.id} >
+              <Link to="/pdp">
                 <span className="item" >
                   <Product.ProductImage src={item.gallery[0]} alt={item.name} inStock={item.inStock} />
                   {item.inStock ? null : <Product.ProductInStock inStock={item.inStock}>OUT OF STOCK</Product.ProductInStock>}
@@ -92,8 +92,8 @@ export default class ProductsContainer extends React.PureComponent {
                   {item.prices[currencyIndex].currency.symbol}
                   {(Math.round((item.prices[currencyIndex].amount) * 100 + Number.EPSILON) / 100).toFixed(2).replace(/\B(?<!\.\d*)(?=(\d{3})+(?!\d))/g, ",")}
                 </Product.ProductPrice>
-              </Product.ProductItem>
-            </Link>
+              </Link>
+            </Product.ProductItem>
           ))}
         </Product.ProductFrame>
         {attrShow ? <Attributes id={id} attrShow={attrShow} attrMethod={this.attrStatusMethod} /> : null}

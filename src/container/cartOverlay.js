@@ -69,7 +69,7 @@ export default class CartOverlayContainer extends React.PureComponent {
                   </Cart.CartName>
                   <Cart.CartPrice>
                     {item.product.prices[currencyIndex].currency.symbol}
-                    {(Math.round((item.product.prices[currencyIndex].amount * cartIdValues[item.product.id]) * 100 + Number.EPSILON) / 100).toFixed(2).replace(/\B(?<!\.\d*)(?=(\d{3})+(?!\d))/g, ",")}
+                    {(Math.round((item.product.prices[currencyIndex].amount) * 100 + Number.EPSILON) / 100).toFixed(2).replace(/\B(?<!\.\d*)(?=(\d{3})+(?!\d))/g, ",")}
                   </Cart.CartPrice>
 
                   {item.product.attributes.map((objAttr) => (

@@ -13,7 +13,7 @@ export const HeaderOverlay = styled.div`
   height: 7.8rem;
   top: 0;
   left: 0;
-  z-index: 3;
+  z-index: 60;
   background-color: transparent;
   cursor: default;
   display: ${({ cartshow }) => (cartshow ? "block" : "none")};

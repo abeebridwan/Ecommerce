@@ -1,6 +1,4 @@
 import styled from "styled-components/macro";
-import { keyframes } from 'styled-components';
-
 
 export const ImageContainer = styled.div`
   position: relative;
@@ -37,22 +35,5 @@ export const ToggleLink = styled.a`
     left: 87%
   }
   `
-  const SlideIn = keyframes`
-  0% {opacity:0;}
-  100% {opacity:1;}
-`
+  
 
-export const InStock = styled.span`
-  display:  block;
-  position: absolute;
-  top: 40%;
-  left: 10%;
-  font-size: 1.5rem;
-  color: #8D8F9A;
-  -webkit-user-select: none;    
-  -moz-user-select: none; 
-  -ms-user-select: none; 
-  user-select: none;
-  transition: all .1s;
-  animation: ${SlideIn} .005s ease-in 0s
-`

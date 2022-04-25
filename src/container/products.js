@@ -80,20 +80,18 @@ export default class ProductsContainer extends React.PureComponent {
                 <span className="item" >
                   <Product.ProductImage src={item.gallery[0]} alt={item.name} inStock={item.inStock} />
                   {item.inStock ? null : <Product.ProductInStock inStock={item.inStock}>OUT OF STOCK</Product.ProductInStock>}
-                  <Product.ProductCart className="cartBox" inStock={item.inStock} onClick={(e) => {
+                {item.inStock? <Product.ProductCart className="cartBox" inStock={item.inStock} onClick={(e) => {
                     e.preventDefault();
                     e.stopPropagation();
-                    e.nativeEvent.stopImmediatePropagation();
-                    if (item.inStock) {
+                    e.nativeEvent.stopImmediatePropagation();                   
                       if (item.attributes[0]) {
                         this.attrStatusMethod(attrShow, item.id)
                         return;
                       }
-                      addRemoveFromCart(item.id)
-                    }
+                      addRemoveFromCart(item.id)                    
                   }}>
                     <Cart id="cart" />
-                  </Product.ProductCart>
+                  </Product.ProductCart> : null}
                 </span>
                 <Product.ProductName inStock={item.inStock}>
                   {item.name}

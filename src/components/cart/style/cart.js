@@ -143,9 +143,8 @@ export const Box = styled.div`
 export const ColumnTwo = styled.div`
   display: flex;
   width: 13.9rem;  
-  & span#imageContainer{
-    position: relative
-  }
+ 
+  
 `
 export const SignBox = styled.div`
   margin-right: 1rem;
@@ -249,15 +248,3 @@ export const CheckOut = styled.div`
     opacity: .8
   }
   `
-export const InStock = styled.span`
-  display: block;
-  position: absolute;
-  top: 40%;
-  left: 15%;
-  font-size: 1.2rem;
-  color: #8D8F9A;
-  -webkit-user-select: none;    
-  -moz-user-select: none; 
-  -ms-user-select: none; 
-  user-select: none;
-`

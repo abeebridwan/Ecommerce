@@ -109,11 +109,8 @@ export default class CartOverlayContainer extends React.PureComponent {
                         decrementAttr(item.product.id)
                       }}
                     ><span>&#8722;</span></Cart.CartSubSign>
-                  </Cart.CartSignBox>
-                  <span id="imageContainer">
-                    <Cart.CartImage src={item.product.gallery[0]} alt={item.product.id} />
-                    {item.product.inStock ? null : <Cart.CartInStock>OUT OF STOCK</Cart.CartInStock>}
-                  </span>
+                  </Cart.CartSignBox>                 
+                    <Cart.CartImage src={item.product.gallery[0]} alt={item.product.id} />    
                 </Cart.CartColumnTwo>
               </Cart.CartItem>
             ))}

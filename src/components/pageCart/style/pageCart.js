@@ -43,7 +43,6 @@ export const ColumnOne = styled.div`
   flex-direction: column;
   font-size: 1.6rem;
   justify-content: space-between;
-  overflow-y: scroll;
   scrollbar-width: none; 
   -ms-overflow-style: none;  
   margin-right: 1.5rem;

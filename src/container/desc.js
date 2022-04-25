@@ -84,13 +84,13 @@ export default class DescContainer extends React.PureComponent {
               <span id="smallImageContainer" key={this.generateKey(product.name, index)}>
                 <Desc.DescSmallImage
                   onClick={() => { this.setState({ current: index }) }}
-                  src={src} alt={product.name} />
+                  src={src} alt={product.name} inStock={product.inStock} />
                 {product.inStock ? null : <Desc.DescInStock onClick={() => { this.setState({ current: index }) }} id="smallOne" >OUT OF STOCK</Desc.DescInStock>}
               </span>
             ))}
           </Desc.DescSmallImageBox>
           <span id="bigImageContainer">
-            <Desc.DescBigImage src={product.gallery[current]} alt={product.name} />
+            <Desc.DescBigImage src={product.gallery[current]} alt={product.name} inStock={product.inStock} />
             {product.inStock ? null : <Desc.DescInStock id="bigOne">OUT OF STOCK</Desc.DescInStock>}
           </span>
         </Desc.DescColumnOne>
@@ -132,10 +132,10 @@ export default class DescContainer extends React.PureComponent {
             {product.prices[currencyIndex].currency.symbol}
             {(Math.round((product.prices[currencyIndex].amount) * 100 + Number.EPSILON) / 100).toFixed(2).replace(/\B(?<!\.\d*)(?=(\d{3})+(?!\d))/g, ",")}
           </Desc.DescPrice>
-          <Desc.DescAddToCart onClick={() => {
+          {product.inStock ? <Desc.DescAddToCart onClick={() => {
             addRemoveFromCart(product.id)
             this.sendOut(product.id)
-          }}>ADD TO CART</Desc.DescAddToCart>
+          }}>ADD TO CART</Desc.DescAddToCart> : null}
           {parse(product.description)}
         </Desc.DescColumnTwo>
       </Desc>

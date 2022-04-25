@@ -60,6 +60,8 @@ export const SmallImage = styled.img`
     -moz-user-select: none; 
     -ms-user-select: none; 
     user-select: none;     
+    opacity: ${({ inStock }) => (!inStock && 0.6)}; 
+
 `
 export const BigImage = styled.img`   
     max-width: 100%; 
@@ -75,6 +77,8 @@ export const BigImage = styled.img`
     ${Media('min-width', "530px", ['width: 37rem; height: 38.1rem; '])};   
     ${Media('min-width', "950px", ['width: 50rem; height: 57.1rem; '])};   
     ${Media('min-width', "1100px", ['width: 55rem; height: 57.1rem; '])};   
+    opacity: ${({ inStock }) => (!inStock && 0.6)}; 
+
 `
 
 

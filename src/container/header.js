@@ -28,12 +28,6 @@ export default class HeaderContainer extends React.PureComponent {
   }
 
   cartShowMethod(cartshow) {
-    if (!cartshow) {
-      document.body.style.position = "fixed";
-      document.body.style.width = "100%"
-    } else {
-      document.body.style.position = "static";
-    }
     this.setState({ cartshow: !cartshow })
   }
 

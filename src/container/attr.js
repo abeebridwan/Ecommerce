@@ -2,6 +2,7 @@ import React from "react";
 import { Attr } from "../components";
 import { getAttrData } from "../graphql-data/sendRequest";
 import { DataContext } from "../context/contextData";
+import { RemoveScroll } from "react-remove-scroll";
 export default class Attributes extends React.PureComponent {
   constructor(props) {
     super(props)
@@ -67,60 +68,62 @@ export default class Attributes extends React.PureComponent {
     }
     const { addRemoveFromCart } = this.context;
     return (
-      <Attr attrShow={attrShow}>
-        <Attr.AttriOverlay onClick={() => {
-          attrMethod(attrShow)
-        }}>
-          <Attr.AttriFrame onClick={(e) => {
-            e.preventDefault();
-            e.stopPropagation();
-            e.nativeEvent.stopImmediatePropagation();
+      <RemoveScroll removeScrollBar={false}>
+        <Attr attrShow={attrShow}>
+          <Attr.AttriOverlay onClick={() => {
+            attrMethod(attrShow)
           }}>
-            {attrData.name}
-            {attrData.attributes.map((item) => (
-              item.type === "swatch" ?
-                <Attr.AttriContainerBox key={item.id}>
-                  <Attr.AttriText>{item.name}:</Attr.AttriText>
-                  <Attr.AttriContainer>
-                    {item.items.map((attriItem) => (
-                      <Attr.AttriBox
-                        onClick={() => {
-                          this.updateValues(attrData.id, item.id, attriItem.id)
-                        }}
-                        key={attriItem.id} selected={this.matchAttr(attrData.id, item.id) === attriItem.id} displayValue={attriItem.value} />
-                    ))}
-                  </Attr.AttriContainer>
-                </Attr.AttriContainerBox> :
-                <Attr.AttriContainerBox key={item.id}>
-                  <Attr.AttriText>{item.name}:</Attr.AttriText>
-                  <Attr.AttriContainer>
-                    {item.items.map((attriItem) => (
-                      <Attr.AttriBox
-                        onClick={() => {
-                          this.updateValues(attrData.id, item.id, attriItem.id)
-                        }}
-                        key={attriItem.id} selected={this.matchAttr(attrData.id, item.id) === attriItem.id} text>
-                        {attriItem.value}
-                      </Attr.AttriBox>
-                    ))}
-                  </Attr.AttriContainer>
-                </Attr.AttriContainerBox>
-            ))}
-            <Attr.AttriAddToCart
-              onClick={() => {
-                addRemoveFromCart(attrData.id)
-                this.sendOut(attrData.id)
-                attrMethod(attrShow)
-              }}
-            >ADD TO CART</Attr.AttriAddToCart>
-            <Attr.AttriCancel
-              onClick={() => {
-                attrMethod(attrShow)
-              }}
-            >CANCEl</Attr.AttriCancel>
-          </Attr.AttriFrame>
-        </Attr.AttriOverlay>
-      </Attr>
+            <Attr.AttriFrame onClick={(e) => {
+              e.preventDefault();
+              e.stopPropagation();
+              e.nativeEvent.stopImmediatePropagation();
+            }}>
+              {attrData.name}
+              {attrData.attributes.map((item) => (
+                item.type === "swatch" ?
+                  <Attr.AttriContainerBox key={item.id}>
+                    <Attr.AttriText>{item.name}:</Attr.AttriText>
+                    <Attr.AttriContainer>
+                      {item.items.map((attriItem) => (
+                        <Attr.AttriBox
+                          onClick={() => {
+                            this.updateValues(attrData.id, item.id, attriItem.id)
+                          }}
+                          key={attriItem.id} selected={this.matchAttr(attrData.id, item.id) === attriItem.id} displayValue={attriItem.value} />
+                      ))}
+                    </Attr.AttriContainer>
+                  </Attr.AttriContainerBox> :
+                  <Attr.AttriContainerBox key={item.id}>
+                    <Attr.AttriText>{item.name}:</Attr.AttriText>
+                    <Attr.AttriContainer>
+                      {item.items.map((attriItem) => (
+                        <Attr.AttriBox
+                          onClick={() => {
+                            this.updateValues(attrData.id, item.id, attriItem.id)
+                          }}
+                          key={attriItem.id} selected={this.matchAttr(attrData.id, item.id) === attriItem.id} text>
+                          {attriItem.value}
+                        </Attr.AttriBox>
+                      ))}
+                    </Attr.AttriContainer>
+                  </Attr.AttriContainerBox>
+              ))}
+              <Attr.AttriAddToCart
+                onClick={() => {
+                  addRemoveFromCart(attrData.id)
+                  this.sendOut(attrData.id)
+                  attrMethod(attrShow)
+                }}
+              >ADD TO CART</Attr.AttriAddToCart>
+              <Attr.AttriCancel
+                onClick={() => {
+                  attrMethod(attrShow)
+                }}
+              >CANCEl</Attr.AttriCancel>
+            </Attr.AttriFrame>
+          </Attr.AttriOverlay>
+        </Attr>
+      </RemoveScroll>
     )
   }
 }

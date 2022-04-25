@@ -5,7 +5,6 @@ import { ReactComponent as Cart } from '../assets/Cart.svg';
 import { DataContext } from "../context/contextData";
 import { Link } from "react-router-dom";
 import Attributes from "./attr";
-
 export default class ProductsContainer extends React.PureComponent {
   constructor(props) {
     super(props);
@@ -21,13 +20,6 @@ export default class ProductsContainer extends React.PureComponent {
   static contextType = DataContext;
 
   attrStatusMethod(attrShow, id) {
-    if (!attrShow) {
-      document.body.style.overflowY = 'hidden';
-      document.body.style.paddingRight = '15px';
-    } else {
-      document.body.style.overflowY = 'scroll';
-      document.body.style.paddingRight = '0px';
-    }
     this.setState({ attrShow: !attrShow, id })
   }
 
@@ -80,15 +72,15 @@ export default class ProductsContainer extends React.PureComponent {
                 <span className="item" >
                   <Product.ProductImage src={item.gallery[0]} alt={item.name} inStock={item.inStock} />
                   {item.inStock ? null : <Product.ProductInStock inStock={item.inStock}>OUT OF STOCK</Product.ProductInStock>}
-                {item.inStock? <Product.ProductCart className="cartBox" inStock={item.inStock} onClick={(e) => {
+                  {item.inStock ? <Product.ProductCart className="cartBox" inStock={item.inStock} onClick={(e) => {
                     e.preventDefault();
                     e.stopPropagation();
-                    e.nativeEvent.stopImmediatePropagation();                   
-                      if (item.attributes[0]) {
-                        this.attrStatusMethod(attrShow, item.id)
-                        return;
-                      }
-                      addRemoveFromCart(item.id)                    
+                    e.nativeEvent.stopImmediatePropagation();
+                    if (item.attributes[0]) {
+                      this.attrStatusMethod(attrShow, item.id)
+                      return;
+                    }
+                    addRemoveFromCart(item.id)
                   }}>
                     <Cart id="cart" />
                   </Product.ProductCart> : null}

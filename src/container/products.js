@@ -76,11 +76,11 @@ export default class ProductsContainer extends React.PureComponent {
                 onClick={(e) => {
                   pickedProduct(item.id, item.category);
                   sessionStorage.setItem("name", item.category);
-                }}>
+                }}  >
                 <span className="item" >
-                  <Product.ProductImage src={item.gallery[0]} alt={item.name} />
-                  {item.inStock ? null : <Product.ProductInStock>OUT OF STOCK</Product.ProductInStock>}
-                  <Product.ProductCart className="cartBox" onClick={(e) => {
+                  <Product.ProductImage src={item.gallery[0]} alt={item.name} inStock={item.inStock}/>
+                  {item.inStock ? null : <Product.ProductInStock inStock={item.inStock}>OUT OF STOCK</Product.ProductInStock>}
+                  <Product.ProductCart className="cartBox"  inStock={item.inStock} onClick={(e) => {
                     e.preventDefault();
                     e.stopPropagation();
                     e.nativeEvent.stopImmediatePropagation();
@@ -93,10 +93,10 @@ export default class ProductsContainer extends React.PureComponent {
                     <Cart id="cart" />
                   </Product.ProductCart>
                 </span>
-                <Product.ProductName>
+                <Product.ProductName inStock={item.inStock}>
                   {item.name}
                 </Product.ProductName>
-                <Product.ProductPrice>
+                <Product.ProductPrice inStock={item.inStock}>
                   {item.prices[currencyIndex].currency.symbol}
                   {(Math.round((item.prices[currencyIndex].amount) * 100 + Number.EPSILON) / 100).toFixed(2).replace(/\B(?<!\.\d*)(?=(\d{3})+(?!\d))/g, ",")}
                 </Product.ProductPrice>

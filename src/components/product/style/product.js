@@ -80,6 +80,7 @@ export const Cart = styled.span`
   }
   ${Media('min-width', "450px", ['width: 2em; height: 2em;  padding: .7rem; bottom: -9%;'])};
   ${Media('min-width', "660px", ['width: 3em; height: 3em;  padding: 1rem; bottom: -8%;'])};  
+  opacity: ${({ inStock }) => (!inStock && 0.6)}; 
 `
 
 export const Image = styled.img`
@@ -93,12 +94,15 @@ export const Image = styled.img`
   ${Media('min-width', "920px", ['width: 35.5rem; height: 31rem;'])};
   ${Media('min-width', "1300px", ['width: 35.5rem; height: 35rem;'])};
   ${Media('min-width', "1200px", ['width: 37.5rem; height: 35rem;'])};    
+  opacity: ${({ inStock }) => (!inStock && 0.6)}; 
+
 `;
 
 export const Name = styled.p`
   margin-top: 2rem;
   align-self: flex-start;
   font-size: 1.8rem;  
+  opacity: ${({ inStock }) => (!inStock && 0.6)}; 
 `;
 
 export const Price = styled.p`
@@ -107,6 +111,7 @@ export const Price = styled.p`
   font-size: 1.8rem;
   font-weight: bold;
   line-height: 28.8px;
+  opacity: ${({ inStock }) => (!inStock && 0.6)}; 
 `;
 export const InStock = styled.div`
   display: block;
@@ -124,4 +129,6 @@ export const InStock = styled.div`
   ${Media('min-width', "450px", ['font-size: .8em; left: 20%;'])};
   ${Media('min-width', "660px", ['font-size: 1.2em; left: 21%;'])};
   ${Media('min-width', "870px", ['font-size: 1.3em; left: 22.5%;'])};
+  opacity: ${({ inStock }) => (!inStock && 0.6)}; 
+
  `

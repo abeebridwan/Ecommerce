@@ -2,6 +2,7 @@ import React from "react";
 import { Desc } from "../components";
 import { DataContext } from "../context/contextData";
 import { getProductData } from "../graphql-data/sendRequest";
+import parse from 'html-react-parser';
 export default class DescContainer extends React.PureComponent {
   constructor(props) {
     super(props);
@@ -135,7 +136,7 @@ export default class DescContainer extends React.PureComponent {
             addRemoveFromCart(product.id)
             this.sendOut(product.id)
           }}>ADD TO CART</Desc.DescAddToCart>
-          {<div dangerouslySetInnerHTML={{ __html: product.description }} />}
+          {parse(product.description)}
         </Desc.DescColumnTwo>
       </Desc>
 

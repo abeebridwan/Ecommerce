@@ -1,4 +1,5 @@
 import styled from 'styled-components/macro';
+import { Media } from '../../mixins'
 
 
 export const Frame = styled.div`
@@ -13,7 +14,7 @@ export const Frame = styled.div`
   right: 0;
   bottom: 0;
   margin: auto;
-  z-index: 1;
+  z-index: 30;
   cursor: default;
 `
 
@@ -23,7 +24,7 @@ export const Container = styled.ul`
   margin: 0;
   cursor: default;
   position: absolute;
-  z-index: 11;
+  z-index: 40;
   top: 3rem;
   left: -2rem;
   font-weight: 500;
@@ -32,10 +33,10 @@ export const Container = styled.ul`
   box-shadow: 0 4px 8px 0 rgba(0, 0, 0, 0.2), 0 6px 20px 0 rgba(0, 0, 0, 0.19);  
 `
 export const Item = styled.li`
-  padding: 1.1rem 3rem 1.1rem 2rem;
+  padding: 1.1rem 2rem 1.1rem 2rem;
   display: block;
   cursor: pointer;
-  
+  ${Media('min-width', "630px", ['padding: 1.1rem 3rem 1.1rem 2rem;'])};     
   &:hover{
     background-color: #1D1F22;
     color: #fff;

@@ -78,17 +78,19 @@ export default class ProductsContainer extends React.PureComponent {
                   sessionStorage.setItem("name", item.category);
                 }}  >
                 <span className="item" >
-                  <Product.ProductImage src={item.gallery[0]} alt={item.name} inStock={item.inStock}/>
+                  <Product.ProductImage src={item.gallery[0]} alt={item.name} inStock={item.inStock} />
                   {item.inStock ? null : <Product.ProductInStock inStock={item.inStock}>OUT OF STOCK</Product.ProductInStock>}
-                  <Product.ProductCart className="cartBox"  inStock={item.inStock} onClick={(e) => {
+                  <Product.ProductCart className="cartBox" inStock={item.inStock} onClick={(e) => {
                     e.preventDefault();
                     e.stopPropagation();
                     e.nativeEvent.stopImmediatePropagation();
-                    if (item.attributes[0]) {
-                      this.attrStatusMethod(attrShow, item.id)
-                      return;
+                    if (item.inStock) {
+                      if (item.attributes[0]) {
+                        this.attrStatusMethod(attrShow, item.id)
+                        return;
+                      }
+                      addRemoveFromCart(item.id)
                     }
-                    addRemoveFromCart(item.id)
                   }}>
                     <Cart id="cart" />
                   </Product.ProductCart>

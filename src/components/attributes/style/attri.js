@@ -7,7 +7,6 @@ export const Container = styled.div`
 `
 
 export const Overlay = styled.div`
-  max-width: 1440px;
   min-width: 400px !important;
   margin: auto;
   position: fixed;

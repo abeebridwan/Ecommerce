@@ -5,6 +5,10 @@ This application was built using React, Styled Components, React Router DOM and 
 
 ## Changes
 
+  - background shade extended to whole view port for the cartOverlay
+
+  - product image heights reduced to remove distortion
+
   - height increased to avoid distortion for some images
 
   - Out of stock products shaded and add cart icon hidden for them

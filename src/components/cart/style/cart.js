@@ -5,8 +5,7 @@ export const Container = styled.div`
   scroll-behavior: smooth;
 `
 
-export const HeaderOverlay = styled.div`
-  max-width: 1440px;
+export const HeaderOverlay = styled.div` 
   margin: auto;
   position: fixed;
   width: 100%;
@@ -28,7 +27,6 @@ const SlideInOverlay = keyframes`
 `
 
 export const Overlay = styled.div`
-  max-width: 1440px;
   margin: auto;
   position: fixed;
   top: 7.8455rem;

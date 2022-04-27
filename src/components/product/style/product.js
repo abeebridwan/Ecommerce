@@ -78,8 +78,8 @@ export const Cart = styled.span`
       fill: #fff;
     }
   }
-  ${Media('min-width', "450px", ['width: 2em; height: 2em;  padding: .7rem; bottom: -9%;'])};
-  ${Media('min-width', "660px", ['width: 3em; height: 3em;  padding: 1rem; bottom: -6%;'])};  
+  ${Media('min-width', "450px", ['width: 2em; height: 2em;  padding: .7rem; bottom: -7%;'])};
+  ${Media('min-width', "660px", ['width: 3em; height: 3em;  padding: 1rem; bottom: -10%;'])};  
   opacity: ${({ inStock }) => (!inStock && 0.6)}; 
 `
 
@@ -90,10 +90,10 @@ export const Image = styled.img`
   ${Media('min-width', "450px", ['width: 21rem; height: 28rem;'])};
   ${Media('min-width', "550px", ['width: 25rem; height: 28rem;'])}; 
 
-  ${Media('min-width', "660px", ['width: 35rem; height: 29rem;'])}; 
-  ${Media('min-width', "920px", ['width: 35.5rem; height: 32rem;'])};
-  ${Media('min-width', "1300px", ['width: 35.5rem; height: 36rem;'])};
-  ${Media('min-width', "1200px", ['width: 37.5rem; height: 41rem;'])};    
+  ${Media('min-width', "660px", ['width: 32rem; height: 28rem;'])}; 
+  ${Media('min-width', "920px", ['width: 32.5rem; height: 28rem;'])};
+  ${Media('min-width', "1200px", ['width: 33rem; height: 28rem;'])};    
+  ${Media('min-width', "1300px", ['width: 32rem; height: 28rem;'])};
   opacity: ${({ inStock }) => (!inStock && 0.6)}; 
 
 `;

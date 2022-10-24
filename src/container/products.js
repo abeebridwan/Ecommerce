@@ -1,5 +1,5 @@
 import React from "react";
-import { Product } from "../components";
+import { Product, FilterCom } from "../components";
 import { getCategoryApiMethod } from '../graphql-data/sendRequest';
 import { ReactComponent as Cart } from '../assets/Cart.svg';
 import { DataContext } from "../context/contextData";
@@ -14,14 +14,20 @@ export default class ProductsContainer extends React.PureComponent {
       attrShow: false,
       id: null,
       addToCart: false,
-      category: null
+      category: null,
+      filter: false
     }
     this.attrStatusMethod = this.attrStatusMethod.bind(this)
+    this.filterStatus = this.filterStatus.bind(this)
   }
   static contextType = DataContext;
 
   attrStatusMethod(attrShow, id) {
     this.setState({ attrShow: !attrShow, id })
+  }
+
+  filterStatus(filter){
+    this.setState({ filter: !filter })
   }
 
   async componentDidMount() {
@@ -56,10 +62,18 @@ export default class ProductsContainer extends React.PureComponent {
 
     const { name, products } = category;
     const { addRemoveFromCart, currencyIndex, pickedProduct } = this.context;
-    const { attrShow, id } = this.state
+    const { attrShow, id, filter } = this.state
     return (
       <Product>
-        <Product.ProductFilter><Filter /> <span>Filter by Attributes</span></Product.ProductFilter>
+        <Product.ProductFilter
+        onClick = {(e) => {this.filterStatus(filter)}}>
+          <Filter /> <span>Filter by Attributes</span>
+        </Product.ProductFilter>
+
+        {filter? <FilterCom  onClick = {(e) => {
+           this.filterStatus(filter)
+        }} />: null}
+        
         <Product.ProductHeader>
           {name}
         </Product.ProductHeader>

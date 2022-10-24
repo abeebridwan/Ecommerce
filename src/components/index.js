@@ -6,3 +6,4 @@ export { default as PageCart } from './pageCart';
 export { default as Slider } from './slider';
 export { default as Desc } from './desc';
 export { default as Attr } from './attributes';
+export { default as FilterCom } from './filter';

@@ -139,6 +139,7 @@ export const InStock = styled.div`
   align-items: center;
   cursor: pointer;
   font-weight: bold;
+  user-select: none;
   & span{
     margin-left: 0.5rem;
   }

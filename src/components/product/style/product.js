@@ -17,7 +17,7 @@ export const Header = styled.h2`
   line-height: 19.2px !important; 
   text-transform: uppercase;
   font-size: 2rem;
-  margin: 5rem 0 3rem;
+  margin: 3rem 0 3rem;
   ${Media('min-width', "530px", ['margin: 3rem 0 5rem; font-size: 2.3rem;'])}; 
   -webkit-user-select: none;    
   -moz-user-select: none; 

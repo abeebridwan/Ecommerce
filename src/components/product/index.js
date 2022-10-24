@@ -1,8 +1,12 @@
 import React from 'react';
-import { Container, Frame, Header, Item, Name, Price, Image, Cart, InStock } from './style/product';
+import { Container, Frame, Header, Item, Name, Price, Image, Cart, InStock, Filter } from './style/product';
 
 
 export default class Product extends React.PureComponent {
+
+  static ProductFilter({ children, ...restProps }) {
+    return <Filter {...restProps}>{children}</Filter>
+  }
 
   static ProductInStock({ children, ...restProps }) {
     return <InStock {...restProps}>{children}</InStock>

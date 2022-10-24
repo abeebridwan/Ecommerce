@@ -5,6 +5,7 @@ import { ReactComponent as Cart } from '../assets/Cart.svg';
 import { DataContext } from "../context/contextData";
 import { Link } from "react-router-dom";
 import Attributes from "./attr";
+import { ReactComponent as Filter } from "../assets/Filter.svg"
 export default class ProductsContainer extends React.PureComponent {
   constructor(props) {
     super(props);
@@ -58,6 +59,7 @@ export default class ProductsContainer extends React.PureComponent {
     const { attrShow, id } = this.state
     return (
       <Product>
+        <Product.ProductFilter><Filter /> <span>Filter by Attributes</span></Product.ProductFilter>
         <Product.ProductHeader>
           {name}
         </Product.ProductHeader>

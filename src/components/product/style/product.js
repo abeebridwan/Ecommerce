@@ -18,7 +18,7 @@ export const Header = styled.h2`
   text-transform: uppercase;
   font-size: 2rem;
   margin: 5rem 0 3rem;
-  ${Media('min-width', "530px", ['margin: 5rem 0; font-size: 2.3rem;'])}; 
+  ${Media('min-width', "530px", ['margin: 3rem 0 5rem; font-size: 2.3rem;'])}; 
   -webkit-user-select: none;    
   -moz-user-select: none; 
   -ms-user-select: none; 
@@ -131,4 +131,20 @@ export const InStock = styled.div`
   ${Media('min-width', "870px", ['font-size: 1.3em; left: 22.5%;'])};
   opacity: ${({ inStock }) => (!inStock && 0.6)}; 
 
+ `
+
+ export const Filter = styled.div`
+  margin: 3rem 0 0rem;  
+  display: flex;
+  align-items: center;
+  cursor: pointer;
+  font-weight: bold;
+  & span{
+    margin-left: 0.5rem;
+  }
+
+  & svg{
+    width: 2rem;
+  }
+    
  `

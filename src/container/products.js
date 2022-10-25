@@ -1,11 +1,12 @@
 import React from "react";
-import { Product, FilterCom } from "../components";
+import { Product } from "../components";
 import { getCategoryApiMethod } from '../graphql-data/sendRequest';
 import { ReactComponent as Cart } from '../assets/Cart.svg';
 import { DataContext } from "../context/contextData";
 import { Link } from "react-router-dom";
 import Attributes from "./attr";
 import { ReactComponent as Filter } from "../assets/Filter.svg"
+import FilterCom from "./filter";
 export default class ProductsContainer extends React.PureComponent {
   constructor(props) {
     super(props);
@@ -70,9 +71,7 @@ export default class ProductsContainer extends React.PureComponent {
           <Filter /> <span>Filter by Attributes</span>
         </Product.ProductFilter>
 
-        {filter? <FilterCom  onClick = {(e) => {
-           this.filterStatus(filter)
-        }} />: null}
+        {filter? <FilterCom  filterMethod={this.filterStatus} filter={filter}/>: null}
         
         <Product.ProductHeader>
           {name}

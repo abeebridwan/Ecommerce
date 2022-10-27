@@ -20,7 +20,7 @@ export default class FilterCom extends React.PureComponent {
                     item.attributes.map((attr)=>(
                       <Filter.FilterItem key={attr.id}>
                         <Filter.FilterAttriText>{attr.name}:</Filter.FilterAttriText>
-                        {template(attr)}
+                        {AttributesTemplate(attr)}
                       </Filter.FilterItem>
                     ))
               ))}
@@ -33,7 +33,7 @@ export default class FilterCom extends React.PureComponent {
   }
 }
 
-const template =(attr)=>{
+const AttributesTemplate =(attr)=>{
   let check = (item) => item.value === "Yes";
   let checkForYesOrNO = attr.items.some(check)
   let temp
@@ -49,7 +49,11 @@ const template =(attr)=>{
       if(checkForYesOrNO){
         temp = <Filter.FilterCheckbox onClick="return false;" type="checkbox" id={attr.id} name={attr.name} value={attr.items[attr.items.length - 1]['value']}/>
       }else{
-        temp = <span>{attr.type}</span>;
+        temp = <Filter.FilterSelect name={attr.name} id={attr.id}>
+            {attr.items.map((item)=>(
+              <Filter.FilterOption value={item.value}>{item.displayValue}</Filter.FilterOption>
+            ))}
+        </Filter.FilterSelect>
       }    
     }
    return temp 

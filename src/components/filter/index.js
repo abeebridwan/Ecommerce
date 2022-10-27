@@ -1,7 +1,15 @@
 import React from "react";
-import { Container, Sidebar, Cancel, Frame, TopBar, Content, Item, AttriText, Attributes, ColorBox, Checkbox } from "./styles/filter"; 
+import { Container, Sidebar, Cancel, Frame, TopBar, Content, Item, AttriText, Attributes, ColorBox, Checkbox, Select, Option } from "./styles/filter"; 
 
 export default class Filter extends React.PureComponent {
+  static FilterOption({ children, ...restProps }) {
+    return <Option {...restProps}>{children}</Option>
+  }
+
+  static FilterSelect({ children, ...restProps }) {
+    return <Select {...restProps}>{children}</Select>
+  }
+
   static FilterCheckbox({ children, ...restProps }) {
     return <Checkbox {...restProps}>{children}</Checkbox>
   }

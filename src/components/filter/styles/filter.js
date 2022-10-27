@@ -110,4 +110,8 @@ export const ColorBox = styled.div`
 `
 
 export const Checkbox = styled.input`
-` 
+`
+
+export const Select = styled.select`
+`
+export const Option = styled.option``

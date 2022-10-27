@@ -79,30 +79,14 @@ export const Attributes = styled.div`
 `
 
 export const ColorBox = styled.div`
-    line-height: 22.4px;
-    font-size: 1.6rem;
-    font-family: 'Source Sans Pro', sans-serif;
-    min-width: 3.2rem;
-    height: 2.5rem;
+    min-width: 4.5rem;
+    height: 3.2rem;
     display: flex;
-    justify-content:center; 
-    align-items: center;  
-    padding: .4rem .4rem; 
     margin-right: 1rem;    
-    margin-bottom: 3rem;    
-    border: 1px solid #1D1F22;
-    opacity: .4;
-    margin-top:.3rem;
-    background-color: ${({ selected, text }) => (selected && text && "#1D1F22")}; 
-    opacity: ${({ selected, text }) => (selected && text && 1)}; 
-    color: ${({ selected, text }) => (selected && text && '#fff')}; 
-    opacity: ${({ displayValue }) => (displayValue && .3)}; 
-    opacity: ${({ selected, displayValue }) => (selected && displayValue && 1)}; 
+    margin-top: .5rem;    
     transform: ${({ selected, displayValue }) => (selected && displayValue && 'scale3d(1.2, 1.2, 1.2)')}; 
     background-color: ${({ displayValue }) => (displayValue && displayValue)}; 
     border: ${({ displayValue }) => (displayValue === "#FFFFFF" ? '1px solid #1D1F22' : displayValue)}; 
-    ${Media('min-width', "500px", ['height: 2.9rem; min-width: 3.5rem;'])};
-    ${Media('min-width', "530px", ['height: 3.2rem; min-width: 4.5rem;'])};
     -webkit-user-select: none;    
     -moz-user-select: none; 
     -ms-user-select: none;
@@ -110,6 +94,7 @@ export const ColorBox = styled.div`
 `
 
 export const Checkbox = styled.input`
+  cursor: pointer;
 `
 
 export const Select = styled.select`

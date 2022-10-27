@@ -64,7 +64,9 @@ export const Content = styled.div`
   padding: 2rem 1rem 5rem;
 `
 
-export const Item = styled.div``
+export const Item = styled.div`
+    margin: 1.5rem 0
+  `
 
 export const AttriText = styled.h2`
     font-family: 'Roboto Condensed', sans-serif;
@@ -106,3 +108,6 @@ export const ColorBox = styled.div`
     -ms-user-select: none;
     cursor: pointer;
 `
+
+export const Checkbox = styled.input`
+` 

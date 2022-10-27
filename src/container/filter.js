@@ -34,9 +34,11 @@ export default class FilterCom extends React.PureComponent {
 }
 
 const template =(attr)=>{
+  let check = (item) => item.value === "Yes";
+  let checkForYesOrNO = attr.items.some(check)
   let temp
-  switch (attr.id) {
-    case "Color":
+  switch (attr.type) {
+    case "swatch":
       temp = <Filter.FilterAttributes>
         {attr.items.map((item)=> (
           <Filter.FilterColorBox key={item.id} displayValue={item.value}/>
@@ -44,7 +46,11 @@ const template =(attr)=>{
       </Filter.FilterAttributes> 
       break;
     default:
-      temp = <span>{attr.type}</span>;
+      if(checkForYesOrNO){
+        temp = <Filter.FilterCheckbox onClick="return false;" type="checkbox" id={attr.id} name={attr.name} value={attr.items[attr.items.length - 1]['value']}/>
+      }else{
+        temp = <span>{attr.type}</span>;
+      }    
     }
    return temp 
 }

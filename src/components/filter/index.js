@@ -1,7 +1,18 @@
 import React from "react";
-import { Container, Sidebar, Cancel, Frame, TopBar, Content, Item } from "./styles/filter"; 
+import { Container, Sidebar, Cancel, Frame, TopBar, Content, Item, AttriText, Attributes, ColorBox } from "./styles/filter"; 
 
 export default class Filter extends React.PureComponent {
+  static FilterColorBox({ children, ...restProps }) {
+    return <ColorBox {...restProps}>{children}</ColorBox>
+  }
+
+  static FilterAttributes({ children, ...restProps }) {
+    return <Attributes {...restProps}>{children}</Attributes>
+  }
+
+  static FilterAttriText({ children, ...restProps }) {
+    return <AttriText {...restProps}>{children}</AttriText>
+  }
 
   static FilterItem({ children, ...restProps }) {
     return <Item {...restProps}>{children}</Item>

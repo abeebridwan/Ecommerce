@@ -18,7 +18,10 @@ export default class FilterCom extends React.PureComponent {
             <Filter.FilterContent>
               {products.map((item)=>(
                     item.attributes.map((attr)=>(
-                      <Filter.FilterItem key={attr.id}>{attr.name}: {attr.type}</Filter.FilterItem>
+                      <Filter.FilterItem key={attr.id}>
+                        <Filter.FilterAttriText>{attr.name}:</Filter.FilterAttriText>
+                        {template(attr)}
+                      </Filter.FilterItem>
                     ))
               ))}
             </Filter.FilterContent>
@@ -28,4 +31,20 @@ export default class FilterCom extends React.PureComponent {
       </Filter>
    )
   }
+}
+
+const template =(attr)=>{
+  let temp
+  switch (attr.id) {
+    case "Color":
+      temp = <Filter.FilterAttributes>
+        {attr.items.map((item)=> (
+          <Filter.FilterColorBox key={item.id} displayValue={item.value}/>
+        ))}
+      </Filter.FilterAttributes> 
+      break;
+    default:
+      temp = <span>{attr.type}</span>;
+    }
+   return temp 
 }

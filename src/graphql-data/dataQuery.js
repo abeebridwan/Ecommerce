@@ -10,7 +10,14 @@ export function categoryData(value) {
         category,
         gallery,
         attributes{
-          id
+          id,
+          name,
+          type,
+          items{
+            displayValue,
+            value,
+            id
+          }
         },
         prices{
           currency{

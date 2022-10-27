@@ -70,9 +70,7 @@ export default class ProductsContainer extends React.PureComponent {
         onClick = {(e) => {this.filterStatus(filter)}}>
           <Filter /> <span>Filter by Attributes</span>
         </Product.ProductFilter>
-
-        {filter? <FilterCom  filterMethod={this.filterStatus} filter={filter}/>: null}
-        
+        {filter? <FilterCom  filterMethod={this.filterStatus} filter={filter} category={category}/>: null}
         <Product.ProductHeader>
           {name}
         </Product.ProductHeader>

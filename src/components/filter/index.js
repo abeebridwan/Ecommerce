@@ -1,7 +1,19 @@
 import React from "react";
-import { Container, Sidebar, Cancel, Frame } from "./styles/filter"; 
+import { Container, Sidebar, Cancel, Frame, TopBar, Content, Item } from "./styles/filter"; 
 
 export default class Filter extends React.PureComponent {
+
+  static FilterItem({ children, ...restProps }) {
+    return <Item {...restProps}>{children}</Item>
+  }
+
+  static FilterContent({ children, ...restProps }) {
+    return <Content {...restProps}>{children}</Content>
+  }
+
+  static FilterTopBar({ children, ...restProps }) {
+    return <TopBar {...restProps}>{children}</TopBar>
+  }
 
   static FilterFrame({ children, ...restProps }) {
     return <Frame {...restProps}>{children}</Frame>

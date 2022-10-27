@@ -135,7 +135,7 @@ export const InStock = styled.div`
 
  export const Filter = styled.div`
   margin: 3rem 0 0rem;  
-  display: flex;
+  display: inline-flex;
   align-items: center;
   cursor: pointer;
   font-weight: bold;

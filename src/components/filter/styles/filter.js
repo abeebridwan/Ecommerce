@@ -86,7 +86,8 @@ export const ColorBox = styled.div`
     margin-top: .5rem;    
     transform: ${({ selected, displayValue }) => (selected && displayValue && 'scale3d(1.2, 1.2, 1.2)')}; 
     background-color: ${({ displayValue }) => (displayValue && displayValue)}; 
-    border: ${({ displayValue }) => (displayValue === "#FFFFFF" ? '1px solid #1D1F22' : displayValue)}; 
+    border: ${({ displayValue }) => (displayValue === "#FFFFFF" ? '1px solid #1D1F22' : displayValue)};
+    border-radius: ${({ selected, displayValue }) => (selected && displayValue && '50%')};  
     -webkit-user-select: none;    
     -moz-user-select: none; 
     -ms-user-select: none;

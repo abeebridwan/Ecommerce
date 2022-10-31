@@ -5,7 +5,7 @@ import { ReactComponent as FilterIcon } from "../assets/Filter.svg"
 export default class FilterCom extends React.PureComponent {
   constructor(props) {
     super(props);
-    this.state = { checked: this.initialState(), selectValue: "" }
+    this.state = { checked: this.initialState()[0], selectValue: "",  attrId:  this.initialState()[1] }
     this.handleCheck = this.handleCheck.bind(this);
     this.handleChange = this.handleChange.bind(this);
     this.initialState = this.initialState.bind(this);
@@ -14,15 +14,16 @@ export default class FilterCom extends React.PureComponent {
   initialState(){
     const { products } = this.props.category;
     let state = []
+    let attr = []
     products.map((product)=>(
       product.attributes.map((item)=>{
         let check = (ele) => ele.value === "Yes";
         let checkForYesOrNO = item.items.some(check)
-        if(checkForYesOrNO){state.push(false)}
+        if(checkForYesOrNO){state.push(false);  attr.push(item.id)}
         return item
       })
     ))
-    return state
+    return [state, attr]
   }
   
   handleChange(e){
@@ -30,9 +31,11 @@ export default class FilterCom extends React.PureComponent {
     this.setState({selectValue: e.target.value });
   }
 
-  handleCheck(position){
+  handleCheck(e){
+    let position = e.currentTarget.dataset.index
+    console.log(position,typeof(position))
     const updatedCheckedState = this.state.checked.map((item, index) =>
-    index === position ? !item : item
+    index === Number(position) ? !item : item
   );
     console.log(updatedCheckedState)
     this.setState({checked: updatedCheckedState})
@@ -53,7 +56,10 @@ export default class FilterCom extends React.PureComponent {
                     item.attributes.map((attr, index)=>(
                       <Filter.FilterItem key={attr.id}>
                         <Filter.FilterAttriText>{attr.name}:</Filter.FilterAttriText>
-                        {AttributesTemplate(attr, this.handleCheck, this.state, index, this.handleChange)}
+                        {
+                        this.state.attrId.includes(attr.id)?
+                        AttributesTemplate(attr, this.handleCheck, this.state, this.handleChange, index= this.state.attrId.indexOf(attr.id)):
+                        AttributesTemplate(attr, this.handleCheck, this.state, this.handleChange)}
                       </Filter.FilterItem>
                     ))
               ))}
@@ -66,7 +72,7 @@ export default class FilterCom extends React.PureComponent {
   }
 }
 
-const AttributesTemplate =(attr, handleCheck, state, index, handleChange)=>{
+const AttributesTemplate =(attr, handleCheck, state, handleChange, index)=>{
   let check = (item) => item.value === "Yes";
   let checkForYesOrNO = attr.items.some(check)
   let temp
@@ -84,7 +90,7 @@ const AttributesTemplate =(attr, handleCheck, state, index, handleChange)=>{
       break;
     default:
       if(checkForYesOrNO){
-        temp = <Filter.FilterCheckbox checked={state.checked[index]} onChange={()=>{handleCheck(index)}} type="checkbox" id={attr.id} name={attr.name} value={attr.items[attr.items.length - 1]['value']}/>
+        temp = <Filter.FilterCheckbox data-index={index} checked={state.checked[index]} onChange={(e)=>{handleCheck(e)}} type="checkbox" id={attr.id} name={attr.name} value={attr.items[attr.items.length - 1]['value']}/>
       }else{
         temp = <Filter.FilterSelect name={attr.name} id={attr.id} value={state.selectValue} onChange={handleChange}>
             {attr.items.map((item)=>(

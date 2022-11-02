@@ -16,10 +16,12 @@ export default class ProductsContainer extends React.PureComponent {
       id: null,
       addToCart: false,
       category: null,
-      filter: false
+      filter: false,
+      filterCategory: null
     }
     this.attrStatusMethod = this.attrStatusMethod.bind(this)
     this.filterStatus = this.filterStatus.bind(this)
+    this.handleClickedProduct = this.handleClickedProduct.bind(this)
   }
   static contextType = DataContext;
 
@@ -27,7 +29,7 @@ export default class ProductsContainer extends React.PureComponent {
     this.setState({ attrShow: !attrShow, id })
   }
 
-  filterStatus(filter){
+  filterStatus(filter) {
     this.setState({ filter: !filter })
   }
 
@@ -35,29 +37,55 @@ export default class ProductsContainer extends React.PureComponent {
     try {
       const { changeCategoryTo } = this.context;
       const { category } = await getCategoryApiMethod(changeCategoryTo)
-      this.setState({ category })
+      let filterCategory = category
+      this.setState({ category, filterCategory })
     } catch (err) {
       console.log(err)
     }
   }
-
+  handleClickedProduct(value) {
+    const { category } = this.state
+    let cart = category
+    let { products } = cart
+    let savedProducts = []
+    if (value[value.length - 1] === "checkbox") {
+      products.forEach((product) => {
+        if (product.attributes.length > 0) {
+          product.attributes.forEach((attribute) => {
+            attribute.items.forEach((item) => {
+              if ((item.value === "Yes") && (attribute.id === value[1])) {
+                savedProducts.push(product)
+              }
+            })
+          })
+        }
+      })
+    }
+    products = savedProducts
+    let newCategory = { ...category, products }
+    console.log(newCategory)
+    this.setState({ category: newCategory })
+  }
   async componentDidUpdate() {
     const { changeCategoryTo } = this.context;
     let { changeCategoryToValue } = this.state
+    console.log("I am here on update")
     if (changeCategoryTo !== changeCategoryToValue) {
       try {
         const { category } = await getCategoryApiMethod(changeCategoryTo)
         changeCategoryToValue = changeCategoryTo;
-        this.setState({ category, changeCategoryToValue })
+        let filterCategory = category
+        this.setState({ category, changeCategoryToValue, filterCategory })
       } catch (err) {
         console.log(err)
       }
     }
   }
   render() {
-    const { category } = this.state;
+    const { category, filterCategory } = this.state;
 
     if (!category) {
+      console.log("null runs first")
       return null;
     }
 
@@ -67,10 +95,10 @@ export default class ProductsContainer extends React.PureComponent {
     return (
       <Product>
         <Product.ProductFilter
-        onClick = {(e) => {this.filterStatus(filter)}}>
+          onClick={(e) => { this.filterStatus(filter) }}>
           <Filter /> <span>Filter by Attributes</span>
         </Product.ProductFilter>
-        {filter? <FilterCom  filterMethod={this.filterStatus} filter={filter} category={category}/>: null}
+        {filter ? <FilterCom filterMethod={this.filterStatus} filter={filter} category={filterCategory} handleClickedProduct={this.handleClickedProduct} /> : null}
         <Product.ProductHeader>
           {name}
         </Product.ProductHeader>

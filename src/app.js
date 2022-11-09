@@ -9,10 +9,10 @@ class App extends React.Component {
   constructor(props) {
     super(props)
     this.state = {
-      changeCategoryTo: sessionStorage.getItem("name") || "all",
+      changeCategoryTo: localStorage.getItem("name") || "all",
       currencyIndex: localStorage.getItem("index") || 0,
       cartIdValues: JSON.parse(localStorage.getItem("cartIdValues")) || {},
-      category: sessionStorage.getItem("name") || "all",
+      category: localStorage.getItem("name") || "all",
       attributes: JSON.parse(localStorage.getItem("Attr")) || {},
       productId: null
     };

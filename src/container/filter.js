@@ -6,10 +6,10 @@ export default class FilterCom extends React.PureComponent {
   constructor(props) {
     super(props);
     this.state = {
-      checked: this.initialState()[0],
+      checked:  this.initialState()[0],
       initAttrIds: this.initialState()[1],
       selectedValues: {},
-      attributes: {},
+      attributes: JSON.parse(localStorage.getItem(`${this.props.category.name}FilterColorAttr`)) || {}, // just a local storage to update the color here
       firstInit: this.initialState()[2],
       toRenderProducts: null,
       clickedProduct: null
@@ -27,7 +27,7 @@ export default class FilterCom extends React.PureComponent {
   }
 
   initialState() {
-    const { products } = this.props.category;
+    const { name, products } = this.props.category;
     let state = []
     let attr = []
     products.map((product) => (
@@ -38,9 +38,12 @@ export default class FilterCom extends React.PureComponent {
         return item
       })
     ))
+    if(JSON.parse(localStorage.getItem(`${name}FilterCheckAttr`))){
+      return [JSON.parse(localStorage.getItem(`${name}FilterCheckAttr`)), attr, false] 
+    }
     return [state, attr, true]
   }
-
+ 
   matchAttr(productId, attrId) {
     const { attributes } = this.state
     if (Object.keys(attributes).length === 0) return null
@@ -56,20 +59,23 @@ export default class FilterCom extends React.PureComponent {
     const product = {}
     product[attrId] = itemId
     attributes[productId] = product
-    if (window.location.href === window.location.origin + "/" || firstInit) {
-      /* first time when url is still same as the origin or when the filter is closed and reopened */
+    let values = [productId, attrId, itemId, "Color"]
+    /* if (window.location.href === window.location.origin + "/" || firstInit) {
+      first time when url is still same as the origin or when the filter is closed and reopened
       let url = new URL(window.location.origin);
-      url.searchParams.set("ctg", categoryName);
+      
       url.searchParams.set(productId, itemId);
       this.setState({ firstInit: !firstInit })
       window.history.pushState({ path: url.href }, '', url.href);
-    } else {
+    } else { */
       let url = new URL(window.location.href);
+      url.searchParams.set("ctg", categoryName);
       url.searchParams.set(productId, itemId);
       window.history.pushState({ path: url.href }, '', url.href);
-    }
+    /* } */
     localStorage.setItem(`${categoryName}FilterColorAttr`, JSON.stringify(attributes));
     this.setState({ attributes: { ...attributes } })
+    this.renderProducts(values)
   }
 
   handleChange(e, idValues) {
@@ -111,20 +117,21 @@ export default class FilterCom extends React.PureComponent {
     );
     idValues.push(updatedCheckedState[position])
     console.log(idValues)
-    console.log(firstInit)
-
+    console.log(firstInit, "first")
+/* 
     if (window.location.href === window.location.origin + "/" || firstInit) {
-      /* first time when url is still same as the origin or when the filter is closed and reopened */
+       first time when url is still same as the origin or when the filter is closed and reopened 
       let url = new URL(window.location.origin);
-      url.searchParams.set("ctg", idValues[2]);
       url.searchParams.set(`check${idValues[3]}`, idValues[4])
       this.setState({ firstInit: !firstInit })
       window.history.pushState({ path: url.href }, '', url.href);
-    } else {
+    } else { */
       let url = new URL(window.location.href);
+      url.searchParams.set("ctg", idValues[2]);
+
       url.searchParams.set(`check${idValues[3]}`, idValues[4])
       window.history.pushState({ path: url.href }, '', url.href);
-    }
+    /* } */
     idValues.push("checkbox")
     localStorage.setItem(`${idValues[2]}FilterCheckAttr`, JSON.stringify(updatedCheckedState));
     this.setState({ checked: updatedCheckedState })

@@ -67,7 +67,7 @@ export default class HeaderContainer extends React.PureComponent {
                   <Link to="/" key={item.name}>
                     <Layout.LayoutMobileCategory key={item.name} className='dropItem' onClick={() => {
                       changeCategory(item.name);
-                      sessionStorage.setItem("name", item['name']);
+                      localStorage.setItem("name", item['name']);
                     }}>
                       <Layout.LayoutCategoryText>
                         {item.name}
@@ -83,7 +83,7 @@ export default class HeaderContainer extends React.PureComponent {
                 <Layout.LayoutDesktopCategory key={item.name} active={category === item.name} onClick={() => {
                   changeCategory(item.name)
                   setToCat(item.name);
-                  sessionStorage.setItem("name", item['name']);
+                  localStorage.setItem("name", item['name']);
                 }}>
                   <Layout.LayoutCategoryText>
                     {item.name}

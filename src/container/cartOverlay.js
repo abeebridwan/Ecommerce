@@ -11,6 +11,7 @@ export default class CartOverlayContainer extends React.PureComponent {
       cartValues: null
     }
     this.matchAttr = this.matchAttr.bind(this)
+    this.deleteLocalStorage = this.deleteLocalStorage.bind(this)
   }
   async componentDidMount() {
     const { cartIdValues } = this.context;
@@ -37,6 +38,14 @@ export default class CartOverlayContainer extends React.PureComponent {
     if (!attrObj) { return false }
     return attrObj[attriId]
   }
+  deleteLocalStorage(changeCategoryToValue){
+    localStorage.removeItem(`${changeCategoryToValue}FilterColorAttr`);
+    localStorage.removeItem(`${changeCategoryToValue}FilterCheckAttr`);
+    localStorage.removeItem(`${changeCategoryToValue}FilterSelectedAttr`);
+    localStorage.removeItem(`saveFilterCategory`);
+    localStorage.removeItem(`saveCategory`);
+    localStorage.removeItem(`NotfirstTime`);
+  }
   static contextType = DataContext;
 
   render() {
@@ -47,7 +56,7 @@ export default class CartOverlayContainer extends React.PureComponent {
     }
 
     const { cartshow, cartShowMethod, currencyIndex } = this.props;
-    const { cartIdValues, addRemoveFromCart, incrementAttr, decrementAttr } = this.context;
+    const { cartIdValues, addRemoveFromCart, incrementAttr, decrementAttr, changeCategoryTo } = this.context;
     const cartNumber = Object.values(cartIdValues).reduce((a, b) => { return a + b }, 0)
 
 
@@ -133,6 +142,7 @@ export default class CartOverlayContainer extends React.PureComponent {
             <Cart.CartCheckOutBox>
               <Link to="/cart" onClick={() => {
                 cartShowMethod(cartshow)
+                this.deleteLocalStorage(changeCategoryTo)
               }}><Cart.CartViewBag><span>VIEW BAG</span></Cart.CartViewBag></Link>
               <Cart.CartCheckOut><span> CHECK OUT</span></Cart.CartCheckOut>
             </Cart.CartCheckOutBox>

@@ -207,7 +207,7 @@ const AttributesTemplate = (productId, attr, Methods, state, index) => {
         temp = <Filter.FilterCheckbox data-index={index} checked={state.checked[index]} onChange={(e) => { handleCheck(e, idValues) }} type="checkbox" id={attr.id} name={attr.name} value={attr.items[attr.items.length - 1]['value']} />
       } else {
         let idValues = [productId, attr.id, categoryName]
-        temp = <Filter.FilterSelect name={attr.name} defaultValue="" value={matchSelectAttr(productId, attr.id)} id={attr.id} onChange={(e) => { handleChange(e, idValues) }}>
+        temp = <Filter.FilterSelect name={attr.name} value={matchSelectAttr(productId, attr.id)} id={attr.id} onChange={(e) => { handleChange(e, idValues) }}>
           {attr.items.map((item) => (
             <Filter.FilterOption key={item.id} value={item.value}>{item.displayValue}</Filter.FilterOption>
           ))}

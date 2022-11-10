@@ -114,8 +114,11 @@ export default class FilterCom extends React.PureComponent {
       url.searchParams.set(value, e.target.value);
       window.history.pushState({ path: url.href }, '', url.href);
     }
+    idValues.push(e.target.value, "selectChange")
+
     localStorage.setItem(`${idValues[2]}FilterSelectedAttr`, JSON.stringify(selectedValues));
     this.setState({ selectedValues: { ...selectedValues } })
+    this.renderProducts(idValues)
   }
 
   handleCheck(e, idValues) {

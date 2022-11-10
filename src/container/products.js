@@ -183,7 +183,18 @@ export default class ProductsContainer extends React.PureComponent {
           })
         }
       })
-
+    }else if(values[values.length - 1] === "selectChange"){
+      orgProducts.forEach((product) => {
+        if (product.attributes.length > 0) {
+          product.attributes.forEach((attribute) => {
+            attribute.items.forEach((item) => {
+              if (attribute.id === values[1] && item.value === values[3]) {
+                 savedProducts.push(product) 
+              }
+            })
+          })
+        }
+      })
     }
 
     // check for first time and decide to mix 

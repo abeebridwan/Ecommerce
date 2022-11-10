@@ -8,7 +8,7 @@ export default class FilterCom extends React.PureComponent {
     this.state = {
       checked:  this.initialState()[0],
       initAttrIds: this.initialState()[1],
-      selectedValues: {},
+      selectedValues: JSON.parse(localStorage.getItem(`${this.props.category.name}FilterSelectedAttr`)) || {},
       attributes: JSON.parse(localStorage.getItem(`${this.props.category.name}FilterColorAttr`)) || {}, // just a local storage to update the color here
       firstInit: this.initialState()[2],
       toRenderProducts: null,
@@ -20,6 +20,7 @@ export default class FilterCom extends React.PureComponent {
     this.initialState = this.initialState.bind(this);
     this.matchAttr = this.matchAttr.bind(this);
     this.renderProducts = this.renderProducts.bind(this);
+    this.matchSelectAttr = this.matchSelectAttr.bind(this);
   }
 
   renderProducts(clickedProduct) {
@@ -51,6 +52,16 @@ export default class FilterCom extends React.PureComponent {
       return attributes[productId][attrId]
     } else {
       return null
+    }
+  }
+
+  matchSelectAttr(productId, attrId){
+    const { selectedValues } = this.state
+    if (Object.keys(selectedValues).length === 0) return ""
+    if (selectedValues[productId]) {
+      return selectedValues[productId][attrId]
+    } else {
+      return ""
     }
   }
 
@@ -105,7 +116,6 @@ export default class FilterCom extends React.PureComponent {
     }
     localStorage.setItem(`${idValues[2]}FilterSelectedAttr`, JSON.stringify(selectedValues));
     this.setState({ selectedValues: { ...selectedValues } })
-    console.log(selectedValues)
   }
 
   handleCheck(e, idValues) {
@@ -142,7 +152,7 @@ export default class FilterCom extends React.PureComponent {
     const { name, products } = this.props.category;
     const Methods = {
       categoryName: name, handleCheck: this.handleCheck, handleChange: this.handleChange,
-      handleColor: this.handleColor, matchAttr: this.matchAttr
+      handleColor: this.handleColor, matchAttr: this.matchAttr, matchSelectAttr: this.matchSelectAttr
     }
     return (
       <Filter onClick={(e) => { this.props.filterMethod(this.props.filter) }}>
@@ -174,7 +184,7 @@ export default class FilterCom extends React.PureComponent {
 }
 
 const AttributesTemplate = (productId, attr, Methods, state, index) => {
-  const { handleCheck, handleChange, handleColor, matchAttr, categoryName } = Methods
+  const { handleCheck, handleChange, handleColor, matchAttr, matchSelectAttr, categoryName } = Methods
   let check = (item) => item.value === "Yes";
   let checkForYesOrNO = attr.items.some(check)
   let temp
@@ -197,7 +207,7 @@ const AttributesTemplate = (productId, attr, Methods, state, index) => {
         temp = <Filter.FilterCheckbox data-index={index} checked={state.checked[index]} onChange={(e) => { handleCheck(e, idValues) }} type="checkbox" id={attr.id} name={attr.name} value={attr.items[attr.items.length - 1]['value']} />
       } else {
         let idValues = [productId, attr.id, categoryName]
-        temp = <Filter.FilterSelect name={attr.name} id={attr.id} onChange={(e) => { handleChange(e, idValues) }}>
+        temp = <Filter.FilterSelect name={attr.name} defaultValue="" value={matchSelectAttr(productId, attr.id)} id={attr.id} onChange={(e) => { handleChange(e, idValues) }}>
           {attr.items.map((item) => (
             <Filter.FilterOption key={item.id} value={item.value}>{item.displayValue}</Filter.FilterOption>
           ))}

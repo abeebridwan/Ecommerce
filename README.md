@@ -4,6 +4,9 @@
 This application was built using React, Styled Components, React Router DOM and Browser Apis.
 
 ## Changes
+  - Filter added
+      - please click on "Filter by Atrributes" to see/use it
+
 
   - background shade extended to whole view port for the cartOverlay
 

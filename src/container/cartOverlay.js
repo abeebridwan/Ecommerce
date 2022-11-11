@@ -45,6 +45,7 @@ export default class CartOverlayContainer extends React.PureComponent {
     localStorage.removeItem(`saveFilterCategory`);
     localStorage.removeItem(`saveCategory`);
     localStorage.removeItem(`NotfirstTime`);
+    localStorage.removeItem(`savedAllCheckBoxes`);
   }
   static contextType = DataContext;
 

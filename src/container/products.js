@@ -18,7 +18,8 @@ export default class ProductsContainer extends React.PureComponent {
       category: JSON.parse(localStorage.getItem(`saveCategory`)) || null,
       filter: false,
       filterCategory: JSON.parse(localStorage.getItem(`saveFilterCategory`)) || null,
-      NotfirstTime: JSON.parse(localStorage.getItem(`NotfirstTime`)) || false
+      NotfirstTime: JSON.parse(localStorage.getItem(`NotfirstTime`)) || false,
+      savedAllCheckBoxes: JSON.parse(localStorage.getItem(`savedAllCheckBoxes`)) || []
     }
     this.attrStatusMethod = this.attrStatusMethod.bind(this)
     this.filterStatus = this.filterStatus.bind(this)
@@ -45,7 +46,7 @@ export default class ProductsContainer extends React.PureComponent {
         changeCategoryToValue = changeCategoryTo;
         let filterCategory = category
         localStorage.setItem(`saveFilterCategory`, JSON.stringify(category))
-        this.setState({ category, changeCategoryToValue, filterCategory, NotfirstTime: false})
+        this.setState({ category, changeCategoryToValue, filterCategory, NotfirstTime: false, savedAllCheckBoxes: []})
       } catch (err) {
         console.log(err)
       }
@@ -75,6 +76,7 @@ export default class ProductsContainer extends React.PureComponent {
     localStorage.removeItem(`saveFilterCategory`);
     localStorage.removeItem(`saveCategory`);
     localStorage.removeItem(`NotfirstTime`);
+    localStorage.removeItem(`savedAllCheckBoxes`);
   }
   /* handleClickedProduct(value) {
     console.log(value)
@@ -164,14 +166,15 @@ export default class ProductsContainer extends React.PureComponent {
 
   handleClickedProduct(values) {
     console.log(values)
-    const { category, filterCategory, NotfirstTime } = this.state
+    const { category, filterCategory, NotfirstTime, savedAllCheckBoxes } = this.state
     let cart = { ...category }
     let filCat = { ...filterCategory }
     let { products } = cart
     let orgProducts = filCat.products
     let savedProducts = []
-
+    let newSavedAllCheckBoxes = JSON.parse(JSON.stringify(savedAllCheckBoxes)); 
     if (values[values.length - 1] === "Color") {
+      let count = 1
       orgProducts.forEach((product) => {
         if (product.attributes.length > 0) {
           product.attributes.forEach((attribute) => {
@@ -179,11 +182,16 @@ export default class ProductsContainer extends React.PureComponent {
               if (attribute.type === "swatch" && item.id === values[2]) {
                 savedProducts.push(product)
               }
+              if(values[0]=== product.id && item.value === "Yes"){
+                console.log("added to newSavedAllCheckBoxes")
+                if(count === 1){newSavedAllCheckBoxes.push(product); count += 1; console.log("I av added inside")}
+              }
             })
           })
         }
       })
     }else if(values[values.length - 1] === "selectChange"){
+      let count = 1
       orgProducts.forEach((product) => {
         if (product.attributes.length > 0) {
           product.attributes.forEach((attribute) => {
@@ -191,17 +199,69 @@ export default class ProductsContainer extends React.PureComponent {
               if (attribute.id === values[1] && item.value === values[3]) {
                  savedProducts.push(product) 
               }
+              if(values[0]=== product.id && item.value === "Yes"){
+                console.log("added to newSavedAllCheckBoxes")
+                if(count === 1){newSavedAllCheckBoxes.push(product); count += 1; console.log("I av added inside")}
+              }
             })
           })
         }
       })
+    }else{
+      if(values[4]){
+        orgProducts.forEach((product) => {
+          if (product.attributes.length > 0) {
+            product.attributes.forEach((attribute) => {
+              attribute.items.forEach((item) => {
+                if ((item.value === "Yes") && (attribute.id === values[1])) {
+                  savedProducts.push(product)
+                  newSavedAllCheckBoxes.push(product)
+                }
+              })
+            })
+          }
+        })
+      }else{
+        products.forEach((product) => {
+          if (product.attributes.length > 0) {
+            product.attributes.forEach((attribute) => {
+              attribute.items.forEach((item) => {
+                if ((item.value === "Yes") && (attribute.id === values[1])) {
+                    const index = products.indexOf(product);
+                    if (index > -1) {
+                      products.splice(index, 1);
+                      savedProducts = JSON.parse(JSON.stringify(products)); 
+                      let newProduct = JSON.parse(JSON.stringify(product)); 
+                      for(let i =0; i < newSavedAllCheckBoxes.length; i++){
+                        if(newProduct.id === newSavedAllCheckBoxes[i]["id"]){
+                          let splicedValue  = newSavedAllCheckBoxes.splice(i, 1);
+                          for(let i =0; i < newSavedAllCheckBoxes.length; i++){
+                            if(newProduct.id === newSavedAllCheckBoxes[i]["id"]){
+                              savedProducts.push(splicedValue[0])
+                              break;
+                            }else{ }
+                          }
+                          break;
+                        }
+                      }
+                    }
+                }
+              })
+            })
+          }
+        })
+      } 
     }
+    localStorage.setItem(`savedAllCheckBoxes`, JSON.stringify(newSavedAllCheckBoxes))
+    this.setState({savedAllCheckBoxes: newSavedAllCheckBoxes})
 
     // check for first time and decide to mix 
     let newCategory
-    console.log(category.products, savedProducts)
+    console.log(category.products, savedProducts, "inside")
     !NotfirstTime ? newCategory = savedProducts:
     newCategory = [ ...category.products, ...savedProducts ]
+    console.log(newCategory, "newCategory")
+
     //avoid redundant
     let ids = []
     newCategory.forEach((product)=>{
@@ -220,10 +280,15 @@ export default class ProductsContainer extends React.PureComponent {
     products = finalProducts
     let finalCategory = { ...category, products }
     if(!NotfirstTime) this.setState({NotfirstTime: !NotfirstTime}, localStorage.setItem(`NotfirstTime`, JSON.stringify(!NotfirstTime))) //save in local upon reload and update up in the state
-    localStorage.setItem(`saveCategory`, JSON.stringify(finalCategory))
     console.log(finalCategory, "finalCategory")
-
+    if(finalCategory.products.length === 0) {
+      finalCategory = filterCategory;
+      this.setState({NotfirstTime: !NotfirstTime}); 
+      localStorage.setItem(`NotfirstTime`, JSON.stringify(!NotfirstTime))
+    }
+    localStorage.setItem(`saveCategory`, JSON.stringify(finalCategory))
     this.setState({ category: finalCategory })
+    console.log(this.state.savedAllCheckBoxes, "checkboxes")
     }
   
   render() {

@@ -122,7 +122,6 @@ export default class FilterCom extends React.PureComponent {
   }
 
   handleCheck(e, idValues) {
-    const { firstInit } = this.state;
     let position = e.currentTarget.dataset.index
     console.log(position, typeof (position))
     const updatedCheckedState = this.state.checked.map((item, index) =>
@@ -130,7 +129,6 @@ export default class FilterCom extends React.PureComponent {
     );
     idValues.push(updatedCheckedState[position])
     console.log(idValues)
-    console.log(firstInit, "first")
 /* 
     if (window.location.href === window.location.origin + "/" || firstInit) {
        first time when url is still same as the origin or when the filter is closed and reopened 
@@ -145,7 +143,7 @@ export default class FilterCom extends React.PureComponent {
       url.searchParams.set(`check${idValues[3]}`, idValues[4])
       window.history.pushState({ path: url.href }, '', url.href);
     /* } */
-    idValues.push("checkbox")
+    idValues.push("Checkbox")
     localStorage.setItem(`${idValues[2]}FilterCheckAttr`, JSON.stringify(updatedCheckedState));
     this.setState({ checked: updatedCheckedState })
     this.renderProducts(idValues)

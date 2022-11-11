@@ -11,8 +11,6 @@ export default class FilterCom extends React.PureComponent {
       selectedValues: JSON.parse(localStorage.getItem(`${this.props.category.name}FilterSelectedAttr`)) || {},
       attributes: JSON.parse(localStorage.getItem(`${this.props.category.name}FilterColorAttr`)) || {}, // just a local storage to update the color here
       firstInit: this.initialState()[2],
-      toRenderProducts: null,
-      clickedProduct: null
     }
     this.handleCheck = this.handleCheck.bind(this);
     this.handleChange = this.handleChange.bind(this);
@@ -66,24 +64,17 @@ export default class FilterCom extends React.PureComponent {
   }
 
   handleColor(productId, attrId, itemId, categoryName) {
-    const { attributes, firstInit } = this.state;
+    const { attributes } = this.state;
     const product = {}
     product[attrId] = itemId
     attributes[productId] = product
     let values = [productId, attrId, itemId, "Color"]
-    /* if (window.location.href === window.location.origin + "/" || firstInit) {
-      first time when url is still same as the origin or when the filter is closed and reopened
-      let url = new URL(window.location.origin);
-      
-      url.searchParams.set(productId, itemId);
-      this.setState({ firstInit: !firstInit })
-      window.history.pushState({ path: url.href }, '', url.href);
-    } else { */
-      let url = new URL(window.location.href);
-      url.searchParams.set("ctg", categoryName);
-      url.searchParams.set(productId, itemId);
-      window.history.pushState({ path: url.href }, '', url.href);
-    /* } */
+    
+    let url = new URL(window.location.href);
+    url.searchParams.set("ctg", categoryName);
+    url.searchParams.set(productId, itemId);
+    window.history.pushState({ path: url.href }, '', url.href);
+   
     localStorage.setItem(`${categoryName}FilterColorAttr`, JSON.stringify(attributes));
     this.setState({ attributes: { ...attributes } })
     this.renderProducts(values)
@@ -92,7 +83,6 @@ export default class FilterCom extends React.PureComponent {
   handleChange(e, idValues) {
     console.log(e.target.value, "targetValue")
     console.log(idValues, "idValues")
-    const { firstInit } = this.state;
     const { selectedValues } = this.state;
     if (selectedValues[idValues[0]]) {
       selectedValues[idValues[0]][idValues[1]] = e.target.value
@@ -102,18 +92,11 @@ export default class FilterCom extends React.PureComponent {
       selectedValues[idValues[0]] = attribute
     }
     let value = idValues[0] + "%" + idValues[1]
-    if (window.location.href === window.location.origin + "/" || firstInit) {
-      /* first time when url is still same as the origin or when the filter is closed and reopened */
-      let url = new URL(window.location.origin);
-      url.searchParams.set("ctg", idValues[2]);
-      url.searchParams.set(value, e.target.value);
-      this.setState({ firstInit: !firstInit })
-      window.history.pushState({ path: url.href }, '', url.href);
-    } else {
-      let url = new URL(window.location.href);
-      url.searchParams.set(value, e.target.value);
-      window.history.pushState({ path: url.href }, '', url.href);
-    }
+    let url = new URL(window.location.href);
+    url.searchParams.set("ctg", idValues[2]);
+    url.searchParams.set(value, e.target.value);
+    window.history.pushState({ path: url.href }, '', url.href);
+
     idValues.push(e.target.value, "selectChange")
 
     localStorage.setItem(`${idValues[2]}FilterSelectedAttr`, JSON.stringify(selectedValues));
@@ -129,20 +112,12 @@ export default class FilterCom extends React.PureComponent {
     );
     idValues.push(updatedCheckedState[position])
     console.log(idValues)
-/* 
-    if (window.location.href === window.location.origin + "/" || firstInit) {
-       first time when url is still same as the origin or when the filter is closed and reopened 
-      let url = new URL(window.location.origin);
-      url.searchParams.set(`check${idValues[3]}`, idValues[4])
-      this.setState({ firstInit: !firstInit })
-      window.history.pushState({ path: url.href }, '', url.href);
-    } else { */
-      let url = new URL(window.location.href);
-      url.searchParams.set("ctg", idValues[2]);
 
-      url.searchParams.set(`check${idValues[3]}`, idValues[4])
-      window.history.pushState({ path: url.href }, '', url.href);
-    /* } */
+    let url = new URL(window.location.href);
+    url.searchParams.set("ctg", idValues[2]);
+    url.searchParams.set(`check${idValues[3]}`, idValues[4])
+    window.history.pushState({ path: url.href }, '', url.href);
+
     idValues.push("Checkbox")
     localStorage.setItem(`${idValues[2]}FilterCheckAttr`, JSON.stringify(updatedCheckedState));
     this.setState({ checked: updatedCheckedState })

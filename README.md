@@ -1,5 +1,5 @@
 
-## Scandiweb React Developer Test
+## Ecommerce
 
 This application was built using React, Styled Components, React Router DOM and Browser Apis.
 

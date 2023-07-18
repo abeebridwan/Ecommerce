@@ -109,9 +109,3 @@ Built-in with the following pages: PLP, PDP and cart + cartOverlay.
 ## Author
 
 Abeeb Ridwan Olumide
-
-
-## Thank You for the opportunity
-- All features were build and completed
-- non - stop committing from the beginning to the end- two(2) weeks plus.... 
-- Looking forward to your response and thank you once again for taking your time to check this out
